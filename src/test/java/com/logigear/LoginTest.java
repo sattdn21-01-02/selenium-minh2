@@ -18,7 +18,7 @@ import page_objects.LoginPage;
 public class LoginTest {
     JavascriptExecutor js;
     DriverManager driverManager;
-    WebDriver driver ;
+    WebDriver driver;
 
     @BeforeMethod
     public void beforeMethod() {
@@ -65,12 +65,12 @@ public class LoginTest {
         String actualMsg = loginPage.getLblLoginErrorMsg().getText();
         String expected = "Invalid username or password. Please try again.";
 
-        Assert.assertEquals(actualMsg,expected);
+        Assert.assertEquals(actualMsg, expected);
     }
 
     @Test
     public void TC03() {
-       System.out.println("TC03 - User can not log into Railway with invalid username or password");
+        System.out.println("TC03 - User can not log into Railway with invalid username or password");
 
         HomePage homePage = new HomePage();
 
@@ -84,7 +84,7 @@ public class LoginTest {
 
         String actualMsg = loginPage.getLblLoginErrorMsg().getText();
         String expectedMsg = "Invalid username or password. Please try again.";
-        Assert.assertEquals(actualMsg,expectedMsg);
+        Assert.assertEquals(actualMsg, expectedMsg);
         /*loginPage.login(Constant.failUsernameLogin, Constant.password);
         String actualMsg1 = loginPage.getLblLoginErrorMsg().getText();
         String expectedMsg1 = "Invalid username or password. Please try again.";

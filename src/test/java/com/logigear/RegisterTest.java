@@ -19,7 +19,7 @@ import page_objects.RegisterPage;
 public class RegisterTest {
     JavascriptExecutor js;
     DriverManager driverManager;
-    WebDriver driver ;
+    WebDriver driver;
 
     @BeforeMethod
     public void beforeMethod() {
@@ -43,7 +43,7 @@ public class RegisterTest {
         HomePage homePage = new HomePage();
         RegisterPage registerPage = homePage.gotoRegisterPage();
         js.executeScript("window.scrollBy(0,500)", "");
-        registerPage.register(Constant.registerEmail,Constant.registerPassword,Constant.registerConfirmPassword,Constant.registerPid);
+        registerPage.register(Constant.registerEmail, Constant.registerPassword, Constant.registerConfirmPassword, Constant.registerPid);
         String actualMsg = homePage.getMessageRegisterConfirmed();
         String expectedMsg = "Registration Confirmed! You can now log in to the site.";
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
