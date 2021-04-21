@@ -63,9 +63,9 @@ public class LoginTest {
         loginPage.login(Constant.failUsernameLogin, Constant.failPasswordLogin);
 
         String actualMsg = loginPage.getLblLoginErrorMsg().getText();
-        String expected = "Invalid username or password. Please try again.";
+        String expectedMsg = Constant.invalidMsgLogin;
 
-        Assert.assertEquals(actualMsg, expected);
+        Assert.assertEquals(actualMsg, expectedMsg);
     }
 
     @Test
@@ -83,7 +83,7 @@ public class LoginTest {
         js.executeScript("window.scrollBy(0,500)", "");
 
         String actualMsg = loginPage.getLblLoginErrorMsg().getText();
-        String expectedMsg = "Invalid username or password. Please try again.";
+        String expectedMsg = Constant.invalidMsgLogin;
         Assert.assertEquals(actualMsg, expectedMsg);
 
     }
@@ -99,14 +99,14 @@ public class LoginTest {
 
         js.executeScript("window.scrollBy(0,500)", "");
 
-        loginPage.login("","");
+        loginPage.login("", "");
         js.executeScript("window.scrollBy(0,500)", "");
         String actualMsgUsername = loginPage.getErrorLoginUsername();
-        String expectedMsg2 = "You must specify a username.";
+        String expectedMsg2 = Constant.invalidMsgLoginUsername;
 
-        Assert.assertEquals(actualMsgUsername,expectedMsg2);
+        Assert.assertEquals(actualMsgUsername, expectedMsg2);
         String actualMsgPassword = loginPage.getErrorLoginPassword();
-        String expectedMsgPassword = "You must specify a password.";
-        Assert.assertEquals(actualMsgPassword,expectedMsgPassword);
+        String expectedMsgPassword = Constant.invalidMsgLoginPassword;
+        Assert.assertEquals(actualMsgPassword, expectedMsgPassword);
     }
 }

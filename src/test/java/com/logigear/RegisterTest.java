@@ -45,7 +45,7 @@ public class RegisterTest {
         js.executeScript("window.scrollBy(0,500)", "");
         registerPage.register(Constant.registerEmail, Constant.registerPassword, Constant.registerConfirmPassword, Constant.registerPid);
         String actualMsg = homePage.getMessageRegisterConfirmed();
-        String expectedMsg = "Registration Confirmed! You can now log in to the site.";
+        String expectedMsg = Constant.registerConfirmMsg;
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
         //loginPage.gotoLogoutPage();*/
     }
@@ -61,9 +61,8 @@ public class RegisterTest {
                 Constant.failConfirmPasswordRegister,
                 Constant.failPidRegister);
         String actualMsg = registerPage.getErrorMsgRegister();
-        String expectedMsg = "There're errors in the form. Please correct the errors and try again.";
+        String expectedMsg = Constant.failMsgRegister;
         Assert.assertEquals(actualMsg, expectedMsg);
-        //loginPage.gotoLogoutPage();*/
     }
 
     @Test
@@ -77,7 +76,7 @@ public class RegisterTest {
                 Constant.registerConfirmPassword,
                 Constant.registerPid);
         String actualMsg = registerPage.getErrorMsgRegisterEmail();
-        String expectedMsg = "Invalid email length";
+        String expectedMsg = Constant.invalidMsgRegisterEmail;
         Assert.assertEquals(actualMsg, expectedMsg);
     }
 }

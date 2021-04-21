@@ -16,6 +16,7 @@ public class GeneralPage {
     private final By tabLogout = By.xpath("//div[@id='menu']//a[@href='/Account/Logout']");
     private final By lblWelcomeMessage = By.xpath("//div[@class='account']");
     private final By tabRegister = By.xpath("//div[@id='menu']//a[@href='/Account/Register.cshtml']");
+    private final By tabBookTicket = By.xpath("//div[@id='menu']//a[@href='/Page/BookTicketPage.cshtml']");
     private final By lblRegisterConfirmed = By.xpath("//p[contains(text(),'Registration Confirmed! You can now log in to the site.')]");
 
     //Elements
@@ -43,6 +44,11 @@ public class GeneralPage {
         return Constant.WEBDRIVER.findElement(tabRegister);
     }
 
+    protected WebElement getTabBookTicket() {
+
+        return Constant.WEBDRIVER.findElement(tabBookTicket);
+    }
+
     //Method
     public String getWelcomeMessage() {
 
@@ -58,6 +64,11 @@ public class GeneralPage {
     public RegisterPage gotoRegisterPage() {
         this.getTabRegister().click();
         return new RegisterPage();
+    }
+
+    public BookTicketPage gotoBookTicketPage() {
+        this.getTabBookTicket().click();
+        return new BookTicketPage();
     }
 
     public void gotoLogoutPage() {

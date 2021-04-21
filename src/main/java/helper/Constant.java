@@ -17,4 +17,11 @@ public class Constant {
     public static final String failPasswordRegister = "QWEASDZX";
     public static final String failConfirmPasswordRegister = "QWEASDZX";
     public static final String failPidRegister = "1234567";
+    //Message
+    public static final String invalidMsgLogin = "Invalid username or password. Please try again.";
+    public static final String invalidMsgLoginUsername = "You must specify a username.";
+    public static final String invalidMsgLoginPassword = "You must specify a password.";
+    public static final String invalidMsgRegisterEmail = "Invalid email length";
+    public static final String registerConfirmMsg = "Registration Confirmed! You can now log in to the site.";
+    public static final String failMsgRegister = "There're errors in the form. Please correct the errors and try again.";
 }
