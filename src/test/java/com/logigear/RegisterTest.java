@@ -49,4 +49,35 @@ public class RegisterTest {
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
         //loginPage.gotoLogoutPage();*/
     }
+
+    @Test
+    public void TC02() {
+        System.out.println("TC01 - User can not register a new account Railway with invalid register information");
+        HomePage homePage = new HomePage();
+        RegisterPage registerPage = homePage.gotoRegisterPage();
+        js.executeScript("window.scrollBy(0,500)", "");
+        registerPage.register(Constant.failEmailRegister,
+                Constant.failPasswordRegister,
+                Constant.failConfirmPasswordRegister,
+                Constant.failPidRegister);
+        String actualMsg = registerPage.getErrorMsgRegister();
+        String expectedMsg = "There're errors in the form. Please correct the errors and try again.";
+        Assert.assertEquals(actualMsg, expectedMsg);
+        //loginPage.gotoLogoutPage();*/
+    }
+
+    @Test
+    public void TC03() {
+        System.out.println("TC03- User can not register a new account Railway with invalid register information email");
+        HomePage homePage = new HomePage();
+        RegisterPage registerPage = homePage.gotoRegisterPage();
+        js.executeScript("window.scrollBy(0,500)", "");
+        registerPage.register(Constant.failEmailRegister,
+                Constant.registerPassword,
+                Constant.registerConfirmPassword,
+                Constant.registerPid);
+        String actualMsg = registerPage.getErrorMsgRegisterEmail();
+        String expectedMsg = "Invalid email length";
+        Assert.assertEquals(actualMsg, expectedMsg);
+    }
 }

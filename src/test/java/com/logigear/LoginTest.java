@@ -85,13 +85,28 @@ public class LoginTest {
         String actualMsg = loginPage.getLblLoginErrorMsg().getText();
         String expectedMsg = "Invalid username or password. Please try again.";
         Assert.assertEquals(actualMsg, expectedMsg);
-        /*loginPage.login(Constant.failUsernameLogin, Constant.password);
-        String actualMsg1 = loginPage.getLblLoginErrorMsg().getText();
-        String expectedMsg1 = "Invalid username or password. Please try again.";
-        Assert.assertEquals(actualMsg,expectedMsg1);
+
+    }
+
+    @Test
+    public void TC04() {
+        System.out.println("TC03 - User can not log into Railway with blank username or password");
+
+        HomePage homePage = new HomePage();
+
+
+        LoginPage loginPage = homePage.gotoLoginPage();
+
+        js.executeScript("window.scrollBy(0,500)", "");
+
         loginPage.login("","");
-        String actualMsg2 = loginPage.getErrorLoginUsername();
-        String expectedMsg2 = "Invalid username or password. Please try again.";
-        Assert.assertEquals(actualMsg,expectedMsg2);*/
+        js.executeScript("window.scrollBy(0,500)", "");
+        String actualMsgUsername = loginPage.getErrorLoginUsername();
+        String expectedMsg2 = "You must specify a username.";
+
+        Assert.assertEquals(actualMsgUsername,expectedMsg2);
+        String actualMsgPassword = loginPage.getErrorLoginPassword();
+        String expectedMsgPassword = "You must specify a password.";
+        Assert.assertEquals(actualMsgPassword,expectedMsgPassword);
     }
 }

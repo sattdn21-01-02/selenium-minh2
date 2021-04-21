@@ -68,4 +68,12 @@ public class RegisterPage {
 
     }
 
+    public String getErrorMsgRegister(){
+        return this.getLblErrorMsgRegister().getText();
+    }
+
+    public String getErrorMsgRegisterEmail() {
+        return this.getLblErrorMsgEmail().getText();
+    }
+
 }
