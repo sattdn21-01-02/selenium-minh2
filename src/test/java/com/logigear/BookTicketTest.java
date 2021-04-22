@@ -17,6 +17,7 @@ import page_objects.LoginPage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class BookTicketTest extends GeneralPage {
     JavascriptExecutor js;
@@ -57,12 +58,27 @@ public class BookTicketTest extends GeneralPage {
     public void TC02() throws IOException {
         ReadExcelFile objExcelFile = new ReadExcelFile();
 
+        System.out.println("TC01 User can book ticket successfully");
+        HomePage homePage = new HomePage();
+        LoginPage loginPage = homePage.gotoLoginPage();
+        js.executeScript("window.scrollBy(0,500)", "");
+        loginPage.login(Constant.username, Constant.password);
         //Prepare the path of excel file
-
+        BookTicketPage bookTicketPage = loginPage.gotoBookTicketPage();
         String filePath = System.getProperty("user.dir") + "/src/main/resources/";
 
         //Call read file method of the class to read data
-
-        objExcelFile.readExcel(filePath, "BookSelenium.xlsx", "Sheet2");
+        js.executeScript("window.scrollBy(0,500)", "");
+        ArrayList<ArrayList<String>> listBookTicket = objExcelFile.readExcel(filePath, "BookSelenium.xlsx", "Sheet2");
+        js.executeScript("window.scrollBy(0,500)", "");
+        for (ArrayList<String> listObj : listBookTicket) {
+            System.out.println(listObj);
+            //BookTicketPage bookTicketPages = new BookTicketPage();
+            //bookTicketPages.bookTicket(listObj.get(0),listObj.get(1),listObj.get(2),listObj.get(3),listObj.get(4));
+            /*for(String objBook: listObj) {
+                BookTicketPage bookTicketPages = new BookTicketPage();
+                bookTicketPages.bookTicket(objBook,objBook,objBook,objBook,objBook);
+            }*/
+        }
     }
 }

@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileInputStream;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -21,9 +23,11 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ReadExcelFile {
 
-    public void readExcel(String filePath, String fileName, String sheetName) throws IOException {
+    public ArrayList<ArrayList<String>> readExcel(String filePath, String fileName, String sheetName) throws IOException {
 
         //Create an object of File class to open xlsx file
+
+        ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>();
 
         File file = new File(filePath + "\\" + fileName);
         DataFormatter formatter = new DataFormatter(Locale.US);
@@ -72,18 +76,27 @@ public class ReadExcelFile {
         for (int i = 0; i < rowCount + 1; i++) {
 
             Row row = sheet.getRow(i);
-
+            if (i == 0) {
+                continue;
+            }
             //Create a loop to print cell values in a row
-
+            ArrayList<String> objBookTicket = new ArrayList<>();
             for (int j = 0; j < row.getLastCellNum(); j++) {
 
                 //Print Excel data in console
                 String valueCell = formatter.formatCellValue(row.getCell(j));
-                System.out.println(valueCell);
-
+                //System.out.println(valueCell);
+                objBookTicket.add(valueCell);
+                //list.add(objBookTicket);
             }
-
+            list.add(objBookTicket);
+            /*for(ArrayList<String> a: list){
+                for(String b: a){
+                    System.out.println(b);
+                }
+            }*/
             System.out.println();
         }
+        return list;
     }
 }

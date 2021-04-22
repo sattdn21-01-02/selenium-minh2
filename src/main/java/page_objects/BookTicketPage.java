@@ -56,7 +56,8 @@ public class BookTicketPage extends GeneralPage {
                            String seatType, String ticketAmount) {
         BookTicketPage bookTicketPage = new BookTicketPage();
         Select selectDate = new Select(bookTicketPage.getSelectDate());
-        selectDate.selectByValue(date);
+        selectDate.selectByVisibleText(date);
+        // selectDate.selectByValue(date);
         Select selectDepart = new Select(bookTicketPage.getSelectDepartFrom());
         selectDepart.selectByValue(departFrom);
         List<WebElement> arrives = this.getAllSelectArriveAt();
