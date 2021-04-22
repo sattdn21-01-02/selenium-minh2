@@ -4,7 +4,7 @@ import helper.Constant;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class RegisterPage extends GeneralPage{
+public class RegisterPage extends GeneralPage {
     //Locator
     private final By txtEmail = By.xpath("//input[@id='email']");
     private final By txtPassword = By.xpath("//input[@id='password']");
