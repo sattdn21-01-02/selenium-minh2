@@ -1,79 +1,54 @@
 package page_objects;
 
-import helper.Constant;
+import helper.element_helper.Button;
+import helper.element_helper.Label;
+import helper.element_helper.TextBox;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class RegisterPage extends GeneralPage {
-    //Locator
-    private final By txtEmail = By.xpath("//input[@id='email']");
-    private final By txtPassword = By.xpath("//input[@id='password']");
-    private final By txtConfirmPassword = By.xpath("//input[@id='confirmPassword']");
-    private final By txtPid = By.xpath("//input[@id='pid']");
-    private final By btnRegister = By.xpath("//input[@type='submit']");
-    private final By lblErrorMsgEmail = By.xpath("//label[@for='email' and @class='validation-error']");
-    private final By lblErrorMsgPassword = By.xpath("//label[@for='password' and @class='validation-error']");
-    private final By lblErrorMsgConfirmPassword = By.xpath("//label[@for='confirmPassword' and @class='validation-error']");
-    private final By lblErrorMsgPid = By.xpath("//label[@for='pid' and @class='validation-error']");
-    private final By lblErrorRegister = By.xpath("//p[@class='message error']");
-
-    //Element
-
-    public WebElement getTxtEmail() {
-        return Constant.WEB_DRIVER.findElement(txtEmail);
+    //Elements
+    private final TextBox txtEmail = new TextBox(By.cssSelector("input#email"));
+    private final TextBox txtPassword = new TextBox(By.cssSelector("input#password"));
+    private final TextBox txtConfirmPassword = new TextBox(By.cssSelector("input#confirmPassword"));
+    private final TextBox txtPID = new TextBox(By.cssSelector("input#pid"));
+    private final Button btnRegister = new Button(By.cssSelector("input[title='Register']"));
+    private final Label lblGeneralErrorMessage = new Label(By.xpath("//p[contains(@class, 'message')]"));
+    private final Label lblEmailErrorMessage = new Label(By.xpath("//label[@for='email' and @class = 'validation-error']"));
+    private final Label lblPasswordErrorMessage = new Label(By.xpath("//label[@for='password' and @class = 'validation-error']"));
+    private final Label lblConfirmPasswordErrorMessage = new Label(By.xpath("//label[@for='confirmPassword' and @class = 'validation-error']"));
+    private final Label lblPIDErrorMessage = new Label(By.xpath("//label[@for='pid' and @class = 'validation-error']"));
+    private final Label lblSuccessfulMessage = new Label(By.xpath("//div[@id = 'content']//p"));
+    //Methods
+    public void register(String email, String password, String pid) {
+        this.txtEmail.enterText(email);
+        this.txtPassword.enterText(password);
+        this.txtConfirmPassword.enterText(password);
+        this.txtPID.enterText(pid);
+        this.btnRegister.waitForElementExist();
+        this.btnRegister.click();
     }
 
-    public WebElement getTxtPassword() {
-        return Constant.WEB_DRIVER.findElement(txtPassword);
+    public String getGeneralErrorMessage() {
+        return this.lblGeneralErrorMessage.getText();
     }
 
-    public WebElement getTxtConfirmPassword() {
-        return Constant.WEB_DRIVER.findElement(txtConfirmPassword);
+    public String getEmailErrorMessage() {
+        return this.lblEmailErrorMessage.getText();
     }
 
-    public WebElement getTxtPid() {
-        return Constant.WEB_DRIVER.findElement(txtPid);
+    public String getPasswordErrorMessage() {
+        return this.lblPasswordErrorMessage.getText();
     }
 
-    public WebElement getLblErrorMsgEmail() {
-        return Constant.WEB_DRIVER.findElement(lblErrorMsgEmail);
+    public String getConfirmPasswordErrorMessage() {
+        return this.lblConfirmPasswordErrorMessage.getText();
     }
 
-    public WebElement getLblErrorMsgPassword() {
-        return Constant.WEB_DRIVER.findElement(lblErrorMsgPassword);
+    public String getPIDErrorMessage() {
+        return this.lblPIDErrorMessage.getText();
     }
 
-    public WebElement getLblErrorMsgConfirmPassword() {
-        return Constant.WEB_DRIVER.findElement(lblErrorMsgConfirmPassword);
+    public String getSuccessfulMessage() {
+        return this.lblSuccessfulMessage.getText();
     }
-
-    public WebElement getLblErrorMsgPid() {
-        return Constant.WEB_DRIVER.findElement(lblErrorMsgPid);
-    }
-
-    public WebElement getLblErrorMsgRegister() {
-        return Constant.WEB_DRIVER.findElement(lblErrorRegister);
-    }
-
-    public WebElement getBtnRegister() {
-        return Constant.WEB_DRIVER.findElement(btnRegister);
-    }
-
-    public void register(String email, String password, String confirmPassword, String Pid) {
-        this.getTxtEmail().sendKeys(email);
-        this.getTxtPassword().sendKeys(password);
-        this.getTxtConfirmPassword().sendKeys(confirmPassword);
-        this.getTxtPid().sendKeys(Pid);
-        this.getBtnRegister().click();
-
-    }
-
-    public String getErrorMsgRegister() {
-        return this.getLblErrorMsgRegister().getText();
-    }
-
-    public String getErrorMsgRegisterEmail() {
-        return this.getLblErrorMsgEmail().getText();
-    }
-
 }

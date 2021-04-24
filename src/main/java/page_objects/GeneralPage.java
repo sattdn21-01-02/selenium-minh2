@@ -6,6 +6,7 @@ import helper.web_driver_manage.DriverManageFactory;
 import helper.web_driver_manage.DriverManager;
 import helper.web_driver_manage.DriverType;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -68,5 +69,10 @@ public class GeneralPage {
 
     public void logout() {
         this.tabLogout.click();
+    }
+
+    public void scrollPage() {
+        JavascriptExecutor jse = (JavascriptExecutor) Constant.WEB_DRIVER;
+        jse.executeScript("window.scrollBy(0,250)");
     }
 }

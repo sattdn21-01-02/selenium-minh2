@@ -11,7 +11,7 @@ public class Constant {
     public static final String PASSWORD = "minhvip1997";
     public static final String failUsernameLogin = "assdasdad@gmail.com";
     public static final String failPasswordLogin = "dasdasda";
-    public static final String REGISTER_EMAIL = "tnminh19973215@gmail.com";
+    public static final String REGISTER_EMAIL = "tnminh199732151@gmail.com";
     public static final String REGISTER_PASSWORD = "doubleminh1997";
     public static final String REGISTER_CONFIRM_PASSWORD = "doubleminh1997";
     public static final String REGISTER_PID = "12345678";
