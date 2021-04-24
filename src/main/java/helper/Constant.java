@@ -20,6 +20,7 @@ public class Constant {
     public static final String failPasswordRegister = "QWEASDZX";
     public static final String failConfirmPasswordRegister = "QWEASDZX";
     public static final String failPidRegister = "1234567";
+    public static final String TEST_RESOURCES_PATH = "/src/test/resources/";
     //Message
     public static final String INVALID_MSG_LOGIN = "Invalid username or password. Please try again.";
     public static final String INVALID_MSG_LOGIN_USERNAME = "You must specify a username.";

@@ -1,46 +1,84 @@
 package draft;
 
-import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import helper.Constant;
+import helper.web_driver_manage.DriverManageFactory;
+import helper.web_driver_manage.DriverType;
+import model.Login;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.testng.Assert;
+import org.json.simple.parser.JSONParser;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+import page_objects.HomePage;
+import page_objects.LoginPage;
+import org.json.simple.parser.ParseException;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.util.Locale;
+
+import java.util.List;
 
 public class Main {
-    public static void main(String args[]) throws IOException {
-        //Create an object of File class to open xlsx file
-        File file = new File("D:\\selenium_minh\\selenium_minh_project\\src\\main\\resources\\BookSelenium.xlsx");
-        DataFormatter formatter = new DataFormatter(Locale.US);
-        //Create an object of FileInputStream class to read excel file
-        FileInputStream inputStream = new FileInputStream(file);
+    private HomePage homePage;
+    private LoginPage loginPage;
+    private List<Login> logins;
 
-        //creating workbook instance that refers to .xls file
-        XSSFWorkbook wb = new XSSFWorkbook(inputStream);
+    @BeforeMethod
+    public void beforeMethod() throws IOException{
+        Constant.DRIVER_MANAGER = DriverManageFactory.getDriverManager(DriverType.CHROME);
+        Constant.WEB_DRIVER = Constant.DRIVER_MANAGER.getWebDriver();
+        Constant.WEB_DRIVER.get(Constant.RAILWAY_URL);
+        Constant.WEB_DRIVER.manage().window().maximize();
 
-        //creating a Sheet object
-        Sheet sheet = wb.getSheet("sheet2");
+        homePage = new HomePage();
+        loginPage = new LoginPage();
+        homePage.goToLoginPage();
+    }
 
-        //get all rows in the sheet
-        int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum();
+    @AfterMethod
+    public void afterMethod() {
+        System.out.println("Post-condition");
+        Constant.WEB_DRIVER.quit();
+    }
 
-        //iterate over all the row to print the data present in each cell.
-        for (int i = 0; i <= rowCount; i++) {
 
-            //get cell count in a row
-            int cellcount = sheet.getRow(i).getLastCellNum();
+    @Test(dataProvider = "dp")
+    public void TC01(String data) {
+        String users[] = data.split(",");
+        /*ObjectMapper objectMapper = new ObjectMapper();
+        File jsonFile = new File("src/test/resources/login-data.json");
+        Login people = objectMapper.readValue(jsonFile, Login.class);
+        System.out.println("TC01 - User can log into Railway with valid username and password")*/;
+        loginPage.scrollPage();
+        loginPage.login(users[0],users[1]);
+        //loginPage.login(people.getEmail(), people.getPassword());
+        //loginPage.login(logins.get(0).getEmail(),logins.get(0).getPassword());
+        loginPage.scrollPage();
+        String actualMsg = homePage.getWelcomeMessage();
+        String expectedMsg = "Welcome " + Constant.USERNAME;
+        Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
+        loginPage.logout();
+    }
 
-            //iterate over each cell to print its value
-            System.out.println("Row" + i + " data is :");
+    @DataProvider(name="dp")
+    public Object[] readJson() throws IOException, ParseException {
+        JSONParser jsonParser = new JSONParser();
+        FileReader reader = new FileReader("src/test/resources/login-data.json");
 
-            for (int j = 0; j < cellcount; j++) {
-                String a = formatter.formatCellValue(sheet.getRow(i).getCell(j));
-                System.out.println(a);
-                //System.out.print(sheet.getRow(i).getCell(j).getStringCellValue() +",");
-            }
-            System.out.println();
+        Object object = jsonParser.parse(reader);
+        JSONObject userLoginJsonObj=(JSONObject) object;
+        JSONArray userLoginsArray=(JSONArray) userLoginJsonObj.get("logins");
+        String arr[] = new String[userLoginsArray.size()];
+        for(int i=0;i<userLoginsArray.size();i++) {
+            JSONObject users=(JSONObject) userLoginsArray.get(i);
+            String email = (String) users.get("email");
+            String password = (String) users.get("password");
+
+            arr[i]=email+","+password;
         }
+        return arr;
     }
 }
