@@ -1,6 +1,7 @@
 package page_objects;
 
 import helper.Constant;
+import helper.element_helper.Tab;
 import helper.web_driver_manage.DriverManageFactory;
 import helper.web_driver_manage.DriverManager;
 import helper.web_driver_manage.DriverType;
@@ -11,72 +12,61 @@ import org.openqa.selenium.WebElement;
 public class GeneralPage {
 
 
-    //Locator
-    private final By tabLogin = By.xpath("//div[@id='menu']//a[@href='/Account/Login.cshtml']");
-    private final By tabLogout = By.xpath("//div[@id='menu']//a[@href='/Account/Logout']");
-    private final By lblWelcomeMessage = By.xpath("//div[@class='account']");
-    private final By tabRegister = By.xpath("//div[@id='menu']//a[@href='/Account/Register.cshtml']");
-    private final By tabBookTicket = By.xpath("//div[@id='menu']//a[@href='/Page/BookTicketPage.cshtml']");
-    private final By lblRegisterConfirmed = By.xpath("//p[contains(text(),'Registration Confirmed! You can now log in to the site.')]");
-
     //Elements
-    protected WebElement getTabLogin() {
+    private final Tab tabHome = new Tab(By.cssSelector("a[href='../']"));
+    private final Tab tabFAQ = new Tab(By.cssSelector("a[href='/Page/FAQ.cshtml']"));
+    private final Tab tabContact = new Tab(By.cssSelector("a[href='/Page/Contact.cshtml']"));
+    private final Tab tabTimetable = new Tab(By.cssSelector("a[href='TrainTimeListPage.cshtml']"));
+    private final Tab tabTicketPrice = new Tab(By.cssSelector("a[href='/Page/TrainPriceListPage.cshtml']"));
+    private final Tab tabBookTicket = new Tab(By.cssSelector("a[href='/Page/BookTicketPage.cshtml']"));
+    private final Tab tabMyTicket = new Tab(By.cssSelector("a[href='/Page/ManageTicket.cshtml']"));
+    private final Tab tabChangePassword = new Tab(By.cssSelector("a[href='/Account/ChangePassword.cshtml']"));
+    private final Tab tabRegister = new Tab(By.cssSelector("a[href='/Account/Register.cshtml']"));
+    private final Tab tabLogin = new Tab(By.cssSelector("a[href='/Account/Login.cshtml']"));
+    private final Tab tabLogout = new Tab(By.cssSelector("a[href='/Account/Logout']"));
 
-        return Constant.WEBDRIVER.findElement(tabLogin);
+    //Methods
+    public void goToHomePage() {
+        this.tabHome.click();
     }
 
-    protected WebElement getTabLogout() {
-
-        return Constant.WEBDRIVER.findElement(tabLogout);
+    public void goToFAQPage() {
+        this.tabFAQ.click();
     }
 
-    protected WebElement getLblWelcomeMessage() {
-
-        return Constant.WEBDRIVER.findElement(lblWelcomeMessage);
+    public void goToContactPage() {
+        this.tabContact.click();
     }
 
-    protected WebElement getLblRegisterConfirmed() {
-        return Constant.WEBDRIVER.findElement(lblRegisterConfirmed);
+    public void goToTimetablePage() {
+        this.tabTimetable.click();
     }
 
-    protected WebElement getTabRegister() {
-
-        return Constant.WEBDRIVER.findElement(tabRegister);
+    public void goToTicketPricePage() {
+        this.tabTicketPrice.click();
     }
 
-    protected WebElement getTabBookTicket() {
-
-        return Constant.WEBDRIVER.findElement(tabBookTicket);
+    public void goToBookTicketPage() {
+        this.tabBookTicket.click();
     }
 
-    //Method
-    public String getWelcomeMessage() {
-
-        return this.getLblWelcomeMessage().getText();
+    public void goToMyTicketPage() {
+        this.tabMyTicket.click();
     }
 
-    public LoginPage gotoLoginPage() {
-
-        this.getTabLogin().click();
-        return new LoginPage();
+    public void goToChangePasswordPage() {
+        this.tabChangePassword.click();
     }
 
-    public RegisterPage gotoRegisterPage() {
-        this.getTabRegister().click();
-        return new RegisterPage();
+    public void goToRegisterPage() {
+        this.tabRegister.click();
     }
 
-    public BookTicketPage gotoBookTicketPage() {
-        this.getTabBookTicket().click();
-        return new BookTicketPage();
+    public void goToLoginPage() {
+        this.tabLogin.click();
     }
 
-    public void gotoLogoutPage() {
-        this.getTabLogout().click();
-    }
-
-    public String getMessageRegisterConfirmed() {
-
-        return this.getLblRegisterConfirmed().getText();
+    public void logout() {
+        this.tabLogout.click();
     }
 }

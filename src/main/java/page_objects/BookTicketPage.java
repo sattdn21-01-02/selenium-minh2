@@ -25,31 +25,31 @@ public class BookTicketPage extends GeneralPage {
 
     //Element
     public WebElement getSelectDate() {
-        return Constant.WEBDRIVER.findElement(selectDate);
+        return Constant.WEB_DRIVER.findElement(selectDate);
     }
 
     public WebElement getSelectDepartFrom() {
-        return Constant.WEBDRIVER.findElement(selectDepartFrom);
+        return Constant.WEB_DRIVER.findElement(selectDepartFrom);
     }
 
     public WebElement getSelectArriveAt() {
-        return Constant.WEBDRIVER.findElement(selectArriveAt);
+        return Constant.WEB_DRIVER.findElement(selectArriveAt);
     }
 
     public List<WebElement> getAllSelectArriveAt() {
-        return Constant.WEBDRIVER.findElements(selectArriveAt);
+        return Constant.WEB_DRIVER.findElements(selectArriveAt);
     }
 
     public WebElement getSelectSeatType() {
-        return Constant.WEBDRIVER.findElement(selectSeatType);
+        return Constant.WEB_DRIVER.findElement(selectSeatType);
     }
 
     public WebElement getSelectTicketAmount() {
-        return Constant.WEBDRIVER.findElement(selectTicketAmount);
+        return Constant.WEB_DRIVER.findElement(selectTicketAmount);
     }
 
     public WebElement getBtnBookTicket() {
-        return Constant.WEBDRIVER.findElement(btnSubmitBookTicket);
+        return Constant.WEB_DRIVER.findElement(btnSubmitBookTicket);
     }
 
     public void bookTicket(String date, String departFrom, String arriveAt,

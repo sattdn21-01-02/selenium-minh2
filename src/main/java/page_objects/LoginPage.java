@@ -19,27 +19,27 @@ public class LoginPage extends GeneralPage {
 
     //Element
     public WebElement getTxtUsername() {
-        return Constant.WEBDRIVER.findElement(_txtUsername);
+        return Constant.WEB_DRIVER.findElement(_txtUsername);
     }
 
     public WebElement getTxtPassword() {
-        return Constant.WEBDRIVER.findElement(_txtPassword);
+        return Constant.WEB_DRIVER.findElement(_txtPassword);
     }
 
     public WebElement getBtnLogin() {
-        return Constant.WEBDRIVER.findElement(_btnLogin);
+        return Constant.WEB_DRIVER.findElement(_btnLogin);
     }
 
     public WebElement getLblLoginErrorMsg() {
-        return Constant.WEBDRIVER.findElement(_lblLoginErrorMsg);
+        return Constant.WEB_DRIVER.findElement(_lblLoginErrorMsg);
     }
 
     public WebElement getLblLoginErrorMsgUsername() {
-        return Constant.WEBDRIVER.findElement(lblLoginErrorMsgUsername);
+        return Constant.WEB_DRIVER.findElement(lblLoginErrorMsgUsername);
     }
 
     public WebElement getLblLoginErrorMsgPassword() {
-        return Constant.WEBDRIVER.findElement(lblLoginErrorMsgPassword);
+        return Constant.WEB_DRIVER.findElement(lblLoginErrorMsgPassword);
     }
 
     public void login(String username, String password) {

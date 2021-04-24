@@ -18,52 +18,46 @@ import page_objects.LoginPage;
 public class LoginTest {
     JavascriptExecutor js;
     DriverManager driverManager;
-    WebDriver driver;
-
+private HomePage homePage;
+private LoginPage loginPage;
     @BeforeMethod
     public void beforeMethod() {
-
         driverManager = DriverManageFactory.getDriverManager(DriverType.CHROME);
-        Constant.WEBDRIVER = driverManager.getWebDriver();
-        Constant.WEBDRIVER.get(Constant.RAILWAY_URL);
-        Constant.WEBDRIVER.manage().window().maximize();
-        js = (JavascriptExecutor) Constant.WEBDRIVER;
+        Constant.WEB_DRIVER = driverManager.getWebDriver();
+        Constant.WEB_DRIVER.get(Constant.RAILWAY_URL);
+        Constant.WEB_DRIVER.manage().window().maximize();
+        homePage = new HomePage();
+        loginPage = new LoginPage();
+        homePage.goToLoginPage();
+        js = (JavascriptExecutor) Constant.WEB_DRIVER;
     }
 
     @AfterMethod
     public void afterMethod() {
         System.out.println("Post-condition");
-        Constant.WEBDRIVER.quit();
+        Constant.WEB_DRIVER.quit();
     }
 
     @Test
     public void TC01() {
         System.out.println("TC01 - User can log into Railway with valid username and password");
-        HomePage homePage = new HomePage();
-        LoginPage loginPage = homePage.gotoLoginPage();
         js.executeScript("window.scrollBy(0,250)", "");
-        loginPage.login(Constant.username, Constant.password);
+        loginPage.login(Constant.USERNAME, Constant.PASSWORD);
         String actualMsg = homePage.getWelcomeMessage();
-        String expectedMsg = "Welcome " + Constant.username;
+        String expectedMsg = "Welcome " + Constant.USERNAME;
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
-        loginPage.gotoLogoutPage();
+        loginPage.logout();
     }
 
     @Test
     public void TC02() {
         System.out.println("TC02 - User can not log into Railway with invalid username and password");
-
-        HomePage homePage = new HomePage();
-
-
-        LoginPage loginPage = homePage.gotoLoginPage();
-
         js.executeScript("window.scrollBy(0,250)", "");
 
         loginPage.login(Constant.failUsernameLogin, Constant.failPasswordLogin);
 
         String actualMsg = loginPage.getLblLoginErrorMsg().getText();
-        String expectedMsg = Constant.invalidMsgLogin;
+        String expectedMsg = Constant.INVALID_MSG_LOGIN;
 
         Assert.assertEquals(actualMsg, expectedMsg);
     }
@@ -72,18 +66,13 @@ public class LoginTest {
     public void TC03() {
         System.out.println("TC03 - User can not log into Railway with invalid username or password");
 
-        HomePage homePage = new HomePage();
-
-
-        LoginPage loginPage = homePage.gotoLoginPage();
-
         js.executeScript("window.scrollBy(0,500)", "");
 
-        loginPage.login(Constant.failUsernameLogin, Constant.password);
+        loginPage.login(Constant.failUsernameLogin, Constant.PASSWORD);
         js.executeScript("window.scrollBy(0,500)", "");
 
         String actualMsg = loginPage.getLblLoginErrorMsg().getText();
-        String expectedMsg = Constant.invalidMsgLogin;
+        String expectedMsg = Constant.INVALID_MSG_LOGIN;
         Assert.assertEquals(actualMsg, expectedMsg);
 
     }
@@ -92,21 +81,16 @@ public class LoginTest {
     public void TC04() {
         System.out.println("TC03 - User can not log into Railway with blank username or password");
 
-        HomePage homePage = new HomePage();
-
-
-        LoginPage loginPage = homePage.gotoLoginPage();
-
         js.executeScript("window.scrollBy(0,500)", "");
 
         loginPage.login("", "");
         js.executeScript("window.scrollBy(0,500)", "");
         String actualMsgUsername = loginPage.getErrorLoginUsername();
-        String expectedMsg2 = Constant.invalidMsgLoginUsername;
+        String expectedMsg2 = Constant.INVALID_MSG_LOGIN_USERNAME;
 
         Assert.assertEquals(actualMsgUsername, expectedMsg2);
         String actualMsgPassword = loginPage.getErrorLoginPassword();
-        String expectedMsgPassword = Constant.invalidMsgLoginPassword;
+        String expectedMsgPassword = Constant.INVALID_MSG_LOGIN_PASSWORD;
         Assert.assertEquals(actualMsgPassword, expectedMsgPassword);
     }
 }

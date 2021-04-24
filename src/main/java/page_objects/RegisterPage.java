@@ -20,43 +20,43 @@ public class RegisterPage extends GeneralPage {
     //Element
 
     public WebElement getTxtEmail() {
-        return Constant.WEBDRIVER.findElement(txtEmail);
+        return Constant.WEB_DRIVER.findElement(txtEmail);
     }
 
     public WebElement getTxtPassword() {
-        return Constant.WEBDRIVER.findElement(txtPassword);
+        return Constant.WEB_DRIVER.findElement(txtPassword);
     }
 
     public WebElement getTxtConfirmPassword() {
-        return Constant.WEBDRIVER.findElement(txtConfirmPassword);
+        return Constant.WEB_DRIVER.findElement(txtConfirmPassword);
     }
 
     public WebElement getTxtPid() {
-        return Constant.WEBDRIVER.findElement(txtPid);
+        return Constant.WEB_DRIVER.findElement(txtPid);
     }
 
     public WebElement getLblErrorMsgEmail() {
-        return Constant.WEBDRIVER.findElement(lblErrorMsgEmail);
+        return Constant.WEB_DRIVER.findElement(lblErrorMsgEmail);
     }
 
     public WebElement getLblErrorMsgPassword() {
-        return Constant.WEBDRIVER.findElement(lblErrorMsgPassword);
+        return Constant.WEB_DRIVER.findElement(lblErrorMsgPassword);
     }
 
     public WebElement getLblErrorMsgConfirmPassword() {
-        return Constant.WEBDRIVER.findElement(lblErrorMsgConfirmPassword);
+        return Constant.WEB_DRIVER.findElement(lblErrorMsgConfirmPassword);
     }
 
     public WebElement getLblErrorMsgPid() {
-        return Constant.WEBDRIVER.findElement(lblErrorMsgPid);
+        return Constant.WEB_DRIVER.findElement(lblErrorMsgPid);
     }
 
     public WebElement getLblErrorMsgRegister() {
-        return Constant.WEBDRIVER.findElement(lblErrorRegister);
+        return Constant.WEB_DRIVER.findElement(lblErrorRegister);
     }
 
     public WebElement getBtnRegister() {
-        return Constant.WEBDRIVER.findElement(btnRegister);
+        return Constant.WEB_DRIVER.findElement(btnRegister);
     }
 
     public void register(String email, String password, String confirmPassword, String Pid) {
