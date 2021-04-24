@@ -2,9 +2,9 @@ package helper.element_helper;
 
 import org.openqa.selenium.By;
 
-public class Button extends BaseElement {
+public class Label extends BaseElement {
 
-    public Button(By locator) {
+    public Label(By locator) {
         super(locator);
     }
 }
