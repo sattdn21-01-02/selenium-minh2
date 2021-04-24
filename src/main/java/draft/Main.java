@@ -3,7 +3,7 @@ package draft;
 import helper.Constant;
 import helper.web_driver_manage.DriverManageFactory;
 import helper.web_driver_manage.DriverType;
-import model.Login;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
@@ -24,7 +24,7 @@ import java.util.List;
 public class Main {
     private HomePage homePage;
     private LoginPage loginPage;
-    private List<Login> logins;
+
 
     @BeforeMethod
     public void beforeMethod() throws IOException{
