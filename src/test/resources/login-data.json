@@ -8,5 +8,15 @@
       "email": "tnminh19973215@gmail.com",
       "password": "doubleminh1997"
     }
+  ],
+  "logins_error": [
+    {
+      "email": "qweqwe@gmail.com",
+      "password": "minhvip1997"
+    },
+    {
+      "email": "tnminh19973215@gmail.com",
+      "password": "eqweqeqwnh1997"
+    }
   ]
 }

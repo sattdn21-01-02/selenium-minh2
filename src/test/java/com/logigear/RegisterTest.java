@@ -2,7 +2,6 @@ package com.logigear;
 
 import helper.Constant;
 import helper.web_driver_manage.DriverManageFactory;
-import helper.web_driver_manage.DriverManager;
 import helper.web_driver_manage.DriverType;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -12,14 +11,14 @@ import page_objects.HomePage;
 import page_objects.RegisterPage;
 
 public class RegisterTest {
-    DriverManager driverManager;
+
     private HomePage homePage;
     private RegisterPage registerPage;
 
     @BeforeMethod
     public void beforeMethod() {
-        driverManager = DriverManageFactory.getDriverManager(DriverType.CHROME);
-        Constant.WEB_DRIVER = driverManager.getWebDriver();
+        Constant.DRIVER_MANAGER = DriverManageFactory.getDriverManager(DriverType.CHROME);
+        Constant.WEB_DRIVER = Constant.DRIVER_MANAGER.getWebDriver();
         Constant.WEB_DRIVER.get(Constant.RAILWAY_URL);
         Constant.WEB_DRIVER.manage().window().maximize();
         homePage = new HomePage();
@@ -47,7 +46,6 @@ public class RegisterTest {
     @Test
     public void TC02() {
         System.out.println("TC01 - User can not register a new account Railway with invalid register information");
-
         registerPage.register(Constant.failEmailRegister,
                 Constant.failPasswordRegister,
                 Constant.failPidRegister);
@@ -59,7 +57,7 @@ public class RegisterTest {
     @Test
     public void TC03() {
         System.out.println("TC03- User can not register a new account Railway with invalid register information email");
-registerPage.scrollPage();
+        registerPage.scrollPage();
         registerPage.register(Constant.failEmailRegister,
                 Constant.REGISTER_PASSWORD,
                 Constant.REGISTER_PID);

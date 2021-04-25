@@ -1,6 +1,7 @@
 package com.logigear;
 
 import helper.Constant;
+import helper.dataprovider_helper.DataProviderHelper;
 import helper.web_driver_manage.DriverManageFactory;
 import helper.web_driver_manage.DriverType;
 import org.testng.Assert;
@@ -87,5 +88,33 @@ public class LoginTest {
         String actualMsgPassword = loginPage.getPasswordErrorMessage();
         String expectedMsgPassword = Constant.INVALID_MSG_LOGIN_PASSWORD;
         Assert.assertEquals(actualMsgPassword, expectedMsgPassword);
+    }
+
+    @Test(dataProvider = "login_success", dataProviderClass = DataProviderHelper.class)
+    public void TC05(String data) {
+        String users[] = data.split(",");
+        System.out.println("TC01 - User can log into Railway with valid username and password");
+        loginPage.scrollPage();
+        loginPage.login(users[0], users[1]);
+        loginPage.scrollPage();
+        String actualMsg = homePage.getWelcomeMessage();
+        String expectedMsg = "Welcome " + users[0].toString();
+        Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
+        loginPage.logout();
+    }
+
+    @Test(dataProvider = "login_error", dataProviderClass = DataProviderHelper.class)
+    public void TC06(String data) {
+        System.out.println("TC06 - User can not log into Railway with invalid username or password");
+        String users[] = data.split(",");
+        loginPage.scrollPage();
+
+        loginPage.login(users[0], users[1]);
+        loginPage.scrollPage();
+
+        String actualMsg = loginPage.getGeneralErrorMessage();
+        String expectedMsg = Constant.INVALID_MSG_LOGIN;
+        Assert.assertEquals(actualMsg, expectedMsg);
+
     }
 }
