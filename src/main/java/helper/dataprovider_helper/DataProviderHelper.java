@@ -48,4 +48,24 @@ public class DataProviderHelper {
         }
         return arr;
     }
+
+    @DataProvider(name = "register_error")
+    public Object[] readJsonRegisterError() throws IOException, ParseException {
+        JSONParser jsonParser = new JSONParser();
+        FileReader reader = new FileReader("src/test/resources/register-data.json");
+
+        Object object = jsonParser.parse(reader);
+        JSONObject userLoginJsonObj = (JSONObject) object;
+        JSONArray userLoginsArray = (JSONArray) userLoginJsonObj.get("register_error");
+        String arr[] = new String[userLoginsArray.size()];
+        for (int i = 0; i < userLoginsArray.size(); i++) {
+            JSONObject users = (JSONObject) userLoginsArray.get(i);
+            String email = (String) users.get("email");
+            String password = (String) users.get("password");
+            String confirmPassword = (String) users.get("confirm_password");
+            String pid = (String) users.get("PID");
+            arr[i] = email + "," + password + "," + confirmPassword + "," + pid;
+        }
+        return arr;
+    }
 }

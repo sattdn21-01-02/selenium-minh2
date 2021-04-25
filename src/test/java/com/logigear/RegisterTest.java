@@ -1,6 +1,7 @@
 package com.logigear;
 
 import helper.Constant;
+import helper.dataprovider_helper.DataProviderHelper;
 import helper.web_driver_manage.DriverManageFactory;
 import helper.web_driver_manage.DriverType;
 import org.testng.Assert;
@@ -43,26 +44,17 @@ public class RegisterTest {
         registerPage.logout();
     }
 
-    @Test
-    public void TC02() {
+    @Test(dataProvider = "register_error", dataProviderClass = DataProviderHelper.class)
+    public void TC02(String data) {
         System.out.println("TC01 - User can not register a new account Railway with invalid register information");
-        registerPage.register(Constant.failEmailRegister,
-                Constant.failPasswordRegister,
-                Constant.failPidRegister);
+        String users[] = data.split(",");
+        registerPage.register(users[0].toString(),
+                users[1].toString(),
+                users[2].toString());
         String actualMsg = registerPage.getGeneralErrorMessage();
         String expectedMsg = Constant.FAIL_MSG_REGISTER;
         Assert.assertEquals(actualMsg, expectedMsg);
     }
 
-    @Test
-    public void TC03() {
-        System.out.println("TC03- User can not register a new account Railway with invalid register information email");
-        registerPage.scrollPage();
-        registerPage.register(Constant.failEmailRegister,
-                Constant.REGISTER_PASSWORD,
-                Constant.REGISTER_PID);
-        String actualMsg = registerPage.getEmailErrorMessage();
-        String expectedMsg = Constant.INVALID_MSG_REGISTER_EMAIL;
-        Assert.assertEquals(actualMsg, expectedMsg);
-    }
+
 }

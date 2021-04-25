@@ -9,17 +9,11 @@ public class Constant {
     public static final String RAILWAY_URL = "http://www.railwayqa.somee.com/Account/Register.cshtml";
     public static final String USERNAME = "tnminh19971234@gmail.com";
     public static final String PASSWORD = "minhvip1997";
-    public static final String failUsernameLogin = "assdasdad@gmail.com";
-    public static final String failPasswordLogin = "dasdasda";
     public static final String REGISTER_EMAIL = "tnminh199732151@gmail.com";
     public static final String REGISTER_PASSWORD = "doubleminh1997";
     public static final String REGISTER_CONFIRM_PASSWORD = "doubleminh1997";
     public static final String REGISTER_PID = "12345678";
     public static DriverManager DRIVER_MANAGER;
-    public static final String failEmailRegister = "QWEAS";
-    public static final String failPasswordRegister = "QWEASDZX";
-    public static final String failConfirmPasswordRegister = "QWEASDZX";
-    public static final String failPidRegister = "1234567";
     public static final String TEST_RESOURCES_PATH = "/src/test/resources/";
     //Message
     public static final String INVALID_MSG_LOGIN = "Invalid username or password. Please try again.";

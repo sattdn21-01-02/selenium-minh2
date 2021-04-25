@@ -46,34 +46,6 @@ public class LoginTest {
     }
 
     @Test
-    public void TC02() {
-        System.out.println("TC02 - User can not log into Railway with invalid username and password");
-        loginPage.scrollPage();
-
-        loginPage.login(Constant.failUsernameLogin, Constant.failPasswordLogin);
-        loginPage.scrollPage();
-        String actualMsg = loginPage.getGeneralErrorMessage();
-        String expectedMsg = Constant.INVALID_MSG_LOGIN;
-
-        Assert.assertEquals(actualMsg, expectedMsg);
-    }
-
-    @Test
-    public void TC03() {
-        System.out.println("TC03 - User can not log into Railway with invalid username or password");
-
-        loginPage.scrollPage();
-
-        loginPage.login(Constant.failUsernameLogin, Constant.PASSWORD);
-        loginPage.scrollPage();
-
-        String actualMsg = loginPage.getGeneralErrorMessage();
-        String expectedMsg = Constant.INVALID_MSG_LOGIN;
-        Assert.assertEquals(actualMsg, expectedMsg);
-
-    }
-
-    @Test
     public void TC04() {
         System.out.println("TC03 - User can not log into Railway with blank username or password");
 
