@@ -1,12 +1,12 @@
 package com.logigear;
 
+import com.sun.org.glassfish.gmbal.Description;
 import helper.Constant;
+import helper.Faker_helper.LoginFakerAPI;
 import helper.dataprovider_helper.DataProviderHelper;
 import helper.web_driver_manage.DriverManageFactory;
 import helper.web_driver_manage.DriverType;
 import models.Login;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -18,7 +18,7 @@ public class LoginTest {
 
     private HomePage homePage;
     private LoginPage loginPage;
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    LoginFakerAPI jf = new LoginFakerAPI();
 
     @BeforeMethod
     public void beforeMethod() {
@@ -37,26 +37,26 @@ public class LoginTest {
         Constant.WEB_DRIVER.quit();
     }
 
+    @Description("TC01 - User can log into Railway with valid username and password")
     @Test
     public void TC01() {
-        System.out.println("TC01 - User can log into Railway with valid username and password");
         loginPage.scrollPage();
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
         loginPage.scrollPage();
+
         String actualMsg = homePage.getWelcomeMessage();
-        String expectedMsg = "Welcome " + Constant.USERNAME;
+        String expectedMsg = Constant.WELCOME + Constant.USERNAME;
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
         loginPage.logout();
     }
 
+    @Description("TC04 - User can not log into Railway with blank username or password")
     @Test
     public void TC04() {
-        System.out.println("TC03 - User can not log into Railway with blank username or password");
-
         loginPage.scrollPage();
-
         loginPage.login("", "");
         loginPage.scrollPage();
+
         String actualMsgUsername = loginPage.getEmailErrorMessage();
         String expectedMsg2 = Constant.INVALID_MSG_LOGIN_USERNAME;
 
@@ -66,22 +66,24 @@ public class LoginTest {
         Assert.assertEquals(actualMsgPassword, expectedMsgPassword);
     }
 
+    @Description("TC05 - User can log into Railway with valid username and password")
     @Test(dataProvider = "login_success", dataProviderClass = DataProviderHelper.class)
     public void TC05(String data) {
         String users[] = data.split(",");
-        System.out.println("TC01 - User can log into Railway with valid username and password");
         loginPage.scrollPage();
+
         loginPage.login(users[0], users[1]);
         loginPage.scrollPage();
+
         String actualMsg = homePage.getWelcomeMessage();
-        String expectedMsg = "Welcome " + users[0].toString();
+        String expectedMsg = Constant.WELCOME + users[0].toString();
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
         loginPage.logout();
     }
 
+    @Description("TC06 - User can not log into Railway with invalid username or password")
     @Test(dataProvider = "login_error", dataProviderClass = DataProviderHelper.class)
     public void TC06(String data) {
-        System.out.println("TC06 - User can not log into Railway with invalid username or password");
         String users[] = data.split(",");
         loginPage.scrollPage();
 
@@ -94,24 +96,38 @@ public class LoginTest {
 
     }
 
+    @Description("TC07 - User can log into Railway with valid username and password")
     @Test(dataProvider = "login_success_objects", dataProviderClass = DataProviderHelper.class)
     public void TC07(Login login) {
-        System.out.println("TC01 - User can log into Railway with valid username and password");
         loginPage.scrollPage();
         loginPage.login(login.getEmail(), login.getPassword());
         loginPage.scrollPage();
+
         String actualMsg = homePage.getWelcomeMessage();
-        String expectedMsg = "Welcome " + login.getEmail();
+        String expectedMsg = Constant.WELCOME + login.getEmail();
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
         loginPage.logout();
     }
 
+    @Description("TC08 - User can not log into Railway with valid username and password")
     @Test(dataProvider = "login_error_objects", dataProviderClass = DataProviderHelper.class)
     public void TC08(Login login) {
-        System.out.println("TC01 - User can log into Railway with valid username and password");
         loginPage.scrollPage();
         loginPage.login(login.getEmail(), login.getPassword());
         loginPage.scrollPage();
+
+        String actualMsg = loginPage.getGeneralErrorMessage();
+        String expectedMsg = Constant.INVALID_MSG_LOGIN;
+        Assert.assertEquals(actualMsg, expectedMsg);
+    }
+
+    @Description("TC09 - User can not log into Railway with valid username and password")
+    @Test
+    public void TC09() {
+        loginPage.scrollPage();
+        loginPage.login(jf.getEmail(), jf.getPassword());
+        loginPage.scrollPage();
+
         String actualMsg = loginPage.getGeneralErrorMessage();
         String expectedMsg = Constant.INVALID_MSG_LOGIN;
         Assert.assertEquals(actualMsg, expectedMsg);

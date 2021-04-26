@@ -19,10 +19,10 @@ public class RegisterPage extends GeneralPage {
     private final Label lblPIDErrorMessage = new Label(By.xpath("//label[@for='pid' and @class = 'validation-error']"));
     private final Label lblSuccessfulMessage = new Label(By.xpath("//div[@id = 'content']//p"));
     //Methods
-    public void register(String email, String password, String pid) {
+    public void register(String email, String password, String confirmPassword, String pid) {
         this.txtEmail.enterText(email);
         this.txtPassword.enterText(password);
-        this.txtConfirmPassword.enterText(password);
+        this.txtConfirmPassword.enterText(confirmPassword);
         this.txtPID.enterText(pid);
         this.btnRegister.waitForElementExist();
         this.btnRegister.click();

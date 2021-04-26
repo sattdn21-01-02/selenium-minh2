@@ -3,6 +3,7 @@ package helper.dataprovider_helper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import models.Login;
+import models.Register;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -95,5 +96,23 @@ public class DataProviderHelper {
         JsonNode jsonNode = objectMapper.readTree(reader);
         List<Login> logins = Arrays.asList(objectMapper.treeToValue(jsonNode.get("logins_error"), Login[].class));
         return logins.toArray();
+    }
+
+    @DataProvider(name = "register_success_objects")
+    public Object[] readJsonObjectMapperRegister() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        FileReader reader = new FileReader("src/test/resources/register-data.json");
+        JsonNode jsonNode = objectMapper.readTree(reader);
+        List<Register> registers = Arrays.asList(objectMapper.treeToValue(jsonNode.get("register_success"), Register[].class));
+        return registers.toArray();
+    }
+
+    @DataProvider(name = "register_error_objects")
+    public Object[] readJsonObjectMapperRegisterError() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        FileReader reader = new FileReader("src/test/resources/register-data.json");
+        JsonNode jsonNode = objectMapper.readTree(reader);
+        List<Register> registers = Arrays.asList(objectMapper.treeToValue(jsonNode.get("register_error"), Register[].class));
+        return registers.toArray();
     }
 }

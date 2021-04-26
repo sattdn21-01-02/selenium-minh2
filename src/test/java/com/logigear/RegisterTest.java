@@ -1,9 +1,11 @@
 package com.logigear;
 
+import com.sun.org.glassfish.gmbal.Description;
 import helper.Constant;
 import helper.dataprovider_helper.DataProviderHelper;
 import helper.web_driver_manage.DriverManageFactory;
 import helper.web_driver_manage.DriverType;
+import models.Register;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -33,28 +35,49 @@ public class RegisterTest {
         Constant.WEB_DRIVER.quit();
     }
 
+    @Description("TC01 - User can register a new account Railway with valid register information")
     @Test
     public void TC01() {
-        System.out.println("TC01 - User can register a new account Railway with valid register information");
         registerPage.scrollPage();
-        registerPage.register(Constant.REGISTER_EMAIL, Constant.REGISTER_PASSWORD, Constant.REGISTER_PID);
+        registerPage.register(Constant.REGISTER_EMAIL, Constant.REGISTER_PASSWORD, Constant.REGISTER_CONFIRM_PASSWORD, Constant.REGISTER_PID);
         String actualMsg = registerPage.getSuccessfulMessage();
-        String expectedMsg = "Welcome " + Constant.REGISTER_EMAIL;
+        String expectedMsg = Constant.WELCOME + Constant.REGISTER_EMAIL;
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
         registerPage.logout();
     }
 
+    @Description("TC02 - User can not register a new account Railway with invalid register information")
     @Test(dataProvider = "register_error", dataProviderClass = DataProviderHelper.class)
     public void TC02(String data) {
-        System.out.println("TC01 - User can not register a new account Railway with invalid register information");
+        registerPage.scrollPage();
         String users[] = data.split(",");
         registerPage.register(users[0].toString(),
                 users[1].toString(),
-                users[2].toString());
+                users[2].toString(),
+                users[3].toString());
         String actualMsg = registerPage.getGeneralErrorMessage();
         String expectedMsg = Constant.FAIL_MSG_REGISTER;
         Assert.assertEquals(actualMsg, expectedMsg);
     }
 
+    @Description("TC03 - User can register a new account Railway with valid register information")
+    @Test(dataProvider = "register_success_objects", dataProviderClass = DataProviderHelper.class)
+    public void TC03(Register register) {
+        registerPage.scrollPage();
+        registerPage.register(register.getEmail(), register.getPassword(), register.getConfirmPassword(), register.getPid());
+        String actualMsg = registerPage.getSuccessfulMessage();
+        String expectedMsg = Constant.WELCOME + Constant.REGISTER_EMAIL;
+        Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
+        registerPage.logout();
+    }
 
+    @Description("TC04 - User can not register a new account Railway with invalid register information")
+    @Test(dataProvider = "register_error_objects", dataProviderClass = DataProviderHelper.class)
+    public void TC04(Register register) {
+        registerPage.scrollPage();
+        registerPage.register(register.getEmail(), register.getPassword(), register.getConfirmPassword(), register.getPid());
+        String actualMsg = registerPage.getGeneralErrorMessage();
+        String expectedMsg = Constant.FAIL_MSG_REGISTER;
+        Assert.assertEquals(actualMsg, expectedMsg);
+    }
 }

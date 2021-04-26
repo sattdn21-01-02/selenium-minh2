@@ -3,22 +3,34 @@
     {
       "email": "tnminh199732151@gmail.com",
       "password": "doubleminh1997",
-      "confirm_password": "doubleminh1997",
-      "PID": "12345678"
+      "confirmPassword": "doubleminh1997",
+      "pid": "12345678"
     }
   ],
   "register_error": [
     {
       "email": "QWEAS",
       "password": "QWEASDZX",
-      "confirm_password": "QWEASDZX",
-      "PID": "12345678"
+      "confirmPassword": "QWEASDZX",
+      "pid": "12345678"
     },
     {
       "email": "QWEAS",
       "password": "QWEASDZX",
-      "confirm_password": "QWEASDZX",
-      "PID": "12345678"
+      "confirmPassword": "QWEASDZX",
+      "pid": "12345678"
+    },
+    {
+      "email": "",
+      "password": "",
+      "confirmPassword": "",
+      "pid": ""
+    },
+    {
+      "email": "",
+      "password": "QWEASDZX",
+      "confirmPassword": "QWEASDZX",
+      "pid": ""
     }
   ]
 }
