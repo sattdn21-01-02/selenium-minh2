@@ -12,6 +12,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import page_objects.HomePage;
+import page_objects.RegisterConfirmPage;
 import page_objects.RegisterPage;
 
 public class RegisterTest {
@@ -46,8 +47,9 @@ public class RegisterTest {
         registerPage.register(Constant.REGISTER_EMAIL, Constant.REGISTER_PASSWORD, Constant.REGISTER_CONFIRM_PASSWORD, Constant.REGISTER_PID);
 
         Log.info("[STEP-2] - Assert the  register confirm message is displays");
-        String actualMsg = registerPage.getSuccessfulMessage();
-        String expectedMsg = Constant.WELCOME + Constant.REGISTER_EMAIL;
+        RegisterConfirmPage registerConfirmPage = new RegisterConfirmPage();
+        String actualMsg = registerConfirmPage.getMessages();
+        String expectedMsg = registerPage.getSuccessfulMessage();
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
     }
 
@@ -80,8 +82,9 @@ public class RegisterTest {
         registerPage.register(register.getEmail(), register.getPassword(), register.getConfirmPassword(), register.getPid());
 
         Log.info("[STEP-2] - Assert the  register confirm message is displays");
-        String actualMsg = registerPage.getSuccessfulMessage();
-        String expectedMsg = Constant.WELCOME + Constant.REGISTER_EMAIL;
+        RegisterConfirmPage registerConfirmPage = new RegisterConfirmPage();
+        String actualMsg = registerConfirmPage.getMessages();
+        String expectedMsg = registerPage.getSuccessfulMessage();
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
     }
 
