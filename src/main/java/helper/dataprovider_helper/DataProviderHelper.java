@@ -1,15 +1,25 @@
 package helper.dataprovider_helper;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import models.Login;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.DataProvider;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
+import org.slf4j.Logger;
 
 public class DataProviderHelper {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @DataProvider(name = "login_success")
     public Object[] readJsonLoginSuccess() throws IOException, ParseException {
@@ -67,5 +77,23 @@ public class DataProviderHelper {
             arr[i] = email + "," + password + "," + confirmPassword + "," + pid;
         }
         return arr;
+    }
+
+    @DataProvider(name = "login_success_objects")
+    public Object[] readJsonObjectMapperLogin() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        FileReader reader = new FileReader("src/test/resources/login-data.json");
+        JsonNode jsonNode = objectMapper.readTree(reader);
+        List<Login> logins = Arrays.asList(objectMapper.treeToValue(jsonNode.get("logins"), Login[].class));
+        return logins.toArray();
+    }
+
+    @DataProvider(name = "login_error_objects")
+    public Object[] readJsonObjectMapperLoginError() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        FileReader reader = new FileReader("src/test/resources/login-data.json");
+        JsonNode jsonNode = objectMapper.readTree(reader);
+        List<Login> logins = Arrays.asList(objectMapper.treeToValue(jsonNode.get("logins_error"), Login[].class));
+        return logins.toArray();
     }
 }

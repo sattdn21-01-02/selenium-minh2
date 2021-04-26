@@ -4,6 +4,9 @@ import helper.Constant;
 import helper.dataprovider_helper.DataProviderHelper;
 import helper.web_driver_manage.DriverManageFactory;
 import helper.web_driver_manage.DriverType;
+import models.Login;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -15,6 +18,7 @@ public class LoginTest {
 
     private HomePage homePage;
     private LoginPage loginPage;
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @BeforeMethod
     public void beforeMethod() {
@@ -88,5 +92,28 @@ public class LoginTest {
         String expectedMsg = Constant.INVALID_MSG_LOGIN;
         Assert.assertEquals(actualMsg, expectedMsg);
 
+    }
+
+    @Test(dataProvider = "login_success_objects", dataProviderClass = DataProviderHelper.class)
+    public void TC07(Login login) {
+        System.out.println("TC01 - User can log into Railway with valid username and password");
+        loginPage.scrollPage();
+        loginPage.login(login.getEmail(), login.getPassword());
+        loginPage.scrollPage();
+        String actualMsg = homePage.getWelcomeMessage();
+        String expectedMsg = "Welcome " + login.getEmail();
+        Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
+        loginPage.logout();
+    }
+
+    @Test(dataProvider = "login_error_objects", dataProviderClass = DataProviderHelper.class)
+    public void TC08(Login login) {
+        System.out.println("TC01 - User can log into Railway with valid username and password");
+        loginPage.scrollPage();
+        loginPage.login(login.getEmail(), login.getPassword());
+        loginPage.scrollPage();
+        String actualMsg = loginPage.getGeneralErrorMessage();
+        String expectedMsg = Constant.INVALID_MSG_LOGIN;
+        Assert.assertEquals(actualMsg, expectedMsg);
     }
 }
