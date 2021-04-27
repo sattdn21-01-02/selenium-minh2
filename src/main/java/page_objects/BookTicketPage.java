@@ -17,36 +17,36 @@ import java.util.List;
 public class BookTicketPage extends GeneralPage {
 
     //Locator
-    private final By selectDate = By.xpath("//select[@name='Date']");
+    private final By cbbDate = By.xpath("//select[@name='Date']");
     private final By cbbDepartFrom = By.xpath("//select[@name='DepartStation']");
-    private final By selectArriveAt = By.xpath("//select[@name='ArriveStation']");
-    private final By selectSeatType = By.xpath("//select[@name='SeatType']");
-    private final By selectTicketAmount = By.xpath("//select[@name='TicketAmount']");
+    private final By cbbArriveAt = By.xpath("//select[@name='ArriveStation']");
+    private final By cbbSeatType = By.xpath("//select[@name='SeatType']");
+    private final By cbbTicketAmount = By.xpath("//select[@name='TicketAmount']");
     private final By btnSubmitBookTicket = By.xpath("//input[@value='Book ticket']");
 
     //Element
-    public WebElement getSelectDate() {
-        return BrowserHelper.getDriver().findElement(selectDate);
+    public Select getSelectDate() {
+        return new Select(BrowserHelper.getDriver().findElement(cbbDate));
     }
 
     public Select getSelectDepartFrom() {
         return new Select(BrowserHelper.getDriver().findElement(cbbDepartFrom));
     }
 
-    public WebElement getSelectArriveAt() {
-        return BrowserHelper.getDriver().findElement(selectArriveAt);
+    public Select getSelectArriveAt() {
+        return new Select(BrowserHelper.getDriver().findElement(cbbArriveAt));
     }
 
     public List<WebElement> getAllSelectArriveAt() {
-        return BrowserHelper.getDriver().findElements(selectArriveAt);
+        return BrowserHelper.getDriver().findElements(cbbArriveAt);
     }
 
-    public WebElement getSelectSeatType() {
-        return BrowserHelper.getDriver().findElement(selectSeatType);
+    public Select getSelectSeatType() {
+        return new Select(BrowserHelper.getDriver().findElement(cbbSeatType));
     }
 
-    public WebElement getSelectTicketAmount() {
-        return BrowserHelper.getDriver().findElement(selectTicketAmount);
+    public Select getSelectTicketAmount() {
+        return new Select(BrowserHelper.getDriver().findElement(cbbTicketAmount));
     }
 
     public WebElement getBtnBookTicket() {
@@ -56,15 +56,15 @@ public class BookTicketPage extends GeneralPage {
     public void bookTicket(String date, String departFrom, String arriveAt,
                            String seatType, String ticketAmount) {
         BookTicketPage bookTicketPage = new BookTicketPage();
-        Select selectDate = new Select(bookTicketPage.getSelectDate());
+        Select selectDate = bookTicketPage.getSelectDate();
         selectDate.selectByVisibleText(date);
-        //Select selectDepart = new Select(bookTicketPage.getSelectDepartFrom());
-        //getSelectDepartFrom().select
-        //selectDepart.selectByValue(departFrom);
-        //selectArriveAt.select(arriveAt);
-        Select selectSeatType = new Select(bookTicketPage.getSelectSeatType());
+        Select selectDepart = bookTicketPage.getSelectDepartFrom();
+        selectDepart.selectByVisibleText(departFrom);
+        Select selectArrive = bookTicketPage.getSelectArriveAt();
+        selectArrive.selectByVisibleText(arriveAt);
+        Select selectSeatType = bookTicketPage.getSelectSeatType();
         selectSeatType.selectByValue(seatType);
-        Select selectTicketAmount = new Select(bookTicketPage.getSelectTicketAmount());
+        Select selectTicketAmount = bookTicketPage.getSelectTicketAmount();
         selectTicketAmount.selectByValue(ticketAmount);
     }
 

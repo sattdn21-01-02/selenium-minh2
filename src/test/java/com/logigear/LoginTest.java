@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class LoginTest extends BaseTest{
+public class LoginTest extends BaseTest {
 
     private HomePage homePage;
     private LoginPage loginPage;
@@ -37,7 +37,6 @@ public class LoginTest extends BaseTest{
     @AfterMethod
     public void afterMethod() {
         System.out.println("Post-condition");
-        BrowserHelper.quitBrowser();
     }
 
     @Description("TC01 - User can log into Railway with valid username and password")
@@ -65,9 +64,7 @@ public class LoginTest extends BaseTest{
         Log.startTestCase("TC04 - User can log into Railway with valid username and password");
 
         Log.info("[STEP-1] - Login fail with invalid account");
-        BrowserHelper.scrollPage();
         loginPage.login("", "");
-        BrowserHelper.scrollPage();
 
         Log.info("[STEP-2] - Assert login error message email is displays");
         String actualMsgUsername = loginPage.getEmailErrorMessage();
@@ -87,9 +84,7 @@ public class LoginTest extends BaseTest{
 
         Log.info("[STEP-1] - Login success with valid account");
         String users[] = data.split(",");
-        BrowserHelper.scrollPage();
         loginPage.login(users[0], users[1]);
-        BrowserHelper.scrollPage();
 
         Log.info("[STEP-2] - Assert welcome message is displays");
         String actualMsg = homePage.getWelcomeMessage();
@@ -98,24 +93,6 @@ public class LoginTest extends BaseTest{
 
         Log.info("[STEP-3] - Logout");
         loginPage.logout();
-    }
-
-    @Description("TC06 - User can not log into Railway with invalid username or password")
-    @Test(dataProvider = "loginError")
-    public void TC06(String data) {
-        Log.startTestCase("TC06 - User can log into Railway with valid username and password");
-
-        Log.info("[STEP-1] - Login fail with invalid account");
-        String users[] = data.split(",");
-        BrowserHelper.scrollPage();
-        loginPage.login(users[0], users[1]);
-        BrowserHelper.scrollPage();
-
-        Log.info("[STEP-2] - Assert login error message email is displays");
-        String actualMsg = loginPage.getGeneralErrorMessage();
-        String expectedMsg = Constant.INVALID_MSG_LOGIN;
-        Assert.assertEquals(actualMsg, expectedMsg);
-
     }
 
     @Description("TC07 - User can log into Railway with valid username and password")
@@ -184,26 +161,6 @@ public class LoginTest extends BaseTest{
         }
         return arr;
     }
-
-    @DataProvider(name = "loginError")
-    public Object[] readJsonLoginError() throws IOException, ParseException {
-        JSONParser jsonParser = new JSONParser();
-        FileReader reader = new FileReader("src/test/resources/login-data.json");
-
-        Object object = jsonParser.parse(reader);
-        JSONObject userLoginJsonObj = (JSONObject) object;
-        JSONArray userLoginsArray = (JSONArray) userLoginJsonObj.get("logins_error");
-        String arr[] = new String[userLoginsArray.size()];
-        for (int i = 0; i < userLoginsArray.size(); i++) {
-            JSONObject users = (JSONObject) userLoginsArray.get(i);
-            String email = (String) users.get("email");
-            String password = (String) users.get("password");
-
-            arr[i] = email + "," + password;
-        }
-        return arr;
-    }
-
 
     @DataProvider(name = "loginSuccessObjects")
     public Object[] readJsonObjectMapperLogin() throws IOException {

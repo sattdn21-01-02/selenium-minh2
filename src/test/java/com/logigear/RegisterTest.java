@@ -34,7 +34,6 @@ public class RegisterTest extends BaseTest {
     @AfterMethod
     public void afterMethod() {
         System.out.println("Post-condition");
-        BrowserHelper.getDriver().quit();
     }
 
     @Description("TC01 - User can register a new account Railway with valid register information")

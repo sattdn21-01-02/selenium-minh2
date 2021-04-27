@@ -10,10 +10,9 @@ public class BaseTest {
 
     @BeforeTest
     public void setUpTestMethod() {
-        Constant.DRIVER_MANAGER = DriverManageFactory.getDriverManager(DriverType.CHROME);
-        Constant.WEB_DRIVER = Constant.DRIVER_MANAGER.getWebDriver();
-        Constant.WEB_DRIVER.get(Constant.RAILWAY_URL);
-        Constant.WEB_DRIVER.manage().window().maximize();
+        BrowserHelper.startBrowser(DriverType.CHROME);
+        BrowserHelper.navigateToUrl(Constant.RAILWAY_URL);
+        BrowserHelper.getDriver().manage().window().maximize();
     }
 
     @AfterTest

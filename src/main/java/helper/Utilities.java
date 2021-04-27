@@ -6,7 +6,7 @@ import java.io.File;
 
 public class Utilities {
 
-    public static String getProjectPath() {
+    /*public static String getProjectPath() {
         return System.getProperty("user.dir");
     }
 
@@ -16,7 +16,7 @@ public class Utilities {
             return file;
         }
         return null;
-    }
+    }*/
 
 
 }

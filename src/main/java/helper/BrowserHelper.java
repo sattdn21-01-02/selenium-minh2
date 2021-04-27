@@ -57,4 +57,8 @@ public class BrowserHelper {
     public static WebDriver getDriver() {
         return driver;
     }
+
+    public static void navigateToUrl(String url) {
+        BrowserHelper.getDriver().get(url);
+    }
 }
