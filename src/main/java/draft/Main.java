@@ -1,5 +1,6 @@
 package draft;
 
+import helper.BrowserHelper;
 import helper.Constant;
 import helper.web_driver_manage.DriverManageFactory;
 import helper.web_driver_manage.DriverType;
@@ -52,11 +53,11 @@ public class Main {
         File jsonFile = new File("src/test/resources/login-data.json");
         Login people = objectMapper.readValue(jsonFile, Login.class);
         System.out.println("TC01 - User can log into Railway with valid username and password")*/;
-        loginPage.scrollPage();
+        BrowserHelper.scrollPage();
         loginPage.login(users[0],users[1]);
         //loginPage.login(people.getEmail(), people.getPassword());
         //loginPage.login(logins.get(0).getEmail(),logins.get(0).getPassword());
-        loginPage.scrollPage();
+        BrowserHelper.scrollPage();
         String actualMsg = homePage.getWelcomeMessage();
         String expectedMsg = "Welcome " + Constant.USERNAME;
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");

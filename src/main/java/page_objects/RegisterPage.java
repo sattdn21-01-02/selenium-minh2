@@ -1,5 +1,6 @@
 package page_objects;
 
+import helper.BrowserHelper;
 import helper.element_helper.Button;
 import helper.element_helper.Label;
 import helper.element_helper.TextBox;
@@ -27,6 +28,7 @@ public class RegisterPage extends GeneralPage {
         this.txtConfirmPassword.enterText(confirmPassword);
         this.txtPID.enterText(pid);
         this.btnRegister.waitForElementExist();
+        BrowserHelper.scrollPage();
         this.btnRegister.click();
     }
 

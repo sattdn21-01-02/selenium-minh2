@@ -70,8 +70,5 @@ public class GeneralPage {
         this.tabLogout.click();
     }
 
-    public void scrollPage() {
-        JavascriptExecutor jse = (JavascriptExecutor) Constant.WEB_DRIVER;
-        jse.executeScript("window.scrollBy(0,250)");
-    }
+
 }

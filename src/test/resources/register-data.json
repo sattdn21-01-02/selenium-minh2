@@ -1,7 +1,6 @@
 {
   "register_success": [
     {
-      "email": "tnminh199732151@gmail.com",
       "password": "doubleminh1997",
       "confirmPassword": "doubleminh1997",
       "pid": "12345678"
@@ -9,25 +8,21 @@
   ],
   "register_error": [
     {
-      "email": "QWEAS",
       "password": "QWEASDZX",
       "confirmPassword": "QWEASDZX",
       "pid": "12345678"
     },
     {
-      "email": "QWEAS",
       "password": "QWEASDZX",
       "confirmPassword": "QWEASDZX",
       "pid": "12345678"
     },
     {
-      "email": "",
       "password": "",
       "confirmPassword": "",
       "pid": ""
     },
     {
-      "email": "",
       "password": "QWEASDZX",
       "confirmPassword": "QWEASDZX",
       "pid": ""

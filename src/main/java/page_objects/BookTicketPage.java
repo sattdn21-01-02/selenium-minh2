@@ -17,7 +17,7 @@ public class BookTicketPage extends GeneralPage {
 
     //Locator
     private final By selectDate = By.xpath("//select[@name='Date']");
-    private final By selectDepartFrom = By.xpath("//select[@name='DepartStation']");
+    private final By cbbDepartFrom = By.xpath("//select[@name='DepartStation']");
     private final By selectArriveAt = By.xpath("//select[@name='ArriveStation']");
     private final By selectSeatType = By.xpath("//select[@name='SeatType']");
     private final By selectTicketAmount = By.xpath("//select[@name='TicketAmount']");
@@ -28,8 +28,8 @@ public class BookTicketPage extends GeneralPage {
         return Constant.WEB_DRIVER.findElement(selectDate);
     }
 
-    public WebElement getSelectDepartFrom() {
-        return Constant.WEB_DRIVER.findElement(selectDepartFrom);
+    public Select getSelectDepartFrom() {
+        return new Select(Constant.WEB_DRIVER.findElement(cbbDepartFrom));
     }
 
     public WebElement getSelectArriveAt() {
@@ -57,13 +57,10 @@ public class BookTicketPage extends GeneralPage {
         BookTicketPage bookTicketPage = new BookTicketPage();
         Select selectDate = new Select(bookTicketPage.getSelectDate());
         selectDate.selectByVisibleText(date);
-        Select selectDepart = new Select(bookTicketPage.getSelectDepartFrom());
-        selectDepart.selectByValue(departFrom);
-        List<WebElement> arrives = this.getAllSelectArriveAt();
-        for (WebElement arrive : arrives) {
-            if (!arrive.isSelected()) arrive.click();
-
-        }
+        //Select selectDepart = new Select(bookTicketPage.getSelectDepartFrom());
+        //getSelectDepartFrom().select
+        //selectDepart.selectByValue(departFrom);
+        //selectArriveAt.select(arriveAt);
         Select selectSeatType = new Select(bookTicketPage.getSelectSeatType());
         selectSeatType.selectByValue(seatType);
         Select selectTicketAmount = new Select(bookTicketPage.getSelectTicketAmount());

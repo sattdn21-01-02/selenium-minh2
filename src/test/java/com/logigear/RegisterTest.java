@@ -1,8 +1,10 @@
 package com.logigear;
 
 import com.sun.org.glassfish.gmbal.Description;
+import helper.BrowserHelper;
 import helper.Constant;
 import helper.Log;
+import helper.Utilities;
 import helper.dataprovider_helper.DataProviderHelper;
 import helper.web_driver_manage.DriverManageFactory;
 import helper.web_driver_manage.DriverType;
@@ -15,17 +17,13 @@ import page_objects.HomePage;
 import page_objects.RegisterConfirmPage;
 import page_objects.RegisterPage;
 
-public class RegisterTest {
+public class RegisterTest extends BaseTest {
 
     private HomePage homePage;
     private RegisterPage registerPage;
 
     @BeforeMethod
     public void beforeMethod() {
-        Constant.DRIVER_MANAGER = DriverManageFactory.getDriverManager(DriverType.CHROME);
-        Constant.WEB_DRIVER = Constant.DRIVER_MANAGER.getWebDriver();
-        Constant.WEB_DRIVER.get(Constant.RAILWAY_URL);
-        Constant.WEB_DRIVER.manage().window().maximize();
         homePage = new HomePage();
         registerPage = new RegisterPage();
         homePage.goToRegisterPage();
@@ -43,8 +41,16 @@ public class RegisterTest {
         Log.startTestCase("TC01 - User can register a new account Railway with valid register information");
 
         Log.info("[STEP-1] - Register success with valid information");
-        registerPage.scrollPage();
-        registerPage.register(Constant.REGISTER_EMAIL, Constant.REGISTER_PASSWORD, Constant.REGISTER_CONFIRM_PASSWORD, Constant.REGISTER_PID);
+        Register register = new Register();
+        register.setEmail(Utilities.generateRandomEmailString());
+        String password = Utilities.generateRandomPasswordString();
+        register.setPassword(password);
+        register.setConfirmPassword(password);
+        register.setPid(Utilities.generateRandomPidString());
+        registerPage.register(register.getEmail(),
+                register.getPassword(),
+                register.getConfirmPassword(),
+                register.getPid());
 
         Log.info("[STEP-2] - Assert the  register confirm message is displays");
         RegisterConfirmPage registerConfirmPage = new RegisterConfirmPage();
@@ -59,7 +65,7 @@ public class RegisterTest {
         Log.startTestCase("TC02 - User can not register a new account Railway with invalid register information");
 
         Log.info("[STEP-1] - Register with invalid information");
-        registerPage.scrollPage();
+        BrowserHelper.scrollPage();
         String users[] = data.split(",");
         registerPage.register(users[0].toString(),
                 users[1].toString(),
@@ -78,7 +84,8 @@ public class RegisterTest {
         Log.startTestCase("TC03 - User can register a new account Railway with valid register information");
 
         Log.info("[STEP-1] - Register success with valid information");
-        registerPage.scrollPage();
+        register.setEmail(Utilities.generateRandomEmailString());
+        BrowserHelper.scrollPage();
         registerPage.register(register.getEmail(), register.getPassword(), register.getConfirmPassword(), register.getPid());
 
         Log.info("[STEP-2] - Assert the  register confirm message is displays");
@@ -94,7 +101,7 @@ public class RegisterTest {
         Log.startTestCase("TC04 - User can not register a new account Railway with invalid register information");
 
         Log.info("[STEP-1] - Register with invalid information");
-        registerPage.scrollPage();
+        register.setEmail(Utilities.generateRandomErrorEmailString());
         registerPage.register(register.getEmail(), register.getPassword(), register.getConfirmPassword(), register.getPid());
 
         Log.info("[STEP-2] - Assert the error message is displays");

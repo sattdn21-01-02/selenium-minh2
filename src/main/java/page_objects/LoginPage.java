@@ -1,6 +1,7 @@
 package page_objects;
 
 
+import helper.BrowserHelper;
 import helper.Constant;
 import helper.element_helper.Button;
 import helper.element_helper.Label;
@@ -24,6 +25,7 @@ public class LoginPage extends GeneralPage {
         this.txtEmail.enterText(email);
         this.txtPassword.enterText(password);
         this.btnLogin.waitForElementExist();
+        BrowserHelper.scrollPage();
         this.btnLogin.click();
     }
 

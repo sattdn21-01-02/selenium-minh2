@@ -1,6 +1,7 @@
 package com.logigear;
 
 import com.sun.org.glassfish.gmbal.Description;
+import helper.BrowserHelper;
 import helper.Constant;
 import helper.faker_helper.LoginFakerAPI;
 import helper.Log;
@@ -15,7 +16,7 @@ import org.testng.annotations.Test;
 import page_objects.HomePage;
 import page_objects.LoginPage;
 
-public class LoginTest {
+public class LoginTest extends BaseTest{
 
     private HomePage homePage;
     private LoginPage loginPage;
@@ -23,10 +24,6 @@ public class LoginTest {
 
     @BeforeMethod
     public void beforeMethod() {
-        Constant.DRIVER_MANAGER = DriverManageFactory.getDriverManager(DriverType.CHROME);
-        Constant.WEB_DRIVER = Constant.DRIVER_MANAGER.getWebDriver();
-        Constant.WEB_DRIVER.get(Constant.RAILWAY_URL);
-        Constant.WEB_DRIVER.manage().window().maximize();
         homePage = new HomePage();
         loginPage = new LoginPage();
         homePage.goToLoginPage();
@@ -44,9 +41,9 @@ public class LoginTest {
         Log.startTestCase("TC01 - User can log into Railway with valid username and password");
 
         Log.info("[STEP-1] - Login success with valid account");
-        loginPage.scrollPage();
+        BrowserHelper.scrollPage();
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
-        loginPage.scrollPage();
+        BrowserHelper.scrollPage();
 
         Log.info("[STEP-2] - Assert welcome message is displays");
         String actualMsg = homePage.getWelcomeMessage();
@@ -63,9 +60,9 @@ public class LoginTest {
         Log.startTestCase("TC04 - User can log into Railway with valid username and password");
 
         Log.info("[STEP-1] - Login fail with invalid account");
-        loginPage.scrollPage();
+        BrowserHelper.scrollPage();
         loginPage.login("", "");
-        loginPage.scrollPage();
+        BrowserHelper.scrollPage();
 
         Log.info("[STEP-2] - Assert login error message email is displays");
         String actualMsgUsername = loginPage.getEmailErrorMessage();
@@ -85,9 +82,9 @@ public class LoginTest {
 
         Log.info("[STEP-1] - Login success with valid account");
         String users[] = data.split(",");
-        loginPage.scrollPage();
+        BrowserHelper.scrollPage();
         loginPage.login(users[0], users[1]);
-        loginPage.scrollPage();
+        BrowserHelper.scrollPage();
 
         Log.info("[STEP-2] - Assert welcome message is displays");
         String actualMsg = homePage.getWelcomeMessage();
@@ -105,9 +102,9 @@ public class LoginTest {
 
         Log.info("[STEP-1] - Login fail with invalid account");
         String users[] = data.split(",");
-        loginPage.scrollPage();
+        BrowserHelper.scrollPage();
         loginPage.login(users[0], users[1]);
-        loginPage.scrollPage();
+        BrowserHelper.scrollPage();
 
         Log.info("[STEP-2] - Assert login error message email is displays");
         String actualMsg = loginPage.getGeneralErrorMessage();
@@ -122,9 +119,7 @@ public class LoginTest {
         Log.startTestCase("TC07 - User can log into Railway with valid username and password");
 
         Log.info("[STEP-1] - Login success with valid account");
-        loginPage.scrollPage();
         loginPage.login(login.getEmail(), login.getPassword());
-        loginPage.scrollPage();
 
         Log.info("[STEP-2] - Assert welcome message is displays");
         String actualMsg = homePage.getWelcomeMessage();
@@ -141,9 +136,7 @@ public class LoginTest {
         Log.startTestCase("TC08 - User can log into Railway with valid username and password");
 
         Log.info("[STEP-1] - Login fail with invalid account");
-        loginPage.scrollPage();
         loginPage.login(login.getEmail(), login.getPassword());
-        loginPage.scrollPage();
 
         Log.info("[STEP-2] - Assert login error message email is displays");
         String actualMsg = loginPage.getGeneralErrorMessage();
@@ -157,13 +150,13 @@ public class LoginTest {
         Log.startTestCase("TC09 - User can log into Railway with valid username and password");
 
         Log.info("[STEP-1] - Login fail with invalid account");
-        loginPage.scrollPage();
         loginPage.login(jf.getEmail(), jf.getPassword());
-        loginPage.scrollPage();
 
         Log.info("[STEP-2] - Assert login error message email is displays");
         String actualMsg = loginPage.getGeneralErrorMessage();
         String expectedMsg = Constant.INVALID_MSG_LOGIN;
         Assert.assertEquals(actualMsg, expectedMsg);
     }
+
+
 }
