@@ -12,7 +12,6 @@ import org.openqa.selenium.WebElement;
 
 public class GeneralPage {
 
-
     //Elements
     private final Tab tabHome = new Tab(By.cssSelector("a[href='../']"));
     private final Tab tabFAQ = new Tab(By.cssSelector("a[href='/Page/FAQ.cshtml']"));

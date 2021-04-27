@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 
 public class RegisterConfirmPage extends GeneralPage {
 
-
     //Elements
     private final Label lblSuccessfulMessage = new Label(By.cssSelector("#content p"));
 

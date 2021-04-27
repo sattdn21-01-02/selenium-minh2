@@ -6,6 +6,7 @@ import helper.element_helper.TextBox;
 import org.openqa.selenium.By;
 
 public class RegisterPage extends GeneralPage {
+
     //Elements
     private final TextBox txtEmail = new TextBox(By.cssSelector("input#email"));
     private final TextBox txtPassword = new TextBox(By.cssSelector("input#password"));
@@ -18,6 +19,7 @@ public class RegisterPage extends GeneralPage {
     private final Label lblConfirmPasswordErrorMessage = new Label(By.xpath("//label[@for='confirmPassword' and @class = 'validation-error']"));
     private final Label lblPIDErrorMessage = new Label(By.xpath("//label[@for='pid' and @class = 'validation-error']"));
     private final Label lblSuccessfulMessage = new Label(By.xpath("//div[@id = 'content']//p"));
+
     //Methods
     public void register(String email, String password, String confirmPassword, String pid) {
         this.txtEmail.enterText(email);

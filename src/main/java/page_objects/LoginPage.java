@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class LoginPage extends GeneralPage {
+
     //Elements
     private final TextBox txtEmail = new TextBox(By.cssSelector("input#username"));
     private final TextBox txtPassword = new TextBox(By.cssSelector("input#password"));

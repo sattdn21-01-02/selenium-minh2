@@ -3,6 +3,7 @@ package helper.web_driver_manage;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DriverManageFactory {
+
     public static DriverManager getDriverManager(DriverType type) {
         DriverManager driverManager;
         switch (type) {

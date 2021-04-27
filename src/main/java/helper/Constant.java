@@ -4,6 +4,7 @@ import helper.web_driver_manage.DriverManager;
 import org.openqa.selenium.WebDriver;
 
 public class Constant {
+
     //Variables
     public static WebDriver WEB_DRIVER;
     public static DriverManager DRIVER_MANAGER;
@@ -15,6 +16,7 @@ public class Constant {
     public static final String REGISTER_CONFIRM_PASSWORD = "doubleminh1997";
     public static final String REGISTER_PID = "12345678";
     public static final String TEST_RESOURCES_PATH = "/src/test/resources/";
+
     //Message
     public static final String INVALID_MSG_LOGIN = "Invalid username or password. Please try again.";
     public static final String INVALID_MSG_LOGIN_USERNAME = "You must specify a username.";

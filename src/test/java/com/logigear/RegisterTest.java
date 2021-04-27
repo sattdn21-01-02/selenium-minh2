@@ -54,7 +54,7 @@ public class RegisterTest {
     }
 
     @Description("TC02 - User can not register a new account Railway with invalid register information")
-    @Test(dataProvider = "register_error", dataProviderClass = DataProviderHelper.class)
+    @Test(dataProvider = "registerError", dataProviderClass = DataProviderHelper.class)
     public void TC02(String data) {
         Log.startTestCase("TC02 - User can not register a new account Railway with invalid register information");
 
@@ -73,7 +73,7 @@ public class RegisterTest {
     }
 
     @Description("TC03 - User can register a new account Railway with valid register information")
-    @Test(dataProvider = "register_success_objects", dataProviderClass = DataProviderHelper.class)
+    @Test(dataProvider = "registerSuccessObjects", dataProviderClass = DataProviderHelper.class)
     public void TC03(Register register) {
         Log.startTestCase("TC03 - User can register a new account Railway with valid register information");
 
@@ -89,7 +89,7 @@ public class RegisterTest {
     }
 
     @Description("TC04 - User can not register a new account Railway with invalid register information")
-    @Test(dataProvider = "register_error_objects", dataProviderClass = DataProviderHelper.class)
+    @Test(dataProvider = "registerErrorObjects", dataProviderClass = DataProviderHelper.class)
     public void TC04(Register register) {
         Log.startTestCase("TC04 - User can not register a new account Railway with invalid register information");
 

@@ -22,7 +22,7 @@ public class DataProviderHelper {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @DataProvider(name = "login_success")
+    @DataProvider(name = "loginSuccess")
     public Object[] readJsonLoginSuccess() throws IOException, ParseException {
         JSONParser jsonParser = new JSONParser();
         FileReader reader = new FileReader("src/test/resources/login-data.json");
@@ -41,7 +41,7 @@ public class DataProviderHelper {
         return arr;
     }
 
-    @DataProvider(name = "login_error")
+    @DataProvider(name = "loginError")
     public Object[] readJsonLoginError() throws IOException, ParseException {
         JSONParser jsonParser = new JSONParser();
         FileReader reader = new FileReader("src/test/resources/login-data.json");
@@ -60,7 +60,7 @@ public class DataProviderHelper {
         return arr;
     }
 
-    @DataProvider(name = "register_error")
+    @DataProvider(name = "registerError")
     public Object[] readJsonRegisterError() throws IOException, ParseException {
         JSONParser jsonParser = new JSONParser();
         FileReader reader = new FileReader("src/test/resources/register-data.json");
@@ -80,7 +80,7 @@ public class DataProviderHelper {
         return arr;
     }
 
-    @DataProvider(name = "login_success_objects")
+    @DataProvider(name = "loginSuccessObjects")
     public Object[] readJsonObjectMapperLogin() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         FileReader reader = new FileReader("src/test/resources/login-data.json");
@@ -89,7 +89,7 @@ public class DataProviderHelper {
         return logins.toArray();
     }
 
-    @DataProvider(name = "login_error_objects")
+    @DataProvider(name = "loginErrorObjects")
     public Object[] readJsonObjectMapperLoginError() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         FileReader reader = new FileReader("src/test/resources/login-data.json");
@@ -98,7 +98,7 @@ public class DataProviderHelper {
         return logins.toArray();
     }
 
-    @DataProvider(name = "register_success_objects")
+    @DataProvider(name = "registerSuccessObjects")
     public Object[] readJsonObjectMapperRegister() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         FileReader reader = new FileReader("src/test/resources/register-data.json");
@@ -107,7 +107,7 @@ public class DataProviderHelper {
         return registers.toArray();
     }
 
-    @DataProvider(name = "register_error_objects")
+    @DataProvider(name = "registerErrorObjects")
     public Object[] readJsonObjectMapperRegisterError() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         FileReader reader = new FileReader("src/test/resources/register-data.json");

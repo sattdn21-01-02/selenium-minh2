@@ -1,8 +1,9 @@
-package helper.Faker_helper;
+package helper.faker_helper;
 
 import com.github.javafaker.Faker;
 
 public class LoginFakerAPI {
+
     Faker faker = new Faker();
 
     public String getEmail() {

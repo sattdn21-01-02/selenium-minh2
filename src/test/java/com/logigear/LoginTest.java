@@ -2,7 +2,7 @@ package com.logigear;
 
 import com.sun.org.glassfish.gmbal.Description;
 import helper.Constant;
-import helper.Faker_helper.LoginFakerAPI;
+import helper.faker_helper.LoginFakerAPI;
 import helper.Log;
 import helper.dataprovider_helper.DataProviderHelper;
 import helper.web_driver_manage.DriverManageFactory;
@@ -79,7 +79,7 @@ public class LoginTest {
     }
 
     @Description("TC05 - User can log into Railway with valid username and password")
-    @Test(dataProvider = "login_success", dataProviderClass = DataProviderHelper.class)
+    @Test(dataProvider = "loginSuccess", dataProviderClass = DataProviderHelper.class)
     public void TC05(String data) {
         Log.startTestCase("5 - User can log into Railway with valid username and password");
 
@@ -99,7 +99,7 @@ public class LoginTest {
     }
 
     @Description("TC06 - User can not log into Railway with invalid username or password")
-    @Test(dataProvider = "login_error", dataProviderClass = DataProviderHelper.class)
+    @Test(dataProvider = "loginError", dataProviderClass = DataProviderHelper.class)
     public void TC06(String data) {
         Log.startTestCase("TC06 - User can log into Railway with valid username and password");
 
@@ -117,7 +117,7 @@ public class LoginTest {
     }
 
     @Description("TC07 - User can log into Railway with valid username and password")
-    @Test(dataProvider = "login_success_objects", dataProviderClass = DataProviderHelper.class)
+    @Test(dataProvider = "loginSuccessObjects", dataProviderClass = DataProviderHelper.class)
     public void TC07(Login login) {
         Log.startTestCase("TC07 - User can log into Railway with valid username and password");
 
@@ -136,7 +136,7 @@ public class LoginTest {
     }
 
     @Description("TC08 - User can not log into Railway with valid username and password")
-    @Test(dataProvider = "login_error_objects", dataProviderClass = DataProviderHelper.class)
+    @Test(dataProvider = "loginErrorObjects", dataProviderClass = DataProviderHelper.class)
     public void TC08(Login login) {
         Log.startTestCase("TC08 - User can log into Railway with valid username and password");
 

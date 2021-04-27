@@ -10,6 +10,7 @@ import java.util.List;
 public class BaseElement {
 
     private final By locator;
+
     private JavascriptExecutor js = (JavascriptExecutor) Constant.WEB_DRIVER;
 
     public BaseElement(By locator) {
