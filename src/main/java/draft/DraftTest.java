@@ -1,4 +1,5 @@
-package com.logigear;
+package draft;
+
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,9 +27,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-
-public class BookTicketTest extends BaseTest {
-
+public class DraftTest {
     private HomePage homePage;
     private BookTicketPage bookTicketPage;
     private LoginPage loginPage;
@@ -49,7 +48,7 @@ public class BookTicketTest extends BaseTest {
     }
 
     @Description("TC01 - User can book ticket into Railway with valid information")
-    @Test(dataProvider = "bookSuccess")
+    @org.testng.annotations.Test(dataProvider = "bookSuccess")
     public void TC01(BookTicket book) {
         Log.startTestCase("TC01 - User can log into Railway with valid username and password");
 
@@ -65,12 +64,11 @@ public class BookTicketTest extends BaseTest {
                 book.getTicketAmount());
 
         Log.info("[STEP-3] - Assert information book ticket");
-        Assert.assertEquals(book.toString(), successPage.getInformationBookTicket());
+        Assert.assertEquals(book.toString(),successPage.getInformationBookTicket());
         loginPage.logout();
     }
-
     @Description("TC02 - User can not book over 10 ticket into Railway with valid information")
-    @Test(dataProvider = "bookError")
+    @org.testng.annotations.Test(dataProvider = "bookError")
     public void TC02(BookTicket book) {
         Log.startTestCase("TC02 - User can not book over 10 ticket into Railway with valid information");
 
@@ -86,7 +84,7 @@ public class BookTicketTest extends BaseTest {
                 book.getTicketAmount());
 
         Log.info("[STEP-3] - Assert information book ticket");
-        Assert.assertEquals(book.toString(), successPage.getInformationBookTicket());
+        Assert.assertEquals(book.toString(),successPage.getInformationBookTicket());
         loginPage.logout();
     }
 
@@ -108,5 +106,6 @@ public class BookTicketTest extends BaseTest {
         List<BookTicket> bookTickets = Arrays.asList(objectMapper.treeToValue(jsonNode.get("book_error"), BookTicket[].class));
         return bookTickets.toArray();
     }
-}
 
+
+}

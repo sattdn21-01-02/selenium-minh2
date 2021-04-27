@@ -35,6 +35,7 @@ public class BookTicketPage extends GeneralPage {
         BrowserHelper.scrollPage();
         this.ddlDepartDate.selectDropDownText(date);
         this.ddlDepartFrom.selectDropDownText(departFrom);
+        BrowserHelper.waitForElement(BrowserHelper.getDriver(),ddlArriveAt.findElement(),20).click();
         this.ddlArriveAt.selectDropDownText(arriveAt);
         this.ddlSeatType.selectDropDownText(seatType);
         this.ddlTicketAmount.selectDropDownText(ticketAmount);
@@ -46,8 +47,4 @@ public class BookTicketPage extends GeneralPage {
         return this.lblErrorMessage.getText();
     }
 
-    /*public void waitAndClick(Xpath) {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.findElement(By.xpath(Xpath)).click();
-    }*/
 }
