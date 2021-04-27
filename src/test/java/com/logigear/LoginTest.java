@@ -45,9 +45,7 @@ public class LoginTest extends BaseTest {
         Log.startTestCase("TC01 - User can log into Railway with valid username and password");
 
         Log.info("[STEP-1] - Login success with valid account");
-        BrowserHelper.scrollPage();
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
-        BrowserHelper.scrollPage();
 
         Log.info("[STEP-2] - Assert welcome message is displays");
         String actualMsg = homePage.getWelcomeMessage();

@@ -11,7 +11,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import page_objects.HomePage;
-import page_objects.RegisterConfirmPage;
 import page_objects.RegisterPage;
 
 import java.io.FileReader;
@@ -54,9 +53,8 @@ public class RegisterTest extends BaseTest {
                 register.getPid());
 
         Log.info("[STEP-2] - Assert the  register confirm message is displays");
-        RegisterConfirmPage registerConfirmPage = new RegisterConfirmPage();
-        String actualMsg = registerConfirmPage.getMessages();
-        String expectedMsg = registerPage.getSuccessfulMessage();
+        String actualMsg = registerPage.getSuccessfulMessage();
+        String expectedMsg = Constant.REGISTER_CONFIRM_MSG;
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
     }
 

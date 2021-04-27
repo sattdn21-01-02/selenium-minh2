@@ -1,0 +1,24 @@
+{
+  "book_success": [
+    {
+      "departFrom": "Đà Nẵng",
+      "arriveAt": "Huế",
+      "seatType": "Hard seat",
+      "ticketAmount": "1"
+    }
+  ],
+  "book_error": [
+    {
+      "departFrom": "Sài Gòn",
+      "arriveAt": "Phan Thiết",
+      "seatType": "Hard seat",
+      "ticketAmount": "1"
+    },
+    {
+      "departFrom": "Sài Gòn",
+      "arriveAt": "Phan Thiết",
+      "seatType": "Hard seat",
+      "ticketAmount": "10"
+    }
+  ]
+}

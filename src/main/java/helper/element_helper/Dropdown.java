@@ -12,4 +12,9 @@ public class Dropdown extends BaseElement {
         Select select = new Select(findElement());
         select.selectByValue(value);
     }
+
+    public void selectDropDownText(String text) {
+        Select select = new Select(findElement());
+        select.selectByVisibleText(text);
+    }
 }
