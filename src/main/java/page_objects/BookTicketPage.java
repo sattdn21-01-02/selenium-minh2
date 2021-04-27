@@ -1,5 +1,6 @@
 package page_objects;
 
+import helper.BrowserHelper;
 import helper.Constant;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.openqa.selenium.By;
@@ -25,31 +26,31 @@ public class BookTicketPage extends GeneralPage {
 
     //Element
     public WebElement getSelectDate() {
-        return Constant.WEB_DRIVER.findElement(selectDate);
+        return BrowserHelper.getDriver().findElement(selectDate);
     }
 
     public Select getSelectDepartFrom() {
-        return new Select(Constant.WEB_DRIVER.findElement(cbbDepartFrom));
+        return new Select(BrowserHelper.getDriver().findElement(cbbDepartFrom));
     }
 
     public WebElement getSelectArriveAt() {
-        return Constant.WEB_DRIVER.findElement(selectArriveAt);
+        return BrowserHelper.getDriver().findElement(selectArriveAt);
     }
 
     public List<WebElement> getAllSelectArriveAt() {
-        return Constant.WEB_DRIVER.findElements(selectArriveAt);
+        return BrowserHelper.getDriver().findElements(selectArriveAt);
     }
 
     public WebElement getSelectSeatType() {
-        return Constant.WEB_DRIVER.findElement(selectSeatType);
+        return BrowserHelper.getDriver().findElement(selectSeatType);
     }
 
     public WebElement getSelectTicketAmount() {
-        return Constant.WEB_DRIVER.findElement(selectTicketAmount);
+        return BrowserHelper.getDriver().findElement(selectTicketAmount);
     }
 
     public WebElement getBtnBookTicket() {
-        return Constant.WEB_DRIVER.findElement(btnSubmitBookTicket);
+        return BrowserHelper.getDriver().findElement(btnSubmitBookTicket);
     }
 
     public void bookTicket(String date, String departFrom, String arriveAt,

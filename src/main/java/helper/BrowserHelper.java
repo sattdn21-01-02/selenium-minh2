@@ -4,8 +4,11 @@ import helper.web_driver_manage.DriverType;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -35,7 +38,23 @@ public class BrowserHelper {
     }
 
     public static void scrollPage() {
-        JavascriptExecutor jse = (JavascriptExecutor) Constant.WEB_DRIVER;
+        JavascriptExecutor jse = (JavascriptExecutor) BrowserHelper.getDriver();
         jse.executeScript("window.scrollBy(0,250)");
+    }
+
+    public static void quitBrowser() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
+    }
+
+    public static void waitForElement(WebElement element, int seconds) {
+        WebDriverWait wait = new WebDriverWait(driver, seconds);
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public static WebDriver getDriver() {
+        return driver;
     }
 }

@@ -1,5 +1,6 @@
 package helper.element_helper;
 
+import helper.BrowserHelper;
 import helper.Constant;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -11,18 +12,18 @@ public class BaseElement {
 
     private final By locator;
 
-    private JavascriptExecutor js = (JavascriptExecutor) Constant.WEB_DRIVER;
+    private JavascriptExecutor js = (JavascriptExecutor) BrowserHelper.getDriver();
 
     public BaseElement(By locator) {
         this.locator = locator;
     }
 
     public WebElement findElement() {
-        return Constant.WEB_DRIVER.findElement(locator);
+        return BrowserHelper.getDriver().findElement(locator);
     }
 
     public List<WebElement> findElements() {
-        return Constant.WEB_DRIVER.findElements(locator);
+        return BrowserHelper.getDriver().findElements(locator);
     }
 
     public void click() {

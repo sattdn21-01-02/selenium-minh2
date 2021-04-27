@@ -18,6 +18,6 @@ public class BaseTest {
 
     @AfterTest
     public void closePage() {
-        Constant.WEB_DRIVER.quit();
+        BrowserHelper.quitBrowser();
     }
 }

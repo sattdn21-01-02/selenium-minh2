@@ -1,26 +1,31 @@
 package com.logigear;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.org.glassfish.gmbal.Description;
-import helper.BrowserHelper;
-import helper.Constant;
-import helper.faker_helper.LoginFakerAPI;
-import helper.Log;
-import helper.dataprovider_helper.DataProviderHelper;
-import helper.web_driver_manage.DriverManageFactory;
-import helper.web_driver_manage.DriverType;
+import helper.*;
 import models.Login;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import page_objects.HomePage;
 import page_objects.LoginPage;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 public class LoginTest extends BaseTest{
 
     private HomePage homePage;
     private LoginPage loginPage;
-    LoginFakerAPI jf = new LoginFakerAPI();
 
     @BeforeMethod
     public void beforeMethod() {
@@ -32,7 +37,7 @@ public class LoginTest extends BaseTest{
     @AfterMethod
     public void afterMethod() {
         System.out.println("Post-condition");
-        Constant.WEB_DRIVER.quit();
+        BrowserHelper.quitBrowser();
     }
 
     @Description("TC01 - User can log into Railway with valid username and password")
@@ -76,7 +81,7 @@ public class LoginTest extends BaseTest{
     }
 
     @Description("TC05 - User can log into Railway with valid username and password")
-    @Test(dataProvider = "loginSuccess", dataProviderClass = DataProviderHelper.class)
+    @Test(dataProvider = "loginSuccess")
     public void TC05(String data) {
         Log.startTestCase("5 - User can log into Railway with valid username and password");
 
@@ -96,7 +101,7 @@ public class LoginTest extends BaseTest{
     }
 
     @Description("TC06 - User can not log into Railway with invalid username or password")
-    @Test(dataProvider = "loginError", dataProviderClass = DataProviderHelper.class)
+    @Test(dataProvider = "loginError")
     public void TC06(String data) {
         Log.startTestCase("TC06 - User can log into Railway with valid username and password");
 
@@ -114,7 +119,7 @@ public class LoginTest extends BaseTest{
     }
 
     @Description("TC07 - User can log into Railway with valid username and password")
-    @Test(dataProvider = "loginSuccessObjects", dataProviderClass = DataProviderHelper.class)
+    @Test(dataProvider = "loginSuccessObjects")
     public void TC07(Login login) {
         Log.startTestCase("TC07 - User can log into Railway with valid username and password");
 
@@ -131,7 +136,7 @@ public class LoginTest extends BaseTest{
     }
 
     @Description("TC08 - User can not log into Railway with valid username and password")
-    @Test(dataProvider = "loginErrorObjects", dataProviderClass = DataProviderHelper.class)
+    @Test(dataProvider = "loginErrorObjects")
     public void TC08(Login login) {
         Log.startTestCase("TC08 - User can log into Railway with valid username and password");
 
@@ -150,7 +155,10 @@ public class LoginTest extends BaseTest{
         Log.startTestCase("TC09 - User can log into Railway with valid username and password");
 
         Log.info("[STEP-1] - Login fail with invalid account");
-        loginPage.login(jf.getEmail(), jf.getPassword());
+        Login login = new Login();
+        login.setEmail(DataHelper.generateRandomEmailString());
+        login.setPassword(DataHelper.generateRandomPasswordString());
+        loginPage.login(login.getEmail(), login.getPassword());
 
         Log.info("[STEP-2] - Assert login error message email is displays");
         String actualMsg = loginPage.getGeneralErrorMessage();
@@ -158,5 +166,60 @@ public class LoginTest extends BaseTest{
         Assert.assertEquals(actualMsg, expectedMsg);
     }
 
+    @DataProvider(name = "loginSuccess")
+    public Object[] readJsonLoginSuccess() throws IOException, ParseException {
+        JSONParser jsonParser = new JSONParser();
+        FileReader reader = new FileReader("src/test/resources/login-data.json");
 
+        Object object = jsonParser.parse(reader);
+        JSONObject userLoginJsonObj = (JSONObject) object;
+        JSONArray userLoginsArray = (JSONArray) userLoginJsonObj.get("logins");
+        String arr[] = new String[userLoginsArray.size()];
+        for (int i = 0; i < userLoginsArray.size(); i++) {
+            JSONObject users = (JSONObject) userLoginsArray.get(i);
+            String email = (String) users.get("email");
+            String password = (String) users.get("password");
+
+            arr[i] = email + "," + password;
+        }
+        return arr;
+    }
+
+    @DataProvider(name = "loginError")
+    public Object[] readJsonLoginError() throws IOException, ParseException {
+        JSONParser jsonParser = new JSONParser();
+        FileReader reader = new FileReader("src/test/resources/login-data.json");
+
+        Object object = jsonParser.parse(reader);
+        JSONObject userLoginJsonObj = (JSONObject) object;
+        JSONArray userLoginsArray = (JSONArray) userLoginJsonObj.get("logins_error");
+        String arr[] = new String[userLoginsArray.size()];
+        for (int i = 0; i < userLoginsArray.size(); i++) {
+            JSONObject users = (JSONObject) userLoginsArray.get(i);
+            String email = (String) users.get("email");
+            String password = (String) users.get("password");
+
+            arr[i] = email + "," + password;
+        }
+        return arr;
+    }
+
+
+    @DataProvider(name = "loginSuccessObjects")
+    public Object[] readJsonObjectMapperLogin() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        FileReader reader = new FileReader("src/test/resources/login-data.json");
+        JsonNode jsonNode = objectMapper.readTree(reader);
+        List<Login> logins = Arrays.asList(objectMapper.treeToValue(jsonNode.get("logins"), Login[].class));
+        return logins.toArray();
+    }
+
+    @DataProvider(name = "loginErrorObjects")
+    public Object[] readJsonObjectMapperLoginError() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        FileReader reader = new FileReader("src/test/resources/login-data.json");
+        JsonNode jsonNode = objectMapper.readTree(reader);
+        List<Login> logins = Arrays.asList(objectMapper.treeToValue(jsonNode.get("logins_error"), Login[].class));
+        return logins.toArray();
+    }
 }
