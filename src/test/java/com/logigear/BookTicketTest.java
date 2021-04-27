@@ -14,7 +14,7 @@ import page_objects.GeneralPage;
 import java.io.IOException;
 
 
-public class BookTicketTest extends GeneralPage {
+public class BookTicketTest extends BaseTest{
 
 }
 
