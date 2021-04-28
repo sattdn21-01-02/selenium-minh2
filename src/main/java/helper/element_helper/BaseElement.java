@@ -34,22 +34,6 @@ public class BaseElement {
         return findElement().getText();
     }
 
-    public boolean isDisplayed() {
-        return findElement().isDisplayed();
-    }
-
-    public boolean isEnabled() {
-        return findElement().isEnabled();
-    }
-
-    public boolean isSelected() {
-        return findElement().isDisplayed();
-    }
-
-    public void disableElement() {
-        js.executeScript("arguments[0].setAttribute('style', 'display:none')", findElement());
-    }
-
     public void waitForElementExist() {
         js.executeScript("arguments[0].scrollIntoView(true);", findElement());
     }

@@ -24,26 +24,14 @@ import java.util.List;
 
 public class LoginTest extends BaseTest {
 
-    private HomePage homePage;
-    private LoginPage loginPage;
-
-    @BeforeMethod
-    public void beforeMethod() {
-        homePage = new HomePage();
-        loginPage = new LoginPage();
-        homePage.goToLoginPage();
-    }
-
-    @AfterMethod
-    public void afterMethod() {
-        System.out.println("Post-condition");
-    }
+    private HomePage homePage = new HomePage();
+    private LoginPage loginPage = new LoginPage();
 
     @Description("TC01 - User can log into Railway with valid username and password")
     @Test
     public void TC01() {
         Log.startTestCase("TC01 - User can log into Railway with valid username and password");
-
+        homePage.goToLoginPage();
         Log.info("[STEP-1] - Login success with valid account");
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 
@@ -58,9 +46,9 @@ public class LoginTest extends BaseTest {
 
     @Description("TC08 - User can not log into Railway with valid username and password")
     @Test(dataProvider = "loginErrorObjects")
-    public void TC08(Login login) {
+    public void TC02(Login login) {
         Log.startTestCase("TC08 - User can log into Railway with valid username and password");
-
+        homePage.goToLoginPage();
         Log.info("[STEP-1] - Login fail with invalid account");
         loginPage.login(login.getEmail(), login.getPassword());
 

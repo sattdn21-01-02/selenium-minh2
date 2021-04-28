@@ -68,7 +68,7 @@ public class TicketTest extends BaseTest {
         Log.info("[STEP-1] - Login success with valid account");
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
         Log.info("[STEP-2] - Book Ticket");
-        bookTicketPage.bookTicket(bookTicket.getDepartDate(), bookTicket.getDepartFrom(), bookTicket.getArriveAt(), bookTicket.getSeatType(), bookTicket.getTicketAmount());
+        bookTicketPage.bookTicket(bookTicket);
 
         Log.info("[STEP-3] - Assert information book ticket");
         Assert.assertEquals(bookTicket.toString(), successPage.getInformationBookTicket());
@@ -85,15 +85,18 @@ public class TicketTest extends BaseTest {
 
         book.setDepartDate(DataHelper.getDepartDateRandom());
         Log.info("[STEP-2] - Book Ticket");
-        bookTicketPage.bookTicket(book.getDepartDate(),
-                book.getDepartFrom(),
-                book.getArriveAt(),
-                book.getSeatType(),
-                book.getTicketAmount());
+        bookTicketPage.bookTicket(book);
 
         Log.info("[STEP-3] - Assert information book ticket");
 
         Assert.assertEquals(book.getArriveAt(), successPage.getValueArriveStation());
+        Assert.assertEquals(book.getDepartDate(),successPage.getValueDepartDate());
+        Assert.assertEquals(book.getDepartFrom(),successPage.getValueDepartStation());
+        Assert.assertEquals(book.getSeatType(),successPage.getValueSeatType());
+        Assert.assertEquals(book.getTicketAmount(),successPage.getValueAmount());
+        Assert.assertEquals(book.getBookDate(),successPage.getBookDate());
+        Assert.assertEquals(book.getExpiredDate(),successPage.getValueExpiredDate());
+        Assert.assertEquals(book.getTotalPrice(),successPage.getTotalPrice());
         loginPage.logout();
     }
 

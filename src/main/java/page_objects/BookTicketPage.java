@@ -4,6 +4,7 @@ import helper.BrowserHelper;
 import helper.Constant;
 import helper.element_helper.Dropdown;
 import helper.element_helper.Label;
+import models.Ticket;
 import org.openqa.selenium.By;
 
 public class BookTicketPage extends GeneralPage {
@@ -19,15 +20,14 @@ public class BookTicketPage extends GeneralPage {
     private final Label lblErrorMessageAmount = new Label(By.cssSelector(".validation-error"));
 
     //Method
-    public void bookTicket(String date, String departFrom, String arriveAt,
-                           String seatType, String ticketAmount) {
+    public void bookTicket(Ticket ticket) {
         BrowserHelper.scrollPage();
-        this.ddlDepartFrom.selectDropDownText(departFrom);
-        this.ddlDepartDate.selectDropDownText(date);
-        this.ddlSeatType.selectDropDownText(seatType);
-        this.ddlTicketAmount.selectDropDownText(ticketAmount);
+        this.ddlDepartFrom.selectDropDownText(ticket.getDepartFrom());
+        this.ddlDepartDate.selectDropDownText(ticket.getDepartDate());
+        this.ddlSeatType.selectDropDownText(ticket.getSeatType());
+        this.ddlTicketAmount.selectDropDownText(ticket.getTicketAmount());
         BrowserHelper.waitForElement( ddlArriveAt.findElement(), Constant.LONG_TIME_WAIT).click();
-        this.ddlArriveAt.selectDropDownText(arriveAt);
+        this.ddlArriveAt.selectDropDownText(ticket.getArriveAt());
         BrowserHelper.scrollPage();
         this.btnSubmitBookTicket.click();
     }

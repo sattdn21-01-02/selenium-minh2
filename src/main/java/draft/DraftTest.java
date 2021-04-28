@@ -49,11 +49,7 @@ public class DraftTest {
 
         book.setDepartDate(DataHelper.getDepartDateRandom());
         Log.info("[STEP-2] - Book Ticket");
-        bookTicketPage.bookTicket(book.getDepartDate(),
-                book.getDepartFrom(),
-                book.getArriveAt(),
-                book.getSeatType(),
-                book.getTicketAmount());
+        bookTicketPage.bookTicket(book);
 
         Log.info("[STEP-3] - Assert information book ticket");
         Assert.assertEquals(book.toString(),successPage.getInformationBookTicket());
@@ -69,11 +65,7 @@ public class DraftTest {
 
         book.setDepartDate(DataHelper.getDepartDateRandom());
         Log.info("[STEP-2] - Book Ticket");
-        bookTicketPage.bookTicket(book.getDepartDate(),
-                book.getDepartFrom(),
-                book.getArriveAt(),
-                book.getSeatType(),
-                book.getTicketAmount());
+        bookTicketPage.bookTicket(book);
 
         Log.info("[STEP-3] - Assert information book ticket");
         Assert.assertEquals(book.toString(),successPage.getInformationBookTicket());
