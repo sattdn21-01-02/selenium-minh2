@@ -6,7 +6,7 @@ import com.sun.org.glassfish.gmbal.Description;
 import helper.Constant;
 import helper.DataHelper;
 import helper.Log;
-import models.BookTicket;
+import models.Ticket;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class BookTicketTest extends BaseTest {
+public class TicketTest extends BaseTest {
 
     private HomePage homePage;
     private BookTicketPage bookTicketPage;
@@ -46,17 +46,29 @@ public class BookTicketTest extends BaseTest {
     public void TC01() {
         Log.startTestCase("TC01 - User can log into Railway with valid username and password");
 
-        String date = DataHelper.getDepartDateRandom();
+        String dateDepart = DataHelper.getDepartDateRandom();
         String departFrom = "Phan Thiết";
         String arriveAt = "Đà Nẵng";
         String seatType = "Hard seat";
         String ticketAmount = "1";
-        BookTicket bookTicket = new BookTicket(date, departFrom, arriveAt, seatType, ticketAmount);
+        String dateBook = DataHelper.getBookDate();
+        String expiredDate = DataHelper.getExpiredDate();
+        String status = "New";
+        String totalPrice = "240000";
+        Ticket bookTicket = new Ticket(dateDepart,
+                departFrom,
+                arriveAt,
+                seatType,
+                ticketAmount,
+                dateBook,
+                expiredDate,
+                status,
+                totalPrice);
 
         Log.info("[STEP-1] - Login success with valid account");
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
         Log.info("[STEP-2] - Book Ticket");
-        bookTicketPage.bookTicket(date, departFrom, arriveAt, seatType, ticketAmount);
+        bookTicketPage.bookTicket(bookTicket.getDepartDate(), bookTicket.getDepartFrom(), bookTicket.getArriveAt(), bookTicket.getSeatType(), bookTicket.getTicketAmount());
 
         Log.info("[STEP-3] - Assert information book ticket");
         Assert.assertEquals(bookTicket.toString(), successPage.getInformationBookTicket());
@@ -65,7 +77,7 @@ public class BookTicketTest extends BaseTest {
 
     @Description("TC02 - User can not book over 10 ticket into Railway with valid information")
     @Test(dataProvider = "bookError")
-    public void TC02(BookTicket book) {
+    public void TC02(Ticket book) {
         Log.startTestCase("TC02 - User can not book over 10 ticket into Railway with valid information");
 
         Log.info("[STEP-1] - Login success with valid account");
@@ -80,7 +92,8 @@ public class BookTicketTest extends BaseTest {
                 book.getTicketAmount());
 
         Log.info("[STEP-3] - Assert information book ticket");
-        Assert.assertEquals(book.toString(), successPage.getInformationBookTicket());
+
+        Assert.assertEquals(book.getArriveAt(), successPage.getValueArriveStation());
         loginPage.logout();
     }
 
@@ -90,7 +103,7 @@ public class BookTicketTest extends BaseTest {
         ObjectMapper objectMapper = new ObjectMapper();
         FileReader reader = new FileReader("src/test/resources/book-ticket-data.json");
         JsonNode jsonNode = objectMapper.readTree(reader);
-        List<BookTicket> bookTickets = Arrays.asList(objectMapper.treeToValue(jsonNode.get("book_error"), BookTicket[].class));
+        List<Ticket> bookTickets = Arrays.asList(objectMapper.treeToValue(jsonNode.get("book_error"), Ticket[].class));
         return bookTickets.toArray();
     }
 }

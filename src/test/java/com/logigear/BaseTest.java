@@ -9,14 +9,14 @@ import org.testng.annotations.*;
 public class BaseTest {
 
     @BeforeTest
-    public void setUpTestMethod() {
+    public void beforeTest() {
         BrowserHelper.startBrowser(DriverType.CHROME);
         BrowserHelper.navigateToUrl(Constant.RAILWAY_URL);
         BrowserHelper.getDriver().manage().window().maximize();
     }
 
     @AfterTest
-    public void closePage() {
+    public void afterTest() {
         BrowserHelper.quitBrowser();
     }
 }

@@ -7,9 +7,6 @@ public class Register {
     private String confirmPassword;
     private String pid;
 
-    public Register() {
-    }
-
     public Register(String email, String password, String confirmPassword, String pid) {
         this.email = email;
         this.password = password;

@@ -41,16 +41,10 @@ public class RegisterTest extends BaseTest {
         Log.startTestCase("TC01 - User can register a new account Railway with valid register information");
 
         Log.info("[STEP-1] - Register success with valid information");
-        Register register = new Register();
-        register.setEmail(DataHelper.generateRandomEmailString());
-        String password = DataHelper.generateRandomPasswordString();
-        register.setPassword(password);
-        register.setConfirmPassword(password);
-        register.setPid(DataHelper.generateRandomPidString());
-        registerPage.register(register.getEmail(),
-                register.getPassword(),
-                register.getConfirmPassword(),
-                register.getPid());
+        Register register = new Register(DataHelper.generateRandomEmailString(),
+                DataHelper.generateRandomPasswordString(),DataHelper.generateRandomPasswordString(),DataHelper.generateRandomPidString());
+
+        registerPage.register(register);
 
         Log.info("[STEP-2] - Assert the  register confirm message is displays");
         String actualMsg = registerPage.getSuccessfulMessage();
@@ -65,7 +59,7 @@ public class RegisterTest extends BaseTest {
 
         Log.info("[STEP-1] - Register with invalid information");
         register.setEmail(DataHelper.generateRandomErrorEmailString());
-        registerPage.register(register.getEmail(), register.getPassword(), register.getConfirmPassword(), register.getPid());
+        registerPage.register(register);
 
         Log.info("[STEP-2] - Assert the error message is displays");
         String actualMsg = registerPage.getGeneralErrorMessage();

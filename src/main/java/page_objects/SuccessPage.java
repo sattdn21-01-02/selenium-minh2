@@ -37,6 +37,10 @@ public class SuccessPage extends GeneralPage{
         return this.lblExpiredDate.getText();
     }
 
+    public String getBookDate() {
+        return this.lblBookDate.getText();
+    }
+
     public String getValueAmount() {
         return this.lblAmount.getText();
     }
@@ -50,6 +54,13 @@ public class SuccessPage extends GeneralPage{
     }
 
     public String getInformationBookTicket() {
-        return this.getValueDepartDate()+" "+this.getValueDepartStation()+" "+this.getValueArriveStation()+" "+this.getValueSeatType()+" "+this.getValueAmount();
+        return this.getValueDepartDate()+
+                " "+this.getValueDepartStation()+
+                " "+this.getValueArriveStation()+
+                " "+this.getValueSeatType()+
+                " "+this.getValueAmount()+
+                " "+this.getBookDate()+
+                " "+this.getValueExpiredDate()+
+                " "+this.getTotalPrice();
     }
 }

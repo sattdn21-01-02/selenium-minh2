@@ -56,43 +56,6 @@ public class LoginTest extends BaseTest {
         loginPage.logout();
     }
 
-    @Description("TC04 - User can not log into Railway with blank username or password")
-    @Test
-    public void TC04() {
-        Log.startTestCase("TC04 - User can log into Railway with valid username and password");
-
-        Log.info("[STEP-1] - Login fail with invalid account");
-        loginPage.login("", "");
-
-        Log.info("[STEP-2] - Assert login error message email is displays");
-        String actualMsgUsername = loginPage.getEmailErrorMessage();
-        String expectedMsg2 = Constant.INVALID_MSG_LOGIN_USERNAME;
-        Assert.assertEquals(actualMsgUsername, expectedMsg2);
-
-        Log.info("[STEP-3] - Assert login error message password is displays");
-        String actualMsgPassword = loginPage.getPasswordErrorMessage();
-        String expectedMsgPassword = Constant.INVALID_MSG_LOGIN_PASSWORD;
-        Assert.assertEquals(actualMsgPassword, expectedMsgPassword);
-    }
-
-
-    @Description("TC07 - User can log into Railway with valid username and password")
-    @Test(dataProvider = "loginSuccessObjects")
-    public void TC07(Login login) {
-        Log.startTestCase("TC07 - User can log into Railway with valid username and password");
-
-        Log.info("[STEP-1] - Login success with valid account");
-        loginPage.login(login.getEmail(), login.getPassword());
-
-        Log.info("[STEP-2] - Assert welcome message is displays");
-        String actualMsg = homePage.getWelcomeMessage();
-        String expectedMsg = Constant.WELCOME + login.getEmail();
-        Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
-
-        Log.info("[STEP-3] - Logout");
-        loginPage.logout();
-    }
-
     @Description("TC08 - User can not log into Railway with valid username and password")
     @Test(dataProvider = "loginErrorObjects")
     public void TC08(Login login) {
@@ -105,33 +68,6 @@ public class LoginTest extends BaseTest {
         String actualMsg = loginPage.getGeneralErrorMessage();
         String expectedMsg = Constant.INVALID_MSG_LOGIN;
         Assert.assertEquals(actualMsg, expectedMsg);
-    }
-
-    @Description("TC09 - User can not log into Railway with valid username and password")
-    @Test
-    public void TC09() {
-        Log.startTestCase("TC09 - User can log into Railway with valid username and password");
-
-        Log.info("[STEP-1] - Login fail with invalid account");
-        Login login = new Login();
-        login.setEmail(DataHelper.generateRandomEmailString());
-        login.setPassword(DataHelper.generateRandomPasswordString());
-        loginPage.login(login.getEmail(), login.getPassword());
-
-        Log.info("[STEP-2] - Assert login error message email is displays");
-        String actualMsg = loginPage.getGeneralErrorMessage();
-        String expectedMsg = Constant.INVALID_MSG_LOGIN;
-        Assert.assertEquals(actualMsg, expectedMsg);
-    }
-
-
-    @DataProvider(name = "loginSuccessObjects")
-    public Object[] readJsonObjectMapperLogin() throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        FileReader reader = new FileReader("src/test/resources/login-data.json");
-        JsonNode jsonNode = objectMapper.readTree(reader);
-        List<Login> logins = Arrays.asList(objectMapper.treeToValue(jsonNode.get("logins"), Login[].class));
-        return logins.toArray();
     }
 
     @DataProvider(name = "loginErrorObjects")

@@ -49,8 +49,8 @@ public class BrowserHelper {
         }
     }
 
-    public static WebElement waitForElement(WebDriver driver, WebElement element, int seconds) {
-        WebDriverWait wait = new WebDriverWait(driver, seconds);
+    public static WebElement waitForElement( WebElement element, int seconds) {
+        WebDriverWait wait = new WebDriverWait(BrowserHelper.getDriver(), seconds);
         WebElement elements = wait.until(ExpectedConditions.elementToBeClickable(element));
         return elements;
     }

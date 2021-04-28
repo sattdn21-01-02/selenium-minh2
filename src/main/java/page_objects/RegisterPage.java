@@ -4,6 +4,7 @@ import helper.BrowserHelper;
 import helper.element_helper.Button;
 import helper.element_helper.Label;
 import helper.element_helper.TextBox;
+import models.Register;
 import org.openqa.selenium.By;
 
 public class RegisterPage extends GeneralPage {
@@ -22,11 +23,11 @@ public class RegisterPage extends GeneralPage {
     private final Label lblSuccessfulMessage = new Label(By.cssSelector("#content p"));
 
     //Methods
-    public void register(String email, String password, String confirmPassword, String pid) {
-        this.txtEmail.enterText(email);
-        this.txtPassword.enterText(password);
-        this.txtConfirmPassword.enterText(confirmPassword);
-        this.txtPID.enterText(pid);
+    public void register(Register register) {
+        this.txtEmail.enterText(register.getEmail());
+        this.txtPassword.enterText(register.getPassword());
+        this.txtConfirmPassword.enterText(register.getConfirmPassword());
+        this.txtPID.enterText(register.getPid());
         this.btnRegister.waitForElementExist();
         BrowserHelper.scrollPage();
         this.btnRegister.click();
