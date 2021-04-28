@@ -75,23 +75,6 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(actualMsgPassword, expectedMsgPassword);
     }
 
-    @Description("TC05 - User can log into Railway with valid username and password")
-    @Test(dataProvider = "loginSuccess")
-    public void TC05(String data) {
-        Log.startTestCase("5 - User can log into Railway with valid username and password");
-
-        Log.info("[STEP-1] - Login success with valid account");
-        String users[] = data.split(",");
-        loginPage.login(users[0], users[1]);
-
-        Log.info("[STEP-2] - Assert welcome message is displays");
-        String actualMsg = homePage.getWelcomeMessage();
-        String expectedMsg = Constant.WELCOME + users[0].toString();
-        Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
-
-        Log.info("[STEP-3] - Logout");
-        loginPage.logout();
-    }
 
     @Description("TC07 - User can log into Railway with valid username and password")
     @Test(dataProvider = "loginSuccessObjects")
@@ -141,24 +124,6 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(actualMsg, expectedMsg);
     }
 
-    @DataProvider(name = "loginSuccess")
-    public Object[] readJsonLoginSuccess() throws IOException, ParseException {
-        JSONParser jsonParser = new JSONParser();
-        FileReader reader = new FileReader("src/test/resources/login-data.json");
-
-        Object object = jsonParser.parse(reader);
-        JSONObject userLoginJsonObj = (JSONObject) object;
-        JSONArray userLoginsArray = (JSONArray) userLoginJsonObj.get("logins");
-        String arr[] = new String[userLoginsArray.size()];
-        for (int i = 0; i < userLoginsArray.size(); i++) {
-            JSONObject users = (JSONObject) userLoginsArray.get(i);
-            String email = (String) users.get("email");
-            String password = (String) users.get("password");
-
-            arr[i] = email + "," + password;
-        }
-        return arr;
-    }
 
     @DataProvider(name = "loginSuccessObjects")
     public Object[] readJsonObjectMapperLogin() throws IOException {

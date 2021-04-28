@@ -42,23 +42,24 @@ public class BookTicketTest extends BaseTest {
     }
 
     @Description("TC01 - User can book ticket into Railway with valid information")
-    @Test(dataProvider = "bookSuccess")
-    public void TC01(BookTicket book) {
+    @Test()
+    public void TC01() {
         Log.startTestCase("TC01 - User can log into Railway with valid username and password");
+
+        String date = DataHelper.getDepartDateRandom();
+        String departFrom = "Phan Thiết";
+        String arriveAt = "Đà Nẵng";
+        String seatType = "Hard seat";
+        String ticketAmount = "1";
+        BookTicket bookTicket = new BookTicket(date, departFrom, arriveAt, seatType, ticketAmount);
 
         Log.info("[STEP-1] - Login success with valid account");
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
-
-        book.setDepartDate(DataHelper.getDepartDateRandom());
         Log.info("[STEP-2] - Book Ticket");
-        bookTicketPage.bookTicket(book.getDepartDate(),
-                Constant.DEPART_FROM,
-                Constant.ARRIVE_AT,
-                Constant.SEAT_TYPE,
-                Constant.TICKET_AMOUNT);
+        bookTicketPage.bookTicket(date, departFrom, arriveAt, seatType, ticketAmount);
 
         Log.info("[STEP-3] - Assert information book ticket");
-        Assert.assertEquals(book.toString(), successPage.getInformationBookTicket());
+        Assert.assertEquals(bookTicket.toString(), successPage.getInformationBookTicket());
         loginPage.logout();
     }
 
@@ -83,15 +84,6 @@ public class BookTicketTest extends BaseTest {
         loginPage.logout();
     }
 
-
-    @DataProvider(name = "bookSuccess")
-    public Object[] readJsonObjectBookSuccess() throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        FileReader reader = new FileReader("src/test/resources/book-ticket-data.json");
-        JsonNode jsonNode = objectMapper.readTree(reader);
-        List<BookTicket> bookTickets = Arrays.asList(objectMapper.treeToValue(jsonNode.get("book_success"), BookTicket[].class));
-        return bookTickets.toArray();
-    }
 
     @DataProvider(name = "bookError")
     public Object[] readJsonObjectBookError() throws IOException {

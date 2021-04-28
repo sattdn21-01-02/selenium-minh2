@@ -15,11 +15,11 @@ public class RegisterPage extends GeneralPage {
     private final TextBox txtPID = new TextBox(By.cssSelector("input#pid"));
     private final Button btnRegister = new Button(By.cssSelector("input[title='Register']"));
     private final Label lblGeneralErrorMessage = new Label(By.xpath("//p[contains(@class, 'message')]"));
-    private final Label lblEmailErrorMessage = new Label(By.xpath("//label[@for='email' and @class = 'validation-error']"));
-    private final Label lblPasswordErrorMessage = new Label(By.xpath("//label[@for='password' and @class = 'validation-error']"));
-    private final Label lblConfirmPasswordErrorMessage = new Label(By.xpath("//label[@for='confirmPassword' and @class = 'validation-error']"));
-    private final Label lblPIDErrorMessage = new Label(By.xpath("//label[@for='pid' and @class = 'validation-error']"));
-    private final Label lblSuccessfulMessage = new Label(By.xpath("//div[@id = 'content']//p"));
+    private final Label lblEmailErrorMessage = new Label(By.cssSelector("[for=email].validation-error"));
+    private final Label lblPasswordErrorMessage = new Label(By.cssSelector("[for=password].validation-error"));
+    private final Label lblConfirmPasswordErrorMessage = new Label(By.cssSelector("[for=confirmPassword].validation-error"));
+    private final Label lblPIDErrorMessage = new Label(By.cssSelector("[for=pid].validation-error"));
+    private final Label lblSuccessfulMessage = new Label(By.cssSelector("#content p"));
 
     //Methods
     public void register(String email, String password, String confirmPassword, String pid) {

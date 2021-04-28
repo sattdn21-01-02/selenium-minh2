@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 public class SuccessPage extends GeneralPage{
 
     //Elements
-    private final Label lblBookSuccess = new Label(By.xpath("//h1[contains(text(),'')]"));
+    private final Label lblBookSuccess = new Label(By.cssSelector("#content h1"));
     private final Label lblDepartStation = new Label(By.cssSelector(".OddRow td:nth-child(1)"));
     private final Label lblArriveStation = new Label(By.cssSelector(".OddRow td:nth-child(2)"));
     private final Label lblSeatType = new Label(By.cssSelector(".OddRow td:nth-child(3)"));

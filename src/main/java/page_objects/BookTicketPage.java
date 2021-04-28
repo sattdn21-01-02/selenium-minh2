@@ -8,12 +8,12 @@ import org.openqa.selenium.By;
 public class BookTicketPage extends GeneralPage {
 
     //Locator
-    private final Dropdown ddlDepartDate = new Dropdown(By.xpath("//select[@name='Date']"));
-    private final Dropdown ddlDepartFrom = new Dropdown(By.xpath("//select[@name='DepartStation']"));
-    private final Dropdown ddlArriveAt = new Dropdown(By.xpath("//select[@name='ArriveStation']"));
-    private final Dropdown ddlSeatType = new Dropdown(By.xpath("//select[@name='SeatType']"));
-    private final Dropdown ddlTicketAmount = new Dropdown(By.xpath("//select[@name='TicketAmount']"));
-    private final Dropdown btnSubmitBookTicket = new Dropdown(By.xpath("//input[@value='Book ticket']"));
+    private final Dropdown ddlDepartDate = new Dropdown(By.cssSelector("[name=Date]"));
+    private final Dropdown ddlDepartFrom = new Dropdown(By.cssSelector("[name=DepartStation]"));
+    private final Dropdown ddlArriveAt = new Dropdown(By.cssSelector("[name=ArriveStation]"));
+    private final Dropdown ddlSeatType = new Dropdown(By.cssSelector("[name=SeatType]"));
+    private final Dropdown ddlTicketAmount = new Dropdown(By.cssSelector("[name=TicketAmount]"));
+    private final Dropdown btnSubmitBookTicket = new Dropdown(By.cssSelector("input[value='Book ticket']"));
     private final Label lblErrorMessage = new Label(By.cssSelector(".message"));
     private final Label lblErrorMessageAmount = new Label(By.cssSelector(".validation-error"));
 

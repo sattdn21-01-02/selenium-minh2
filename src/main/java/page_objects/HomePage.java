@@ -13,7 +13,7 @@ import org.openqa.selenium.WebDriver;
 public class HomePage extends GeneralPage {
 
     //Elements
-    private final Label lblWelcomeMessage = new Label(By.xpath("//div[@class = 'account']//strong"));
+    private final Label lblWelcomeMessage = new Label(By.cssSelector(".account strong"));
 
     //Methods
     public String getWelcomeMessage() {
