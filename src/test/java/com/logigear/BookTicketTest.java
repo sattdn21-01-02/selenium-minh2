@@ -3,17 +3,10 @@ package com.logigear;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.org.glassfish.gmbal.Description;
-import helper.BrowserHelper;
 import helper.Constant;
 import helper.DataHelper;
 import helper.Log;
-import helper.web_driver_manage.DriverManageFactory;
-import helper.web_driver_manage.DriverManager;
-import helper.web_driver_manage.DriverType;
 import models.BookTicket;
-import models.Login;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -59,10 +52,10 @@ public class BookTicketTest extends BaseTest {
         book.setDepartDate(DataHelper.getDepartDateRandom());
         Log.info("[STEP-2] - Book Ticket");
         bookTicketPage.bookTicket(book.getDepartDate(),
-                book.getDepartFrom(),
-                book.getArriveAt(),
-                book.getSeatType(),
-                book.getTicketAmount());
+                Constant.DEPART_FROM,
+                Constant.ARRIVE_AT,
+                Constant.SEAT_TYPE,
+                Constant.TICKET_AMOUNT);
 
         Log.info("[STEP-3] - Assert information book ticket");
         Assert.assertEquals(book.toString(), successPage.getInformationBookTicket());

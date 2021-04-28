@@ -12,6 +12,10 @@ public class Constant {
     public static final String TEST_RESOURCES_PATH = "/src/test/resources/";
     public static final int TIME_WAITS_DRIVER = 30;
     public static final int TIMES_WAIT_ELEMENTS = 120;
+    public static final String DEPART_FROM = "Phan Thiết";
+    public static final String ARRIVE_AT = "Đà Nẵng";
+    public static final String SEAT_TYPE = "Hard seat";
+    public static final String TICKET_AMOUNT = "1";
 
     //Message
     public static final String INVALID_MSG_LOGIN = "Invalid username or password. Please try again.";

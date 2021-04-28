@@ -1,8 +1,8 @@
 {
   "book_success": [
     {
-      "departFrom": "Sài Gòn",
-      "arriveAt": "Huế",
+      "departFrom": "Phan Thiết",
+      "arriveAt": "Đà Nẵng",
       "seatType": "Hard seat",
       "ticketAmount": "1"
     }
