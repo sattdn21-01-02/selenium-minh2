@@ -4,6 +4,7 @@ import helper.BrowserHelper;
 import helper.element_helper.Button;
 import helper.element_helper.Label;
 import helper.element_helper.TextBox;
+import models.Account;
 import models.Register;
 import org.openqa.selenium.By;
 

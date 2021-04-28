@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.org.glassfish.gmbal.Description;
 import helper.*;
+import models.Account;
 import models.Register;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -20,29 +21,18 @@ import java.util.List;
 
 public class RegisterTest extends BaseTest {
 
-    private HomePage homePage;
-    private RegisterPage registerPage;
+    private HomePage homePage = new HomePage();
+    private RegisterPage registerPage = new RegisterPage();
 
-    @BeforeMethod
-    public void beforeMethod() {
-        homePage = new HomePage();
-        registerPage = new RegisterPage();
-        homePage.goToRegisterPage();
-    }
-
-    @AfterMethod
-    public void afterMethod() {
-        System.out.println("Post-condition");
-    }
 
     @Description("TC01 - User can register a new account Railway with valid register information")
     @Test
     public void TC01() {
         Log.startTestCase("TC01 - User can register a new account Railway with valid register information");
-
+        homePage.goToRegisterPage();
         Log.info("[STEP-1] - Register success with valid information");
         Register register = new Register(DataHelper.generateRandomEmailString(),
-                DataHelper.generateRandomPasswordString(),DataHelper.generateRandomPasswordString(),DataHelper.generateRandomPidString());
+                DataHelper.generateRandomPasswordString(), DataHelper.generateRandomPasswordString(), DataHelper.generateRandomPidString());
 
         registerPage.register(register);
 
@@ -56,7 +46,7 @@ public class RegisterTest extends BaseTest {
     @Test(dataProvider = "registerErrorObjects")
     public void TC04(Register register) {
         Log.startTestCase("TC04 - User can not register a new account Railway with invalid register information");
-
+        homePage.goToRegisterPage();
         Log.info("[STEP-1] - Register with invalid information");
         register.setEmail(DataHelper.generateRandomErrorEmailString());
         registerPage.register(register);

@@ -1,20 +1,18 @@
 package helper;
 
-import helper.web_driver_manage.DriverType;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
 public class BrowserHelper {
 
     private static WebDriver driver;
+
+    public enum DriverType {CHROME, FIREFOX, EDGE}
 
     public static void startBrowser(DriverType type) {
         switch (type) {
@@ -47,12 +45,6 @@ public class BrowserHelper {
             driver.quit();
             driver = null;
         }
-    }
-
-    public static WebElement waitForElement( WebElement element, int seconds) {
-        WebDriverWait wait = new WebDriverWait(BrowserHelper.getDriver(), seconds);
-        WebElement elements = wait.until(ExpectedConditions.elementToBeClickable(element));
-        return elements;
     }
 
     public static WebDriver getDriver() {

@@ -7,7 +7,7 @@
     <test name="Login">
         <parameter name="browser" value="CHROME" />
         <classes>
-            <class name="com.logigear.BaseTest"></class>
+            <class name="com.logigear.LoginTest"></class>
         </classes>
     </test>
 </suite>

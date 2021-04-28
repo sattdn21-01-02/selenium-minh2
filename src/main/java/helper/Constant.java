@@ -1,8 +1,5 @@
 package helper;
 
-import helper.web_driver_manage.DriverManager;
-import org.openqa.selenium.WebDriver;
-
 public class Constant {
 
     //Variables

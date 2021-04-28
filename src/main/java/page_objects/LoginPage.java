@@ -24,7 +24,6 @@ public class LoginPage extends GeneralPage {
     public void login(String email, String password) {
         this.txtEmail.enterText(email);
         this.txtPassword.enterText(password);
-        this.btnLogin.waitForElementExist();
         BrowserHelper.scrollPage();
         this.btnLogin.click();
     }
