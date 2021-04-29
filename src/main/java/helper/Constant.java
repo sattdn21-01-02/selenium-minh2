@@ -10,6 +10,15 @@ public class Constant {
     public static final int TIME_WAITS_DRIVER = 30;
     public static final int TIMES_WAIT_ELEMENTS = 120;
     public static final int LONG_TIME_WAIT = 30;
+    public static final String HEADER_DEPART_STATION = "Depart Station";
+    public static final String HEADER_ARRIVE_STATION = "Arrive Station";
+    public static final String HEADER_SEAT_TYPE = "Seat Type";
+    public static final String HEADER_DEPART_DATE = "Depart Date";
+    public static final String HEADER_BOOK_DATE = "Book Date";
+    public static final String HEADER_EXPIRED_DATE = "Expired Date";
+    public static final String HEADER_AMOUNT = "Amount";
+    public static final String HEADER_TOTAL_PRICE = "Total Price";
+
 
     //Message
     public static final String INVALID_MSG_LOGIN = "Invalid username or password. Please try again.";
@@ -18,5 +27,7 @@ public class Constant {
     public static final String INVALID_MSG_REGISTER_EMAIL = "Invalid email length";
     public static final String WELCOME = "Welcome ";
     public static final String REGISTER_CONFIRM_MSG = "You're here";
+    public static final String CHANGE_PASSWORD_MSG = "Your password has been updated!";
+    public static final String CHANGE_PASSWORD_ERROR = "An error occurred when attempting to change the password. Maybe your current password is incorrect.";
     public static final String FAIL_MSG_REGISTER = "There're errors in the form. Please correct the errors and try again.";
 }

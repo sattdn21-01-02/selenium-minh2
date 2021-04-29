@@ -23,6 +23,14 @@ public class TicketTest extends BaseTest {
     private HomePage homePage = new HomePage();
     private BookTicketPage bookTicketPage = new BookTicketPage();
     private LoginPage loginPage = new LoginPage();
+    private String msgExpectedArriveStation = "Arrive Station is not displayed as expected";
+    private String msgExpectedDepartStation = "Depart Station is not displayed as expected";
+    private String msgExpectedDateDepart = "Depart Date is not displayed as expected";
+    private String msgExpectedSeatType = "Seat Type is not displayed as expected";
+    private String msgExpectedTicketAmount = "Amount is not displayed as expected";
+    private String msgExpectedDateBook = "Book Date is not displayed as expected";
+    private String msgExpectedExpiredDate = "Expired Date is not displayed as expected";
+    private String msgExpectedTotalPrice = "Total Price is not displayed as expected";
 
     @Description("TC01 - User can book ticket into Railway with valid information")
     @Test()
@@ -54,14 +62,14 @@ public class TicketTest extends BaseTest {
         bookTicketPage.bookTicket(bookTicket);
 
         Log.info("[STEP-3] - Assert information book ticket");
-        Assert.assertEquals(bookTicketPage.getTextByHead("Arrive Station"), bookTicket.getArriveAt(), "Arrive Station is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTextByHead("Depart Station"), bookTicket.getDepartFrom(), "Depart Station is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTextByHead("Seat Type"), bookTicket.getSeatType(), "Seat Type is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTextByHead("Depart Date"), bookTicket.getDepartDate(), "Depart Date is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTextByHead("Book Date"), bookTicket.getBookDate(), "Book Date is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTextByHead("Expired Date"), bookTicket.getExpiredDate(), "Expired Date is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTextByHead("Amount"), bookTicket.getTicketAmount(), "Amount is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTextByHead("Total Price"), bookTicket.getTotalPrice(), "Total Price is not displayed as expected");
+        Assert.assertEquals(bookTicketPage.getTextByHead(Constant.HEADER_ARRIVE_STATION), bookTicket.getArriveAt(), msgExpectedArriveStation);
+        Assert.assertEquals(bookTicketPage.getTextByHead(Constant.HEADER_DEPART_STATION), bookTicket.getDepartFrom(), msgExpectedDepartStation);
+        Assert.assertEquals(bookTicketPage.getTextByHead(Constant.HEADER_SEAT_TYPE), bookTicket.getSeatType(), msgExpectedSeatType);
+        Assert.assertEquals(bookTicketPage.getTextByHead(Constant.HEADER_DEPART_DATE), bookTicket.getDepartDate(), msgExpectedDateDepart);
+        Assert.assertEquals(bookTicketPage.getTextByHead(Constant.HEADER_BOOK_DATE), bookTicket.getBookDate(), msgExpectedDateBook);
+        Assert.assertEquals(bookTicketPage.getTextByHead(Constant.HEADER_EXPIRED_DATE), bookTicket.getExpiredDate(), msgExpectedExpiredDate);
+        Assert.assertEquals(bookTicketPage.getTextByHead(Constant.HEADER_AMOUNT), bookTicket.getTicketAmount(), msgExpectedTicketAmount);
+        Assert.assertEquals(bookTicketPage.getTextByHead(Constant.HEADER_TOTAL_PRICE), bookTicket.getTotalPrice(), msgExpectedTotalPrice);
         loginPage.logout();
     }
 
@@ -79,14 +87,14 @@ public class TicketTest extends BaseTest {
 
         Log.info("[STEP-3] - Assert information book ticket");
 
-        Assert.assertEquals(bookTicketPage.getTextByHead("Arrive Station"), book.getArriveAt(), "Arrive Station is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTextByHead("Depart Station"), book.getDepartFrom(), "Depart Station is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTextByHead("Seat Type"), book.getSeatType(), "Seat Type is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTextByHead("Depart Date"), book.getDepartDate(), "Depart Date is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTextByHead("Book Date"), book.getBookDate(), "Book Date is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTextByHead("Expired Date"), book.getExpiredDate(), "Expired Date is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTextByHead("Amount"), book.getTicketAmount(), "Amount is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTextByHead("Total Price"), book.getTotalPrice(), "Total Price is not displayed as expected");
+        Assert.assertEquals(bookTicketPage.getTextByHead(Constant.HEADER_ARRIVE_STATION), book.getArriveAt(), msgExpectedArriveStation);
+        Assert.assertEquals(bookTicketPage.getTextByHead(Constant.HEADER_DEPART_STATION), book.getDepartFrom(), msgExpectedDepartStation);
+        Assert.assertEquals(bookTicketPage.getTextByHead(Constant.HEADER_SEAT_TYPE), book.getSeatType(), msgExpectedSeatType);
+        Assert.assertEquals(bookTicketPage.getTextByHead(Constant.HEADER_DEPART_DATE), book.getDepartDate(), msgExpectedDateDepart);
+        Assert.assertEquals(bookTicketPage.getTextByHead(Constant.HEADER_BOOK_DATE), book.getBookDate(), msgExpectedDateBook);
+        Assert.assertEquals(bookTicketPage.getTextByHead(Constant.HEADER_EXPIRED_DATE), book.getExpiredDate(), msgExpectedExpiredDate);
+        Assert.assertEquals(bookTicketPage.getTextByHead(Constant.HEADER_AMOUNT), book.getTicketAmount(), msgExpectedTicketAmount);
+        Assert.assertEquals(bookTicketPage.getTextByHead(Constant.HEADER_TOTAL_PRICE), book.getTotalPrice(), msgExpectedTotalPrice);
         loginPage.logout();
     }
 

@@ -1,22 +1,30 @@
 {
-  "logins": [
+  "accounts": [
     {
       "email": "tnminh19971234@gmail.com",
-      "password": "minhvip1997"
+      "password": "minhvip1997",
+      "confirmPassword": "doubleminh1997",
+      "pid": "12345678"
     },
     {
       "email": "tnminh19973215@gmail.com",
-      "password": "doubleminh1997"
+      "password": "doubleminh1997",
+      "confirmPassword": "doubleminh1997",
+      "pid": "12345678"
     }
   ],
-  "logins_error": [
+  "account_error": [
     {
       "email": "qweqwe@gmail.com",
-      "password": "minhvip1997"
+      "password": "minhvip1997",
+      "confirmPassword": "doubleminh1997",
+      "pid": "12345678"
     },
     {
       "email": "tnminh19973215@gmail.com",
-      "password": "eqweqeqwnh1997"
+      "password": "eqweqeqwnh1997",
+      "confirmPassword": "doubleminh1997",
+      "pid": "12345678"
     }
   ]
 }

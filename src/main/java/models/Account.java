@@ -7,6 +7,14 @@ public class Account {
     private String confirmPassword;
     private String pid;
 
+    public Account() {
+    }
+
+    public Account(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     public Account(String email, String password, String confirmPassword, String pid) {
         this.email = email;
         this.password = password;

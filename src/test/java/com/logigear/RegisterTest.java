@@ -5,10 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.org.glassfish.gmbal.Description;
 import helper.*;
 import models.Account;
-import models.Register;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import page_objects.HomePage;
@@ -30,26 +27,27 @@ public class RegisterTest extends BaseTest {
     public void TC01() {
         Log.startTestCase("TC01 - User can register a new account Railway with valid register information");
         homePage.goToRegisterPage();
+        String password = DataHelper.generateRandomPasswordString();
         Log.info("[STEP-1] - Register success with valid information");
-        Register register = new Register(DataHelper.generateRandomEmailString(),
-                DataHelper.generateRandomPasswordString(), DataHelper.generateRandomPasswordString(), DataHelper.generateRandomPidString());
+        Account account = new Account(DataHelper.generateRandomEmailString(),
+                password, password, DataHelper.generateRandomPidString());
 
-        registerPage.register(register);
+        registerPage.register(account);
 
         Log.info("[STEP-2] - Assert the  register confirm message is displays");
-        String actualMsg = registerPage.getSuccessfulMessage();
-        String expectedMsg = Constant.REGISTER_CONFIRM_MSG;
-        Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
+        String actualMsg = Constant.REGISTER_CONFIRM_MSG;
+        String expectedMsg = registerPage.getSuccessfulMessage();
+        Assert.assertEquals(actualMsg, expectedMsg);
     }
 
     @Description("TC04 - User can not register a new account Railway with invalid register information")
     @Test(dataProvider = "registerErrorObjects")
-    public void TC04(Register register) {
+    public void TC04(Account account) {
         Log.startTestCase("TC04 - User can not register a new account Railway with invalid register information");
         homePage.goToRegisterPage();
         Log.info("[STEP-1] - Register with invalid information");
-        register.setEmail(DataHelper.generateRandomErrorEmailString());
-        registerPage.register(register);
+        account.setEmail(DataHelper.generateRandomErrorEmailString());
+        registerPage.register(account);
 
         Log.info("[STEP-2] - Assert the error message is displays");
         String actualMsg = registerPage.getGeneralErrorMessage();
@@ -62,8 +60,8 @@ public class RegisterTest extends BaseTest {
         ObjectMapper objectMapper = new ObjectMapper();
         FileReader reader = new FileReader("src/test/resources/register-data.json");
         JsonNode jsonNode = objectMapper.readTree(reader);
-        List<Register> registers = Arrays.asList(objectMapper.treeToValue(jsonNode.get("register_error"), Register[].class));
-        return registers.toArray();
+        List<Account> accounts = Arrays.asList(objectMapper.treeToValue(jsonNode.get("register_error"), Account[].class));
+        return accounts.toArray();
     }
 
 }

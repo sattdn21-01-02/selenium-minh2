@@ -1,11 +1,11 @@
 package page_objects;
 
 import helper.BrowserHelper;
+import helper.ElementHelper;
 import helper.element_helper.Button;
 import helper.element_helper.Label;
 import helper.element_helper.TextBox;
 import models.Account;
-import models.Register;
 import org.openqa.selenium.By;
 
 public class RegisterPage extends GeneralPage {
@@ -24,13 +24,12 @@ public class RegisterPage extends GeneralPage {
     private final Label lblSuccessfulMessage = new Label(By.cssSelector("#content p"));
 
     //Methods
-    public void register(Register register) {
-        this.txtEmail.enterText(register.getEmail());
-        this.txtPassword.enterText(register.getPassword());
-        this.txtConfirmPassword.enterText(register.getConfirmPassword());
-        this.txtPID.enterText(register.getPid());
-        this.btnRegister.waitForElementExist();
-        BrowserHelper.scrollPage();
+    public void register(Account account) {
+        this.txtEmail.enterText(account.getEmail());
+        this.txtPassword.enterText(account.getPassword());
+        this.txtConfirmPassword.enterText(account.getConfirmPassword());
+        this.txtPID.enterText(account.getPid());
+        ElementHelper.scrollToView(btnRegister.findElement());
         this.btnRegister.click();
     }
 

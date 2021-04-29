@@ -3,6 +3,7 @@ package page_objects;
 
 import helper.BrowserHelper;
 import helper.Constant;
+import helper.ElementHelper;
 import helper.element_helper.Button;
 import helper.element_helper.Label;
 import helper.element_helper.TextBox;
@@ -24,7 +25,7 @@ public class LoginPage extends GeneralPage {
     public void login(String email, String password) {
         this.txtEmail.enterText(email);
         this.txtPassword.enterText(password);
-        BrowserHelper.scrollPage();
+        ElementHelper.scrollToView(btnLogin.findElement());
         this.btnLogin.click();
     }
 

@@ -4,14 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.org.glassfish.gmbal.Description;
 import helper.*;
-import models.Login;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import models.Account;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import page_objects.HomePage;
@@ -46,11 +40,11 @@ public class LoginTest extends BaseTest {
 
     @Description("TC08 - User can not log into Railway with valid username and password")
     @Test(dataProvider = "loginErrorObjects")
-    public void TC02(Login login) {
+    public void TC02(Account account) {
         Log.startTestCase("TC08 - User can log into Railway with valid username and password");
         homePage.goToLoginPage();
         Log.info("[STEP-1] - Login fail with invalid account");
-        loginPage.login(login.getEmail(), login.getPassword());
+        loginPage.login(account.getEmail(), account.getPassword());
 
         Log.info("[STEP-2] - Assert login error message email is displays");
         String actualMsg = loginPage.getGeneralErrorMessage();
@@ -63,7 +57,7 @@ public class LoginTest extends BaseTest {
         ObjectMapper objectMapper = new ObjectMapper();
         FileReader reader = new FileReader("src/test/resources/login-data.json");
         JsonNode jsonNode = objectMapper.readTree(reader);
-        List<Login> logins = Arrays.asList(objectMapper.treeToValue(jsonNode.get("logins_error"), Login[].class));
-        return logins.toArray();
+        List<Account> accounts = Arrays.asList(objectMapper.treeToValue(jsonNode.get("account_error"), Account[].class));
+        return accounts.toArray();
     }
 }
