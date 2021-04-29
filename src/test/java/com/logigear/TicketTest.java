@@ -20,22 +20,22 @@ import java.util.List;
 
 public class TicketTest extends BaseTest {
 
-    private HomePage homePage = new HomePage();
-    private BookTicketPage bookTicketPage = new BookTicketPage();
-    private LoginPage loginPage = new LoginPage();
-    private String msgExpectedArriveStation = "Arrive Station is not displayed as expected";
-    private String msgExpectedDepartStation = "Depart Station is not displayed as expected";
-    private String msgExpectedDateDepart = "Depart Date is not displayed as expected";
-    private String msgExpectedSeatType = "Seat Type is not displayed as expected";
-    private String msgExpectedTicketAmount = "Amount is not displayed as expected";
-    private String msgExpectedDateBook = "Book Date is not displayed as expected";
-    private String msgExpectedExpiredDate = "Expired Date is not displayed as expected";
-    private String msgExpectedTotalPrice = "Total Price is not displayed as expected";
+    private final HomePage homePage = new HomePage();
+    private final BookTicketPage bookTicketPage = new BookTicketPage();
+    private final LoginPage loginPage = new LoginPage();
+    private final String msgExpectedArriveStation = "Arrive Station is not displayed as expected";
+    private final String msgExpectedDepartStation = "Depart Station is not displayed as expected";
+    private final String msgExpectedDateDepart = "Depart Date is not displayed as expected";
+    private final String msgExpectedSeatType = "Seat Type is not displayed as expected";
+    private final String msgExpectedTicketAmount = "Amount is not displayed as expected";
+    private final String msgExpectedDateBook = "Book Date is not displayed as expected";
+    private final String msgExpectedExpiredDate = "Expired Date is not displayed as expected";
+    private final String msgExpectedTotalPrice = "Total Price is not displayed as expected";
 
     @Description("TC01 - User can book ticket into Railway with valid information")
     @Test()
     public void TC01() {
-        Log.startTestCase("TC01 - User can log into Railway with valid username and password");
+        Log.startTestCase("TC01 - User can book ticket into Railway with valid information");
         homePage.goToBookTicketPage();
         String dateDepart = DataHelper.getDepartDateRandom();
         String departFrom = "Phan Thiết";

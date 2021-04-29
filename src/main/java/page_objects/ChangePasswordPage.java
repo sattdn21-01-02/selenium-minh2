@@ -1,6 +1,5 @@
 package page_objects;
 
-import helper.Constant;
 import helper.ElementHelper;
 import helper.element_helper.Button;
 import helper.element_helper.Label;

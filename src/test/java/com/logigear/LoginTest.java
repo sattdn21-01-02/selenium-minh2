@@ -18,8 +18,8 @@ import java.util.List;
 
 public class LoginTest extends BaseTest {
 
-    private HomePage homePage = new HomePage();
-    private LoginPage loginPage = new LoginPage();
+    private final HomePage homePage = new HomePage();
+    private final LoginPage loginPage = new LoginPage();
 
     @Description("TC01 - User can log into Railway with valid username and password")
     @Test
@@ -38,10 +38,10 @@ public class LoginTest extends BaseTest {
         loginPage.logout();
     }
 
-    @Description("TC08 - User can not log into Railway with valid username and password")
+    @Description("TC02 - User can not log into Railway with valid username and password")
     @Test(dataProvider = "loginErrorObjects")
     public void TC02(Account account) {
-        Log.startTestCase("TC08 - User can log into Railway with valid username and password");
+        Log.startTestCase("TC02 - User can not log into Railway with valid username and password");
         homePage.goToLoginPage();
         Log.info("[STEP-1] - Login fail with invalid account");
         loginPage.login(account.getEmail(), account.getPassword());

@@ -1,7 +1,6 @@
 package page_objects;
 
 import helper.BrowserHelper;
-import helper.Constant;
 import helper.ElementHelper;
 import helper.element_helper.Button;
 import helper.element_helper.Label;
@@ -16,13 +15,21 @@ public class ManageTicketPage extends GeneralPage {
     public void cancelAllTicket() {
         int size = this.btnCancel.findElements().size();
         for (int i = 0; i < size; i++) {
-            BrowserHelper.scrollPage();
+            ElementHelper.scrollToView(btnCancel.findElement());
             this.btnCancel.click();
             BrowserHelper.getDriver().switchTo().alert().accept();
         }
     }
 
-    public String getErrorMessage() {
+    public void cancelSpecifiedTicket(int id) {
+        String xPath = "//td[count(//th[text()='No.']) and text() = "+id+"]//following-sibling::td//input";
+        Button btnCancel = new Button(By.xpath(xPath));
+        ElementHelper.scrollToView(btnCancel.findElement());
+        this.btnCancel.click();
+        BrowserHelper.getDriver().switchTo().alert().accept();
+    }
+
+    public String getTicketAmount() {
         return this.lblErrorMessage.getText();
     }
 }

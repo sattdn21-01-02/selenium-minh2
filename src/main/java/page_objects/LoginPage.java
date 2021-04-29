@@ -1,15 +1,10 @@
 package page_objects;
 
-
-import helper.BrowserHelper;
-import helper.Constant;
 import helper.ElementHelper;
 import helper.element_helper.Button;
 import helper.element_helper.Label;
 import helper.element_helper.TextBox;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class LoginPage extends GeneralPage {
 

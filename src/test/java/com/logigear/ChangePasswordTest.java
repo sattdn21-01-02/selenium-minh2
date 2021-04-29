@@ -13,10 +13,10 @@ import page_objects.LoginPage;
 
 public class ChangePasswordTest extends BaseTest {
 
-    private HomePage homePage = new HomePage();
-    private LoginPage loginPage = new LoginPage();
-    private ChangePasswordPage changePasswordPage = new ChangePasswordPage();
-    private String newPassword = "minhvip1997";
+    private final HomePage homePage = new HomePage();
+    private final LoginPage loginPage = new LoginPage();
+    private final ChangePasswordPage changePasswordPage = new ChangePasswordPage();
+    private final String newPassword = "minhvip1997";
 
     @Description("TC01 - User can change password successful")
     @Test

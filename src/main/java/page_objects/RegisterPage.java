@@ -1,6 +1,5 @@
 package page_objects;
 
-import helper.BrowserHelper;
 import helper.ElementHelper;
 import helper.element_helper.Button;
 import helper.element_helper.Label;

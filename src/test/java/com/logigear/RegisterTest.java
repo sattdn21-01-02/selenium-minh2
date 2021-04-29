@@ -18,8 +18,8 @@ import java.util.List;
 
 public class RegisterTest extends BaseTest {
 
-    private HomePage homePage = new HomePage();
-    private RegisterPage registerPage = new RegisterPage();
+    private final HomePage homePage = new HomePage();
+    private final RegisterPage registerPage = new RegisterPage();
 
 
     @Description("TC01 - User can register a new account Railway with valid register information")
