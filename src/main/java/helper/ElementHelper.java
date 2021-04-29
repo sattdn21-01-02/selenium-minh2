@@ -13,7 +13,7 @@ public class ElementHelper extends BaseElement {
         super(locator);
     }
 
-    public static WebElement waitForElement(WebElement element, int seconds) {
+    public static WebElement waitForElementDisplay(WebElement element, int seconds) {
         WebDriverWait wait = new WebDriverWait(BrowserHelper.getDriver(), seconds);
         WebElement elements = wait.until(ExpectedConditions.elementToBeClickable(element));
         return elements;

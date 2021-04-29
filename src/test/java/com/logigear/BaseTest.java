@@ -10,7 +10,7 @@ public class BaseTest {
     public void beforeMethod() {
         BrowserHelper.startBrowser(BrowserHelper.DriverType.CHROME);
         BrowserHelper.navigateToUrl(Constant.RAILWAY_URL);
-        BrowserHelper.getDriver().manage().window().maximize();
+        BrowserHelper.maximize();
     }
 
     @AfterMethod

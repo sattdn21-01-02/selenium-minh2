@@ -34,7 +34,7 @@ public class ChangePasswordTest extends BaseTest {
 
         String actualMsg = changePasswordPage.getSuccessMessage();
         String expectedMsg = Constant.CHANGE_PASSWORD_MSG;
-        Assert.assertEquals(actualMsg, expectedMsg);
+        Assert.assertEquals(actualMsg, expectedMsg, actualMsg + " is not matched with " + expectedMsg);
 
         Log.info("[STEP-3] - Logout");
         loginPage.logout();
@@ -52,7 +52,7 @@ public class ChangePasswordTest extends BaseTest {
 
         Log.info("[STEP-1] - Login success with valid account");
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
-        Account account = new Account(Constant.USERNAME, DataHelper.generateRandomPasswordString());
+        Account account = new Account(Constant.USERNAME, DataHelper.getRandomValidPassword());
 
         Log.info("[STEP-2] - Change password");
         homePage.goToChangePasswordPage();
@@ -60,9 +60,6 @@ public class ChangePasswordTest extends BaseTest {
 
         String actualMsg = changePasswordPage.getErrorMessage();
         String expectedMsg = Constant.CHANGE_PASSWORD_ERROR;
-        Assert.assertEquals(actualMsg, expectedMsg);
-
-        Log.info("[STEP-3] - Logout");
-        loginPage.logout();
+        Assert.assertEquals(actualMsg, expectedMsg, actualMsg + " is not matched with " + expectedMsg);
     }
 }

@@ -26,5 +26,26 @@
       "confirmPassword": "doubleminh1997",
       "pid": "12345678"
     }
+  ],
+  "account_blank": [
+    {
+      "email": "",
+      "password": "",
+      "confirmPassword": "doubleminh1997",
+      "pid": "12345678"
+    },
+    {
+      "email": "tnminh19973215@gmail.com",
+      "password": "",
+      "confirmPassword": "doubleminh1997",
+      "pid": "12345678"
+    },
+    {
+      "email": "",
+      "password": "minhvip1997",
+      "confirmPassword": "doubleminh1997",
+      "pid": "12345678"
+    }
+
   ]
 }

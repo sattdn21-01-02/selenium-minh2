@@ -29,7 +29,7 @@ public class BookTicketPage extends GeneralPage {
         this.ddlDepartDate.selectDropDownText(ticket.getDepartDate());
         this.ddlSeatType.selectDropDownText(ticket.getSeatType());
         this.ddlTicketAmount.selectDropDownText(ticket.getTicketAmount());
-        ElementHelper.waitForElement(ddlArriveAt.findElement(), Constant.LONG_TIME_WAIT).click();
+        ElementHelper.waitForElementDisplay(ddlArriveAt.findElement(), Constant.LONG_TIME_WAIT).click();
         this.ddlArriveAt.selectDropDownText(ticket.getArriveAt());
         BrowserHelper.scrollPage();
         this.btnSubmitBookTicket.click();
@@ -39,11 +39,7 @@ public class BookTicketPage extends GeneralPage {
         return this.lblErrorMessage.getText();
     }
 
-    public WebElement getTdTextByHeader(String header) {
-        return BrowserHelper.getDriver().findElement(By.xpath(String.format(dynamicTableCell, header)));
-    }
-
-    public String getTextByHead(String header) {
-        return getTdTextByHeader(header).getText();
+    public String getTableCellValue(String header) {
+        return BrowserHelper.getDriver().findElement(By.xpath(String.format(dynamicTableCell, header))).getText();
     }
 }

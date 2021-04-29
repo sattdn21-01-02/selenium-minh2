@@ -36,7 +36,7 @@ public class BrowserHelper {
     }
 
     public static void scrollPage() {
-        JavascriptExecutor jse = (JavascriptExecutor) BrowserHelper.getDriver();
+        JavascriptExecutor jse = (JavascriptExecutor) getDriver();
         jse.executeScript("window.scrollBy(0,250)");
     }
 
@@ -51,7 +51,15 @@ public class BrowserHelper {
         return driver;
     }
 
+    public static void acceptAlert() {
+        getDriver().switchTo().alert().accept();
+    }
+
     public static void navigateToUrl(String url) {
-        BrowserHelper.getDriver().get(url);
+        getDriver().get(url);
+    }
+
+    public static void maximize() {
+        getDriver().manage().window().maximize();
     }
 }

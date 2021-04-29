@@ -45,7 +45,7 @@ public class DraftTest {
         Log.info("[STEP-1] - Login success with valid account");
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 
-        book.setDepartDate(DataHelper.getDepartDateRandom());
+        book.setDepartDate(DataHelper.getRandomValidDepartDate());
         Log.info("[STEP-2] - Book Ticket");
         bookTicketPage.bookTicket(book);
 
@@ -60,7 +60,7 @@ public class DraftTest {
         Log.info("[STEP-1] - Login success with valid account");
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 
-        book.setDepartDate(DataHelper.getDepartDateRandom());
+        book.setDepartDate(DataHelper.getRandomValidDepartDate());
         Log.info("[STEP-2] - Book Ticket");
         bookTicketPage.bookTicket(book);
 

@@ -8,7 +8,7 @@ import page_objects.HomePage;
 import page_objects.LoginPage;
 import page_objects.ManageTicketPage;
 
-public class ManageTicketTest extends BaseTest{
+public class ManageTicketTest extends BaseTest {
 
     private final HomePage homePage = new HomePage();
     private final LoginPage loginPage = new LoginPage();
@@ -30,8 +30,6 @@ public class ManageTicketTest extends BaseTest{
         /*String actualMsg = manageTicketPage.getErrorMessage();
         String expectedMsg = Constant.CHANGE_PASSWORD_MSG;
         Assert.assertEquals(actualMsg,expectedMsg);*/
-        Log.info("[STEP-3] - Logout");
-        loginPage.logout();
     }
 
     @Description("TC02 - User can cancel 1 specified ticket successful")
@@ -50,7 +48,5 @@ public class ManageTicketTest extends BaseTest{
         /*String actualMsg = manageTicketPage.getErrorMessage();
         String expectedMsg = Constant.CHANGE_PASSWORD_MSG;
         Assert.assertEquals(actualMsg,expectedMsg);*/
-        Log.info("[STEP-3] - Logout");
-        loginPage.logout();
     }
 }

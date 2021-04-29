@@ -9,50 +9,50 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class DataHelper {
 
-    public static String generateRandomEmailString() {
+    public static String getRandomValidEmail() {
         Faker faker = new Faker();
         return faker.bothify("email####@gmail.com");
     }
 
-    public static String generateRandomPasswordString() {
+    public static String getRandomValidPassword() {
         Faker faker = new Faker();
         return faker.bothify("?????#####");
     }
 
-    public static String generateRandomPidString() {
+    public static String getRandomValidPid() {
         Faker faker = new Faker();
         return faker.bothify("########");
     }
 
-    public static String generateRandomErrorEmailString() {
+    public static String getRandomErrorEmail() {
         Faker faker = new Faker();
         return faker.bothify("?????");
     }
 
-    public static String generateRandomErrorPasswordString() {
+    public static String getRandomErrorPassword() {
         Faker faker = new Faker();
         return faker.bothify("???????");
     }
 
-    public static String generateRandomErrorPidString() {
+    public static String getRandomErrorPid() {
         Faker faker = new Faker();
         return faker.bothify("#######");
     }
 
-    public static String getDepartDateRandom() {
+    public static String getRandomValidDepartDate() {
         Calendar cal = Calendar.getInstance();
         int ranNum = ThreadLocalRandom.current().nextInt(4, 30);
         cal.add(Calendar.DATE, ranNum);
         return new SimpleDateFormat("M/d/yyyy").format(cal.getTime());
     }
 
-    public static String getBookDate() {
+    public static String getToday() {
         SimpleDateFormat formatter= new SimpleDateFormat("M/d/yyyy");
         Date date = new Date(System.currentTimeMillis());
         return formatter.format(date);
     }
 
-    public static String getExpiredDate() {
+    public static String get3PlusDay() {
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         Calendar c = Calendar.getInstance();
         c.add(Calendar.DAY_OF_MONTH,3);
