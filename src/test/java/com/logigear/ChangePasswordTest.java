@@ -39,7 +39,7 @@ public class ChangePasswordTest extends BaseTest {
         Log.info("[STEP-3] - Logout");
         loginPage.logout();
 
-        Log.info("[STEP-3] - Login with new password");
+        Log.info("[STEP-4] - Login with new password");
         homePage.goToLoginPage();
         loginPage.login(account.getEmail(), account.getPassword());
     }
