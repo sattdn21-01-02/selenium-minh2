@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="D:/seleniumproject/selenium-minh2">
+        <classes>
+            <class name="com.logigear.ChangePasswordTest">
+                <methods>
+                    <include name="TC01"/>
+                    <include name="TC02"/>
+                </methods>
+            </class>
+            <class name="com.logigear.LoginTest">
+                <methods>
+                    <include name="TC01"/>
+                    <include name="TC02"/>
+                    <include name="TC03"/>
+                    <include name="TC04"/>
+                    <include name="TC05"/>
+                </methods>
+            </class>
+            <class name="com.logigear.ManageTicketTest">
+                <methods>
+                    <include name="TC01"/>
+                    <include name="TC02"/>
+                </methods>
+            </class>
+            <class name="com.logigear.RegisterTest">
+                <methods>
+                    <include name="TC01"/>
+                    <include name="TC02"/>
+                    <include name="TC03"/>
+                </methods>
+            </class>
+            <class name="com.logigear.TicketTest">
+                <methods>
+                    <include name="TC01"/>
+                    <include name="TC02"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

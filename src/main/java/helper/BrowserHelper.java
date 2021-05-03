@@ -18,16 +18,16 @@ public class BrowserHelper {
         switch (type) {
             case CHROME:
                 WebDriverManager.chromedriver().setup();
-                Log.info("------------------------------- OPEN CHROME DRIVER -------------------------------");
+                LoggerHelper.info("------------------------------- OPEN CHROME DRIVER -------------------------------");
                 driver = new ChromeDriver();
                 break;
             case FIREFOX:
                 WebDriverManager.firefoxdriver().setup();
-                Log.info("------------------------------- OPEN FIREFOX DRIVER -------------------------------");
+                LoggerHelper.info("------------------------------- OPEN FIREFOX DRIVER -------------------------------");
                 driver = new FirefoxDriver();
                 break;
             default:
-                Log.error("[startBrowser] No browser passed throw exception");
+                LoggerHelper.error("[startBrowser] No browser passed throw exception");
                 break;
         }
 

@@ -25,16 +25,16 @@ public class RegisterTest extends BaseTest {
     @Description("TC01 - User can register a new account Railway with valid register information")
     @Test
     public void TC01() {
-        Log.startTestCase("TC01 - User can register a new account Railway with valid register information");
+        LoggerHelper.startTestCase("TC01 - User can register a new account Railway with valid register information");
         homePage.goToRegisterPage();
         String password = DataHelper.getRandomValidPassword();
-        Log.info("[STEP-1] - Register success with valid information");
+        LoggerHelper.info("[STEP-1] - Register success with valid information");
         Account account = new Account(DataHelper.getRandomValidEmail(),
-                password, password, DataHelper.getRandomErrorPid());
+                password, password, DataHelper.getRandomValidPid());
 
         registerPage.register(account);
 
-        Log.info("[STEP-2] - Assert the  register confirm message is displays");
+        LoggerHelper.info("[STEP-2] - Assert the  register confirm message is displays");
         String actualMsg = Constant.REGISTER_CONFIRM_MSG;
         String expectedMsg = registerPage.getSuccessfulMessage();
         Assert.assertEquals(actualMsg, expectedMsg, actualMsg + " is not matched with " + expectedMsg);
@@ -43,13 +43,13 @@ public class RegisterTest extends BaseTest {
     @Description("TC02 - User can not register a new account Railway with invalid register information")
     @Test(dataProvider = "registerErrorObjects")
     public void TC02(Account account) {
-        Log.startTestCase("TC02 - User can not register a new account Railway with invalid register information");
+        LoggerHelper.startTestCase("TC02 - User can not register a new account Railway with invalid register information");
         homePage.goToRegisterPage();
-        Log.info("[STEP-1] - Register with invalid information");
+        LoggerHelper.info("[STEP-1] - Register with invalid information");
         account.setEmail(DataHelper.getRandomErrorEmail());
         registerPage.register(account);
 
-        Log.info("[STEP-2] - Assert the error message is displays");
+        LoggerHelper.info("[STEP-2] - Assert the error message is displays");
         String actualMsg = registerPage.getGeneralErrorMessage();
         String expectedMsg = Constant.FAIL_MSG_REGISTER;
         Assert.assertEquals(actualMsg, expectedMsg, actualMsg + " is not matched with " + expectedMsg);
@@ -58,13 +58,13 @@ public class RegisterTest extends BaseTest {
     @Description("TC03 - User can not register a new account Railway with invalid register information")
     @Test
     public void TC03() {
-        Log.startTestCase("TC03 - User can not register a new account Railway with invalid register information");
+        LoggerHelper.startTestCase("TC03 - User can not register a new account Railway with invalid register information");
         homePage.goToRegisterPage();
-        Log.info("[STEP-1] - Register with invalid information");
+        LoggerHelper.info("[STEP-1] - Register with invalid information");
         Account account = new Account(Constant.BLANK_EMAIL, Constant.BLANK_PASSWORD, Constant.BLANK_PASSWORD, Constant.BLANK_PID);
         registerPage.register(account);
 
-        Log.info("[STEP-2] - Assert the error message is displays");
+        LoggerHelper.info("[STEP-2] - Assert the error message is displays");
         String actualMsg = registerPage.getGeneralErrorMessage();
         String expectedMsg = Constant.FAIL_MSG_REGISTER;
         Assert.assertEquals(actualMsg, expectedMsg, actualMsg + " is not matched with " + expectedMsg);

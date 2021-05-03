@@ -17,27 +17,27 @@
             <LevelRangeFilter minLevel="DEBUG" maxLevel="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${LOG_PATTERN}"/>
             <Policies>
-                <SizeBasedTriggeringPolicy size="19500KB"/>
+                <SizeBasedTriggeringPolicy size="19500KB" />
             </Policies>
             <DefaultRolloverStrategy max="10"/>
         </RollingFile>
 
         <RollingFile name="infoLog" fileName="${basePath}/RailWays.log"
-                     filePattern="${basePath}/application-info-%d{yyyy-MM-dd}-%i.log">
+                     filePattern="${basePath}/application-info-%d{yyyy-MM-dd}-%i.log" >
             <LevelRangeFilter minLevel="INFO" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${LOG_PATTERN}"/>
             <Policies>
-                <SizeBasedTriggeringPolicy size="19500KB"/>
+                <SizeBasedTriggeringPolicy size="19500KB" />
             </Policies>
             <DefaultRolloverStrategy max="10"/>
         </RollingFile>
 
         <RollingFile name="errorLog" fileName="${basePath}/RailWays.log"
-                     filePattern="${basePath}/application-error-%d{yyyy-MM-dd}-%i.log">
+                     filePattern="${basePath}/application-error-%d{yyyy-MM-dd}-%i.log" >
             <LevelRangeFilter minLevel="ERROR" maxLevel="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${LOG_PATTERN}"/>
             <Policies>
-                <SizeBasedTriggeringPolicy size="19500KB"/>
+                <SizeBasedTriggeringPolicy size="19500KB" />
             </Policies>
             <DefaultRolloverStrategy max="10"/>
         </RollingFile>
@@ -47,9 +47,9 @@
     <Loggers>
         <Root level="all">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="debugLog"/>
-            <AppenderRef ref="infoLog"/>
-            <AppenderRef ref="errorLog"/>
+            <AppenderRef ref="debugLog" />
+            <AppenderRef ref="infoLog" />
+            <AppenderRef ref="errorLog" />
         </Root>
     </Loggers>
 

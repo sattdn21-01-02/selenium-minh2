@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.org.glassfish.gmbal.Description;
 import helper.Constant;
 import helper.DataHelper;
-import helper.Log;
+import helper.LoggerHelper;
 import models.Ticket;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -27,7 +27,7 @@ public class TicketTest extends BaseTest {
     @Description("TC01 - User can book ticket into Railway with valid information")
     @Test()
     public void TC01() {
-        Log.startTestCase("TC01 - User can book ticket into Railway with valid information");
+        LoggerHelper.startTestCase("TC01 - User can book ticket into Railway with valid information");
         homePage.goToBookTicketPage();
         String dateDepart = DataHelper.getRandomValidDepartDate();
         String departFrom = "Phan Thiết";
@@ -48,12 +48,12 @@ public class TicketTest extends BaseTest {
                 status,
                 totalPrice);
 
-        Log.info("[STEP-1] - Login success with valid account");
+        LoggerHelper.info("[STEP-1] - Login success with valid account");
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
-        Log.info("[STEP-2] - Book Ticket");
+        LoggerHelper.info("[STEP-2] - Book Ticket");
         bookTicketPage.bookTicket(bookTicket);
 
-        Log.info("[STEP-3] - Assert information book ticket");
+        LoggerHelper.info("[STEP-3] - Assert information book ticket");
         Assert.assertEquals(bookTicketPage.getTableCellValue(Constant.HEADER_ARRIVE_STATION), bookTicket.getArriveAt(), "Arrive Station is not displayed as expected");
         Assert.assertEquals(bookTicketPage.getTableCellValue(Constant.HEADER_DEPART_STATION), bookTicket.getDepartFrom(), "Depart Station is not displayed as expected");
         Assert.assertEquals(bookTicketPage.getTableCellValue(Constant.HEADER_SEAT_TYPE), bookTicket.getSeatType(), "Seat Type is not displayed as expected");
@@ -61,41 +61,8 @@ public class TicketTest extends BaseTest {
         Assert.assertEquals(bookTicketPage.getTableCellValue(Constant.HEADER_BOOK_DATE), bookTicket.getBookDate(), "Book Date is not displayed as expected");
         Assert.assertEquals(bookTicketPage.getTableCellValue(Constant.HEADER_EXPIRED_DATE), bookTicket.getExpiredDate(), "Expired Date is not displayed as expected");
         Assert.assertEquals(bookTicketPage.getTableCellValue(Constant.HEADER_AMOUNT), bookTicket.getTicketAmount(), "Amount is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTableCellValue(Constant.HEADER_TOTAL_PRICE), bookTicket.getTotalPrice(),"Total Price is not displayed as expected");
+        Assert.assertEquals(bookTicketPage.getTableCellValue(Constant.HEADER_TOTAL_PRICE), bookTicket.getTotalPrice(), "Total Price is not displayed as expected");
     }
 
-    @Description("TC02 - User can not book over 10 ticket into Railway with valid information")
-    @Test(dataProvider = "bookError")
-    public void TC02(Ticket book) {
-        Log.startTestCase("TC02 - User can not book over 10 ticket into Railway with valid information");
-        homePage.goToBookTicketPage();
-        Log.info("[STEP-1] - Login success with valid account");
-        loginPage.login(Constant.USERNAME, Constant.PASSWORD);
-
-        book.setDepartDate(DataHelper.getRandomValidDepartDate());
-        Log.info("[STEP-2] - Book Ticket");
-        bookTicketPage.bookTicket(book);
-
-        Log.info("[STEP-3] - Assert information book ticket");
-
-        Assert.assertEquals(bookTicketPage.getTableCellValue(Constant.HEADER_ARRIVE_STATION), book.getArriveAt(), "Arrive Station is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTableCellValue(Constant.HEADER_DEPART_STATION), book.getDepartFrom(), "Depart Station is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTableCellValue(Constant.HEADER_SEAT_TYPE), book.getSeatType(), "Seat Type is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTableCellValue(Constant.HEADER_DEPART_DATE), book.getDepartDate(), "Depart Date is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTableCellValue(Constant.HEADER_BOOK_DATE), book.getBookDate(), "Book Date is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTableCellValue(Constant.HEADER_EXPIRED_DATE), book.getExpiredDate(), "Expired Date is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTableCellValue(Constant.HEADER_AMOUNT), book.getTicketAmount(), "Amount is not displayed as expected");
-        Assert.assertEquals(bookTicketPage.getTableCellValue(Constant.HEADER_TOTAL_PRICE), book.getTotalPrice(), "Total Price is not displayed as expected");
-    }
-
-
-    @DataProvider(name = "bookError")
-    public Object[] readJsonObjectBookError() throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        FileReader reader = new FileReader("src/test/resources/book-ticket-data.json");
-        JsonNode jsonNode = objectMapper.readTree(reader);
-        List<Ticket> bookTickets = Arrays.asList(objectMapper.treeToValue(jsonNode.get("book_error"), Ticket[].class));
-        return bookTickets.toArray();
-    }
 }
 

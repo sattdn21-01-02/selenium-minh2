@@ -11,12 +11,12 @@ public class DataHelper {
 
     public static String getRandomValidEmail() {
         Faker faker = new Faker();
-        return faker.bothify("email####@gmail.com");
+        return faker.bothify("email######@gmail.com");
     }
 
     public static String getRandomValidPassword() {
         Faker faker = new Faker();
-        return faker.bothify("?????#####");
+        return faker.bothify("??????######");
     }
 
     public static String getRandomValidPid() {
@@ -47,7 +47,7 @@ public class DataHelper {
     }
 
     public static String getToday() {
-        SimpleDateFormat formatter= new SimpleDateFormat("M/d/yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("M/d/yyyy");
         Date date = new Date(System.currentTimeMillis());
         return formatter.format(date);
     }
@@ -55,7 +55,7 @@ public class DataHelper {
     public static String get3PlusDay() {
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         Calendar c = Calendar.getInstance();
-        c.add(Calendar.DAY_OF_MONTH,3);
+        c.add(Calendar.DAY_OF_MONTH, 3);
         return sdf.format(c.getTime());
     }
 }

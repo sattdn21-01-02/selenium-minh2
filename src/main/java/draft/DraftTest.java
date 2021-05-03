@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.org.glassfish.gmbal.Description;
 import helper.Constant;
 import helper.DataHelper;
-import helper.Log;
+import helper.LoggerHelper;
 import models.Ticket;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -40,31 +40,31 @@ public class DraftTest {
     @Description("TC01 - User can book ticket into Railway with valid information")
     @org.testng.annotations.Test(dataProvider = "bookSuccess")
     public void TC01(Ticket book) {
-        Log.startTestCase("TC01 - User can log into Railway with valid username and password");
+        LoggerHelper.startTestCase("TC01 - User can log into Railway with valid username and password");
 
-        Log.info("[STEP-1] - Login success with valid account");
+        LoggerHelper.info("[STEP-1] - Login success with valid account");
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 
         book.setDepartDate(DataHelper.getRandomValidDepartDate());
-        Log.info("[STEP-2] - Book Ticket");
+        LoggerHelper.info("[STEP-2] - Book Ticket");
         bookTicketPage.bookTicket(book);
 
-        Log.info("[STEP-3] - Assert information book ticket");
+        LoggerHelper.info("[STEP-3] - Assert information book ticket");
         loginPage.logout();
     }
     @Description("TC02 - User can not book over 10 ticket into Railway with valid information")
     @org.testng.annotations.Test(dataProvider = "bookError")
     public void TC02(Ticket book) {
-        Log.startTestCase("TC02 - User can not book over 10 ticket into Railway with valid information");
+        LoggerHelper.startTestCase("TC02 - User can not book over 10 ticket into Railway with valid information");
 
-        Log.info("[STEP-1] - Login success with valid account");
+        LoggerHelper.info("[STEP-1] - Login success with valid account");
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 
         book.setDepartDate(DataHelper.getRandomValidDepartDate());
-        Log.info("[STEP-2] - Book Ticket");
+        LoggerHelper.info("[STEP-2] - Book Ticket");
         bookTicketPage.bookTicket(book);
 
-        Log.info("[STEP-3] - Assert information book ticket");
+        LoggerHelper.info("[STEP-3] - Assert information book ticket");
 
         loginPage.logout();
     }

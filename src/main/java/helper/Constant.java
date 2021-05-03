@@ -31,6 +31,6 @@ public class Constant {
     public static final String WELCOME = "Welcome ";
     public static final String REGISTER_CONFIRM_MSG = "You're here";
     public static final String CHANGE_PASSWORD_MSG = "Your password has been updated!";
-    public static final String CHANGE_PASSWORD_ERROR = "An error occurred when attempting to change the password. Maybe your current password is incorrect.";
+    public static final String CHANGE_PASSWORD_ERROR = "Password change failed. Please correct the errors and try again.";
     public static final String FAIL_MSG_REGISTER = "There're errors in the form. Please correct the errors and try again.";
 }

@@ -12,13 +12,17 @@
       "departFrom": "Sài Gòn",
       "arriveAt": "Phan Thiết",
       "seatType": "Hard seat",
-      "ticketAmount": "1"
+      "ticketAmount": "1",
+      "status": "New",
+      "totalPrice": "90000"
     },
     {
       "departFrom": "Sài Gòn",
       "arriveAt": "Phan Thiết",
       "seatType": "Hard seat",
-      "ticketAmount": "10"
+      "ticketAmount": "10",
+      "status": "New",
+      "totalPrice": "900000"
     }
   ]
 }
