@@ -73,7 +73,7 @@ public class RegisterTest extends BaseTest {
     @DataProvider(name = "registerErrorObjects")
     public Object[] readJsonObjectMapperRegisterError() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        FileReader reader = new FileReader("src/test/resources/register-data.json");
+        FileReader reader = new FileReader("src/test/resources/test-data/register-data.json");
         JsonNode jsonNode = objectMapper.readTree(reader);
         List<Account> accounts = Arrays.asList(objectMapper.treeToValue(jsonNode.get("register_error"), Account[].class));
         return accounts.toArray();

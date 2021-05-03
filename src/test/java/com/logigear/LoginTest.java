@@ -100,7 +100,7 @@ public class LoginTest extends BaseTest {
     @DataProvider(name = "loginInvalidAccount")
     public Object[] readJsonObjectMapperLoginError() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        FileReader reader = new FileReader("src/test/resources/login-data.json");
+        FileReader reader = new FileReader("src/test/resources/test-data/login-data.json");
         JsonNode jsonNode = objectMapper.readTree(reader);
         List<Account> accounts = Arrays.asList(objectMapper.treeToValue(jsonNode.get("account_error"), Account[].class));
         return accounts.toArray();
