@@ -19,14 +19,11 @@ public class LoginTest extends BaseTest {
     public void TC02() {
         LoggerHelper.startTestCase("TC02 - User can't login with blank Username textbox");
 
-        LoggerHelper.info("[STEP-1] - Click on login tab");
         homePage.goToLoginPage();
 
-        LoggerHelper.info("[STEP-2] - Login unsuccessful with blank email and valid password");
         Account account = new Account(Constant.BLANK_EMAIL, Constant.PASSWORD);
         loginPage.login(account);
 
-        LoggerHelper.info("[STEP-3] - Assert error message is displays");
         String actualMsg = loginPage.getGeneralErrorMessage();
         String expectedMsg = Constant.FAIL_MSG_LOGIN_BLANK_INFORMATION;
         Assert.assertEquals(actualMsg, expectedMsg, actualMsg + "is not matched with" + expectedMsg);
