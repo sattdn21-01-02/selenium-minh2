@@ -3,21 +3,21 @@
     <test name="Chrome" enabled="true">
         <parameter name="browser" value="CHROME"/>
         <classes>
-            <class name="com.logigear.LoginTest"></class>
-            <!--        <class name="com.logigear.RegisterTest"></class>-->
-            <!--        <class name="com.logigear.ChangePasswordTest"></class>-->
-            <!--        <class name="com.logigear.TicketTest"></class>-->
-            <!--        <class name="com.logigear.ManageTicketTest"></class>-->
+<!--            <class name="com.logigear.LoginTest"></class>-->
+<!--            <class name="com.logigear.RegisterTest"></class>-->
+<!--            <class name="com.logigear.ChangePasswordTest"></class>-->
+<!--            <class name="com.logigear.TicketTest"></class>-->
+<!--            <class name="com.logigear.ManageTicketTest"></class>-->
         </classes>
     </test>
     <test name="Firefox" enabled="true">
         <parameter name="browser" value="FIREFOX"/>
         <classes>
-            <class name="com.logigear.LoginTest"></class>
-            <!--        <class name="com.logigear.RegisterTest"></class>-->
-            <!--        <class name="com.logigear.ChangePasswordTest"></class>-->
-            <!--        <class name="com.logigear.TicketTest"></class>-->
-            <!--        <class name="com.logigear.ManageTicketTest"></class>-->
+<!--            <class name="com.logigear.LoginTest"></class>-->
+<!--            <class name="com.logigear.RegisterTest"></class>-->
+<!--            <class name="com.logigear.ChangePasswordTest"></class>-->
+<!--            <class name="com.logigear.TicketTest"></class>-->
+            <class name="com.logigear.ManageTicketTest"></class>
         </classes>
     </test>
     <listeners>

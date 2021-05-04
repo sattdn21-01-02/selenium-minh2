@@ -19,7 +19,7 @@ public class ManageTicketTest extends BaseTest {
     public void TC01() {
         LoggerHelper.startTestCase("TC02 - User can cancel 1 specified ticket successful");
         homePage.goToLoginPage();
-        int id = 2;
+        int id = 1;
         LoggerHelper.info("[STEP-1] - Login success with valid account");
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 

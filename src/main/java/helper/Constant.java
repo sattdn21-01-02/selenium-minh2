@@ -18,6 +18,7 @@ public class Constant {
     public static final String HEADER_EXPIRED_DATE = "Expired Date";
     public static final String HEADER_AMOUNT = "Amount";
     public static final String HEADER_TOTAL_PRICE = "Total Price";
+    public static final String DATE_FORMAT = "M/d/yyyy";
 
 
     //Message
