@@ -1,14 +1,25 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="suite">
-<test name="Login" enabled="true">
-    <classes>
-        <class name="com.logigear.LoginTest"></class>
-        <class name="com.logigear.RegisterTest"></class>
-        <class name="com.logigear.ChangePasswordTest"></class>
-        <class name="com.logigear.TicketTest"></class>
-        <class name="com.logigear.ManageTicketTest"></class>
-    </classes>
-</test>
+    <test name="Chrome" enabled="true">
+        <parameter name="browser" value="CHROME"/>
+        <classes>
+            <class name="com.logigear.LoginTest"></class>
+            <!--        <class name="com.logigear.RegisterTest"></class>-->
+            <!--        <class name="com.logigear.ChangePasswordTest"></class>-->
+            <!--        <class name="com.logigear.TicketTest"></class>-->
+            <!--        <class name="com.logigear.ManageTicketTest"></class>-->
+        </classes>
+    </test>
+    <test name="Firefox" enabled="true">
+        <parameter name="browser" value="FIREFOX"/>
+        <classes>
+            <class name="com.logigear.LoginTest"></class>
+            <!--        <class name="com.logigear.RegisterTest"></class>-->
+            <!--        <class name="com.logigear.ChangePasswordTest"></class>-->
+            <!--        <class name="com.logigear.TicketTest"></class>-->
+            <!--        <class name="com.logigear.ManageTicketTest"></class>-->
+        </classes>
+    </test>
     <listeners>
         <listener class-name="org.uncommons.reportng.HTMLReporter"/>
         <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
