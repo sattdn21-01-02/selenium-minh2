@@ -62,5 +62,4 @@ public class GeneralPage {
     public void logout() {
         this.tabLogout.click();
     }
-
 }
