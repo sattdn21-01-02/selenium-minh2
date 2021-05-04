@@ -19,16 +19,13 @@ public class LoginTest extends BaseTest {
     public void TC01() {
         LoggerHelper.startTestCase("TC01 - User can log into Railway with valid username and password");
 
-        LoggerHelper.info("[STEP-1] - Click on login tab");
         homePage.goToLoginPage();
 
-        LoggerHelper.info("[STEP-2] - Login success with valid account");
         Account account = new Account(Constant.USERNAME, Constant.PASSWORD);
         loginPage.login(account);
 
-        LoggerHelper.info("[STEP-3] - Assert welcome message is displays");
         String actualMsg = homePage.getWelcomeMessage();
         String expectedMsg = Constant.WELCOME + Constant.USERNAME;
-        Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
+        Assert.assertEquals(actualMsg, expectedMsg);
     }
 }
