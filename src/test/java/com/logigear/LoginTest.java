@@ -28,7 +28,7 @@ public class LoginTest extends BaseTest {
 
         LoggerHelper.info("[STEP-3] - Assert error message is displays");
         String actualMsg = loginPage.getGeneralErrorMessage();
-        String expectedMsg = Constant.FAIL_MSG_REGISTER;
+        String expectedMsg = Constant.FAIL_MSG_LOGIN_BLANK_INFORMATION;
         Assert.assertEquals(actualMsg, expectedMsg, actualMsg + "is not matched with" + expectedMsg);
     }
 }
