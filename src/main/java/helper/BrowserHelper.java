@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -25,6 +26,11 @@ public class BrowserHelper {
                 WebDriverManager.firefoxdriver().setup();
                 LoggerHelper.info("------------------------------- OPEN FIREFOX DRIVER -------------------------------");
                 driver = new FirefoxDriver();
+                break;
+            case EDGE:
+                WebDriverManager.edgedriver().setup();
+                LoggerHelper.info("------------------------------- OPEN EDGE DRIVER -------------------------------");
+                driver = new EdgeDriver();
                 break;
             default:
                 LoggerHelper.error("[startBrowser] No browser passed throw exception");
