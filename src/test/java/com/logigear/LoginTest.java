@@ -20,14 +20,11 @@ public class LoginTest extends BaseTest {
     public void TC03() {
         LoggerHelper.startTestCase("TC03 - User cannot log into Railway with invalid password ");
 
-        LoggerHelper.info("[STEP-1] - Click on login tab");
         homePage.goToLoginPage();
 
-        LoggerHelper.info("[STEP-2] - Login unsuccessful with valid email and invalid password");
         Account account = new Account(Constant.USERNAME, DataHelper.getRandomErrorPassword());
         loginPage.login(account);
 
-        LoggerHelper.info("[STEP-3] - Assert error message is displays");
         String actualMsg = loginPage.getGeneralErrorMessage();
         String expectedMsg = Constant.FAIL_MSG_LOGIN_INVALID_ACCOUNT;
         Assert.assertEquals(actualMsg, expectedMsg, actualMsg + " is not matched with " + expectedMsg);

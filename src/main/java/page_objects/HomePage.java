@@ -7,7 +7,7 @@ public class HomePage extends GeneralPage {
 
 
     //Elements
-    private final Label lblWelcomeMessage = new Label(By.cssSelector(".account strong"));
+    private final Label lblWelcomeMessage = new Label(By.cssSelector(".account"));
 
     //Methods
     public String getWelcomeMessage() {
