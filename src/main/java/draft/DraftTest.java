@@ -7,11 +7,9 @@ import com.sun.org.glassfish.gmbal.Description;
 import helper.Constant;
 import helper.DataHelper;
 import helper.LoggerHelper;
-import models.Ticket;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
-import page_objects.*;
 
 import java.io.FileReader;
 import java.io.IOException;
