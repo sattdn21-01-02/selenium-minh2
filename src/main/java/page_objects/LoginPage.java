@@ -7,7 +7,7 @@ import helper.element_helper.TextBox;
 import models.Account;
 import org.openqa.selenium.By;
 
-public class LoginPage extends GeneralPage{
+public class LoginPage extends GeneralPage {
 
     //Elements
     private final TextBox txtEmail = new TextBox(By.cssSelector("input#username"));

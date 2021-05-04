@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import page_objects.HomePage;
 import page_objects.LoginPage;
 
-public class LoginTest extends BaseTest{
+public class LoginTest extends BaseTest {
 
     private final HomePage homePage = new HomePage();
     private final LoginPage loginPage = new LoginPage();
@@ -30,6 +30,6 @@ public class LoginTest extends BaseTest{
         LoggerHelper.info("[STEP-3] - Assert error message is displays");
         String actualMsg = loginPage.getGeneralErrorMessage();
         String expectedMsg = Constant.FAIL_MSG_LOGIN_INVALID_ACCOUNT;
-        Assert.assertEquals(actualMsg, expectedMsg, actualMsg+" is not matched with "+expectedMsg);
+        Assert.assertEquals(actualMsg, expectedMsg, actualMsg + " is not matched with " + expectedMsg);
     }
 }

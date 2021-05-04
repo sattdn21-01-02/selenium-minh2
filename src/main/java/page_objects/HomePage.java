@@ -3,7 +3,7 @@ package page_objects;
 import helper.element_helper.Label;
 import org.openqa.selenium.By;
 
-public class HomePage extends GeneralPage{
+public class HomePage extends GeneralPage {
 
 
     //Elements
