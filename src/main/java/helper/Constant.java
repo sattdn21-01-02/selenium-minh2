@@ -13,5 +13,5 @@ public class Constant {
 
 
     //Message
-    public static final String FAIL_MSG_LOGIN_INVALID_ACCOUNT = "Invalid username or password. Please try again.";
+    public static final String FAIL_MSG_LOGIN_INVALID_ACCOUNT = "There was a problem with your login and/or errors exist in your form.";
 }
