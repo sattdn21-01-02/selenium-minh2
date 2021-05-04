@@ -1,12 +1,11 @@
 package helper;
 
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
 
 public class LoggerHelper {
 
-    private static Logger Logger = LogManager.getLogger(LoggerHelper.class.getName());
+    private static Logger LoggerHelper = Logger.getLogger(LoggerHelper.class.getName());
 
     public static void startTestCase(String sTestCaseName) {
         info("--------- " + sTestCaseName + " ---------\n");
@@ -19,22 +18,22 @@ public class LoggerHelper {
 
     // Need to create these methods, so that they can be called
     public static void info(String message) {
-        Logger.info(message);
+        LoggerHelper.info(message);
     }
 
     public static void warn(String message) {
-        Logger.warn(message);
+        LoggerHelper.warn(message);
     }
 
     public static void error(String message) {
-        Logger.error(message);
+        LoggerHelper.error(message);
     }
 
     public static void fatal(String message) {
-        Logger.fatal(message);
+        LoggerHelper.fatal(message);
     }
 
     public static void debug(String message) {
-        Logger.debug(message);
+        LoggerHelper.debug(message);
     }
 }
