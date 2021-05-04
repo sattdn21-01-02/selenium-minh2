@@ -1,0 +1,44 @@
+{
+  "accounts": [
+    {
+      "email": "tnminh19971234@gmail.com",
+      "password": "minhvip1997"
+    },
+    {
+      "email": "tnminh19973215@gmail.com",
+      "password": "doubleminh1997"
+    }
+  ],
+  "account_error": [
+    {
+      "email": "qweqwe@gmail.com",
+      "password": "minhvip1997"
+    },
+    {
+      "email": "tnminh19973215@gmail.com",
+      "password": "eqweqeqwnh1997"
+    }
+  ],
+  "account_invalid": [
+    {
+      "email": "tnminh1997123@gmail.com",
+      "password": ""
+    },
+    {
+      "email": "tnminh1997123@gmail.com",
+      "password": ""
+    },
+    {
+      "email": "tnminh1997123@gmail.com",
+      "password": ""
+    },
+    {
+      "email": "tnminh1997123@gmail.com",
+      "password": ""
+    },
+    {
+      "email": "tnminh1997123@gmail.com",
+      "password": ""
+    }
+  ]
+}
