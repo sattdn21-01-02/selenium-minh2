@@ -27,6 +27,6 @@ public class LoginTest extends BaseTest {
 
         String actualMsg = loginPage.getGeneralErrorMessage();
         String expectedMsg = Constant.FAIL_MSG_LOGIN_INVALID_ACCOUNT;
-        Assert.assertEquals(actualMsg, expectedMsg, actualMsg + " is not matched with " + expectedMsg);
+        Assert.assertEquals(actualMsg, expectedMsg);
     }
 }
