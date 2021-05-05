@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 public class ChangePasswordPage extends GeneralPage {
 
     //Elements
-    private final Label lblChangePassword = new Label(By.cssSelector("[align='center']"));
+    private final Label lblChangePassword = new Label(By.cssSelector("//div[@id='content']//h1"));
 
     //Methods
     public String getChangePasswordTitle() {

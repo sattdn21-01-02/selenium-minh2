@@ -30,13 +30,11 @@ public class LoginTest extends BaseTest {
 
         homePage.goToMyTicketPage();
         String actualMsgMyTicketPage = myTicketPage.getMyTicketTitle();
-        String expectedMsgMyTicketPage = Constant.MY_TICKET_TITLE;
-        Assert.assertEquals(actualMsgMyTicketPage, expectedMsgMyTicketPage);
+        Assert.assertEquals(actualMsgMyTicketPage, Constant.MY_TICKET_TITLE);
 
         homePage.goToChangePasswordPage();
         String actualMsgChangePasswordPage = changePasswordPage.getChangePasswordTitle();
-        String expectedMsgChangePasswordPage = Constant.CHANGE_PASSWORD_TITLE;
-        Assert.assertEquals(actualMsgChangePasswordPage, expectedMsgChangePasswordPage);
+        Assert.assertEquals(actualMsgChangePasswordPage, Constant.CHANGE_PASSWORD_TITLE);
 
         homePage.logout();
       }
@@ -52,6 +50,6 @@ public class LoginTest extends BaseTest {
 
         String actualMsg = homePage.getWelcomeMessage();
         String expectedMsg = Constant.WELCOME + Constant.USERNAME;
-        Assert.assertEquals(actualMsg, expectedMsg);
+        Assert.assertEquals(actualMsg, expectedMsg, "Welcome message fails to display!");
     }
 }
