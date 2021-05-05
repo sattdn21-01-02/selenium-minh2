@@ -38,8 +38,7 @@ public class LoginTest extends BaseTest {
         loginPage.login(account);
 
         String actualMsg = loginPage.getGeneralErrorMessage();
-        String expectedMsg = Constant.INVALID_LOGIN_MULTIPLE_MSG;
-        Assert.assertEquals(actualMsg, expectedMsg);
+        Assert.assertEquals(actualMsg, Constant.MAXIMUM_LOGIN_ATTEMPTS_WARNING_MSG,"Error message fails to display!");
     }
 
     @Test(description = "TC01 - User can log into Railway with valid username and password")
