@@ -21,6 +21,6 @@ public class ContactTest extends BaseTest {
         homePage.goToContactPage();
 
         String actualMsg = contactPage.getEmailHref();
-        Assert.assertEquals(actualMsg, contactEmail);
+        Assert.assertEquals(actualMsg, contactEmail,"Error message fails to display!");
     }
 }
