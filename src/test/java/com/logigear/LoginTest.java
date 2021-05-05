@@ -9,6 +9,11 @@ import helper.LoggerHelper;
 import models.Account;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import com.sun.org.glassfish.gmbal.Description;
+import helper.Constant;
+import helper.LoggerHelper;
+import models.Account;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import page_objects.HomePage;
 import page_objects.LoginPage;
@@ -37,8 +42,23 @@ public class LoginTest extends BaseTest {
         String expectedMsg = Constant.FAIL_MSG_LOGIN_MULTIPLE;
         Assert.assertEquals(actualMsg, expectedMsg);
     }
+  
+    @Description("TC01 - User can log into Railway with valid username and password")
+    @Test
+    public void TC01() {
+        LoggerHelper.startTestCase("TC01 - User can log into Railway with valid username and password");
 
-    @DataProvider(name = "loginInvalidAccount")
+        homePage.goToLoginPage();
+
+        Account account = new Account(Constant.USERNAME, Constant.PASSWORD);
+        loginPage.login(account);
+
+        String actualMsg = homePage.getWelcomeMessage();
+        String expectedMsg = Constant.WELCOME + Constant.USERNAME;
+        Assert.assertEquals(actualMsg, expectedMsg);
+    }
+  
+  @DataProvider(name = "loginInvalidAccount")
     public Object[] readJsonObjectMapperLoginError() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         FileReader reader = new FileReader(Constant.TEST_RESOURCES_PATH+"test-data/login-data.json");

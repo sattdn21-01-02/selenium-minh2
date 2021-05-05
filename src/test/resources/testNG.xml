@@ -4,7 +4,6 @@
         <parameter name="browser" value="CHROME"/>
         <classes>
             <class name="com.logigear.LoginTest"></class>
-
         </classes>
     </test>
     <test name="Firefox" enabled="true">
