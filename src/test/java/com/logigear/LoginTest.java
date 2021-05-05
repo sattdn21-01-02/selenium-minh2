@@ -30,11 +30,11 @@ public class LoginTest extends BaseTest {
 
         homePage.goToMyTicketPage();
         String actualMsgMyTicketPage = myTicketPage.getMyTicketTitle();
-        Assert.assertEquals(actualMsgMyTicketPage, Constant.MY_TICKET_TITLE);
+        Assert.assertEquals(actualMsgMyTicketPage, Constant.MY_TICKET_TITLE, "My Ticket page doesn't display");
 
         homePage.goToChangePasswordPage();
         String actualMsgChangePasswordPage = changePasswordPage.getChangePasswordTitle();
-        Assert.assertEquals(actualMsgChangePasswordPage, Constant.CHANGE_PASSWORD_TITLE);
+        Assert.assertEquals(actualMsgChangePasswordPage, Constant.CHANGE_PASSWORD_TITLE, "Change Password page doesn't display");
 
         homePage.logout();
       }
