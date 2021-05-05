@@ -12,5 +12,4 @@ public class ContactPage extends GeneralPage {
     public String getEmail() {
         return this.linkEmail.getText();
     }
-
 }
