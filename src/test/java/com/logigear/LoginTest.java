@@ -28,8 +28,7 @@ public class LoginTest extends BaseTest {
     private final HomePage homePage = new HomePage();
     private final LoginPage loginPage = new LoginPage();
 
-    @Description("TC05 - System shows message when user enters wrong password several times ")
-    @Test(dataProvider = "loginInvalidAccount")
+    @Test(description = "TC05 - System shows message when user enters wrong password several times ",dataProvider = "loginInvalidAccount")
     public void TC05(Account account) {
         LoggerHelper.startTestCase("TC05 - System shows message when user enters wrong password several times ");
 
@@ -42,9 +41,8 @@ public class LoginTest extends BaseTest {
         String expectedMsg = Constant.FAIL_MSG_LOGIN_MULTIPLE;
         Assert.assertEquals(actualMsg, expectedMsg);
     }
-  
-    @Description("TC01 - User can log into Railway with valid username and password")
-    @Test
+
+    @Test(description = "TC01 - User can log into Railway with valid username and password")
     public void TC01() {
         LoggerHelper.startTestCase("TC01 - User can log into Railway with valid username and password");
 
