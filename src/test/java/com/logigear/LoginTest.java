@@ -27,5 +27,6 @@ public class LoginTest extends BaseTest {
         String actualMsg = loginPage.getGeneralErrorMessage();
         String expectedMsg = Constant.FAIL_MSG_LOGIN_BLANK_INFORMATION;
         Assert.assertEquals(actualMsg, expectedMsg);
+
     }
 }
