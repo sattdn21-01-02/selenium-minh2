@@ -14,8 +14,7 @@ public class LoginTest extends BaseTest {
     private final HomePage homePage = new HomePage();
     private final LoginPage loginPage = new LoginPage();
 
-    @Description("TC02 - User can't login with blank Username textbox")
-    @Test
+    @Test(description = "TC02 - User can't login with blank Username textbox")
     public void TC02() {
         LoggerHelper.startTestCase("TC02 - User can't login with blank Username textbox");
 
@@ -29,8 +28,7 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(actualMsg, expectedMsg);
   }
 
-    @Description("TC01 - User can log into Railway with valid username and password")
-    @Test
+    @Test(description = "TC01 - User can log into Railway with valid username and password")
     public void TC01() {
         LoggerHelper.startTestCase("TC01 - User can log into Railway with valid username and password");
 
