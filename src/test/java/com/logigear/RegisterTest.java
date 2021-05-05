@@ -16,8 +16,7 @@ public class RegisterTest extends BaseTest {
     private final RegisterPage registerPage = new RegisterPage();
 
 
-    @Description("TC07 - User can create new account")
-    @Test
+    @Test(description = "TC07 - User can create new account")
     public void TC07() {
         LoggerHelper.startTestCase("TC07 - User can create new account");
         homePage.goToRegisterPage();

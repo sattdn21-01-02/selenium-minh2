@@ -14,8 +14,8 @@ public class LoginTest extends BaseTest {
     private final HomePage homePage = new HomePage();
     private final LoginPage loginPage = new LoginPage();
 
-    @Description("TC01 - User can log into Railway with valid username and password")
-    @Test
+
+    @Test(description = "TC01 - User can log into Railway with valid username and password")
     public void TC01() {
         LoggerHelper.startTestCase("TC01 - User can log into Railway with valid username and password");
 
