@@ -4,6 +4,7 @@ public class Constant {
 
     //Variables
     public static final String RAILWAY_URL = "http://www.railway2.somee.com/Page/HomePage.cshtml";
+    public static final String PASSWORD = "minhvip1997";
     public static final String TEST_RESOURCES_PATH = "/src/test/resources/";
     public static final String USERNAME = "tnminh1997123@gmail.com";
     public static final int TIME_WAITS_DRIVER = 30;
@@ -14,4 +15,5 @@ public class Constant {
 
     //Message
     public static final String FAIL_MSG_LOGIN_INVALID_ACCOUNT = "There was a problem with your login and/or errors exist in your form.";
+    public static final String WELCOME = "Welcome ";
 }

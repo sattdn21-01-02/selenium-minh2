@@ -2,7 +2,6 @@ package models;
 
 public class Account {
 
-
     private String email;
     private String password;
     private String pid;
