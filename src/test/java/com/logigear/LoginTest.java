@@ -52,7 +52,7 @@ public class LoginTest extends BaseTest {
 
         String actualMsg = homePage.getWelcomeMessage();
         String expectedMsg = Constant.WELCOME + Constant.USERNAME;
-        Assert.assertEquals(actualMsg, expectedMsg);
+        Assert.assertEquals(actualMsg, expectedMsg,"Welcome message fails to display!");
     }
   
   @DataProvider(name = "loginInvalidAccount")
