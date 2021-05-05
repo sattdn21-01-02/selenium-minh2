@@ -38,7 +38,7 @@ public class LoginTest extends BaseTest {
         loginPage.login(account);
 
         String actualMsg = loginPage.getGeneralErrorMessage();
-        String expectedMsg = Constant.FAIL_MSG_LOGIN_MULTIPLE;
+        String expectedMsg = Constant.INVALID_LOGIN_MULTIPLE_MSG;
         Assert.assertEquals(actualMsg, expectedMsg);
     }
 
