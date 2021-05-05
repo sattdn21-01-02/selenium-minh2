@@ -15,8 +15,7 @@ public class LoginTest extends BaseTest {
     private final HomePage homePage = new HomePage();
     private final LoginPage loginPage = new LoginPage();
 
-    @Description("TC03 - User cannot log into Railway with invalid password ")
-    @Test
+    @Test(description = "TC03 - User cannot log into Railway with invalid password ")
     public void TC03() {
         LoggerHelper.startTestCase("TC03 - User cannot log into Railway with invalid password ");
 
