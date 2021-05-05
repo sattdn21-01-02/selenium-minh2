@@ -27,6 +27,20 @@ public class LoginTest extends BaseTest {
         String actualMsg = loginPage.getGeneralErrorMessage();
         String expectedMsg = Constant.FAIL_MSG_LOGIN_BLANK_INFORMATION;
         Assert.assertEquals(actualMsg, expectedMsg);
+  }
 
+    @Description("TC01 - User can log into Railway with valid username and password")
+    @Test
+    public void TC01() {
+        LoggerHelper.startTestCase("TC01 - User can log into Railway with valid username and password");
+
+        homePage.goToLoginPage();
+
+        Account account = new Account(Constant.USERNAME, Constant.PASSWORD);
+        loginPage.login(account);
+
+        String actualMsg = homePage.getWelcomeMessage();
+        String expectedMsg = Constant.WELCOME + Constant.USERNAME;
+        Assert.assertEquals(actualMsg, expectedMsg);
     }
 }
