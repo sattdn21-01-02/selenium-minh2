@@ -43,8 +43,6 @@ public class LoginTest extends BaseTest {
         String expectedMsg = Constant.WELCOME + Constant.USERNAME;
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message fails to display!");
     }
-  
-
 
     @Test(description = "TC02 - User can't login with blank Username textbox")
     public void TC02() {
@@ -74,7 +72,7 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(actualMsg, expectedMsg, "Error message fails to display!");
     }
 
-    @Test(description = "TC05 - System shows message when user enters wrong password several times ",dataProvider = "loginInvalidAccount")
+    @Test(description = "TC05 - System shows message when user enters wrong password several times ", dataProvider = "loginInvalidAccount")
     public void TC05(Account account) {
         LoggerHelper.startTestCase("TC05 - System shows message when user enters wrong password several times ");
 
@@ -90,7 +88,7 @@ public class LoginTest extends BaseTest {
     @DataProvider(name = "loginInvalidAccount")
     public Object[] readJsonObjectMapperLoginError() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        FileReader reader = new FileReader(Constant.TEST_RESOURCES_PATH+"test-data/login-data.json");
+        FileReader reader = new FileReader(Constant.TEST_RESOURCES_PATH + "test-data/login-data.json");
         JsonNode jsonNode = objectMapper.readTree(reader);
         List<Account> accounts = Arrays.asList(objectMapper.treeToValue(jsonNode.get("account_invalid"), Account[].class));
         return accounts.toArray();
