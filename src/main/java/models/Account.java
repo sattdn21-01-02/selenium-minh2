@@ -5,6 +5,7 @@ public class Account {
 
     private String email;
     private String password;
+    private String pid;
 
     public Account() {
     }
@@ -12,6 +13,12 @@ public class Account {
     public Account(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public Account(String email, String password, String pid) {
+        this.email = email;
+        this.password = password;
+        this.pid = pid;
     }
 
     public String getEmail() {
@@ -28,5 +35,13 @@ public class Account {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
     }
 }
