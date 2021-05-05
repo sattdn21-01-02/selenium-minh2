@@ -27,4 +27,18 @@ public class LoginTest extends BaseTest {
         String expectedMsg = Constant.WELCOME + Constant.USERNAME;
         Assert.assertEquals(actualMsg, expectedMsg);
     }
+
+    @Test(description = "TC02 - User can't login with blank Username textbox")
+    public void TC02() {
+        LoggerHelper.startTestCase("TC02 - User can't login with blank Username textbox");
+        String blankEmail = "";
+        homePage.goToLoginPage();
+
+        Account account = new Account(blankEmail, Constant.PASSWORD);
+        loginPage.login(account);
+
+        String actualMsg = loginPage.getGeneralErrorMessage();
+        String expectedMsg = Constant.FAIL_MSG_LOGIN_BLANK_INFORMATION;
+        Assert.assertEquals(actualMsg, expectedMsg);
+  }
 }
