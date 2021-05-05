@@ -20,7 +20,7 @@ public class ContactTest extends BaseTest {
         String contactEmail = "mailto:thanh.viet.le@logigear.com";
         homePage.goToContactPage();
 
-        String actualMsg = contactPage.getEmail();
+        String actualMsg = contactPage.getEmailHref();
         Assert.assertEquals(actualMsg, contactEmail);
     }
 }

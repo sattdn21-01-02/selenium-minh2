@@ -11,7 +11,7 @@ public class ContactPage extends GeneralPage {
     private final Link linkEmail = new Link(By.cssSelector(".contact a"));
 
     //Methods
-    public String getEmail() {
+    public String getEmailHref() {
         return this.linkEmail.findElement().getAttribute("href");
     }
 }
