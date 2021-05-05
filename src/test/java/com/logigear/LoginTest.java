@@ -20,8 +20,7 @@ public class LoginTest extends BaseTest {
     private final ChangePasswordPage changePasswordPage = new ChangePasswordPage();
     private final MyTicketPage myTicketPage = new MyTicketPage();
 
-    @Description("TC06 - Additional pages display once user logged in")
-    @Test
+    @Test(description = "TC06 - Additional pages display once user logged in")
     public void TC06() {
         LoggerHelper.startTestCase("TC03 - Additional pages display once user logged in");
 
@@ -42,8 +41,7 @@ public class LoginTest extends BaseTest {
         homePage.logout();
       }
 
-    @Description("TC01 - User can log into Railway with valid username and password")
-    @Test
+    @Test(description = "TC01 - User can log into Railway with valid username and password")
     public void TC01() {
         LoggerHelper.startTestCase("TC01 - User can log into Railway with valid username and password");
 
