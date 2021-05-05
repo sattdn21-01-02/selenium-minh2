@@ -8,10 +8,10 @@ import org.openqa.selenium.By;
 public class ContactPage extends GeneralPage {
 
     //Elements
-    private final By linkEmail = new By.ByLinkText("thanh.viet.le@logigear.com");
+    private final Link linkEmail = new Link(By.cssSelector(".contact a"));
 
     //Methods
     public String getEmail() {
-        return BrowserHelper.getDriver().findElement(linkEmail).getAttribute("href");
+        return this.linkEmail.findElement().getAttribute("href");
     }
 }

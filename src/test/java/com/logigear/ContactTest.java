@@ -21,7 +21,6 @@ public class ContactTest extends BaseTest {
         homePage.goToContactPage();
 
         String actualMsg = contactPage.getEmail();
-        String expectedMsg = contactEmail;
-        Assert.assertEquals(actualMsg, expectedMsg);
+        Assert.assertEquals(actualMsg, contactEmail);
     }
 }
