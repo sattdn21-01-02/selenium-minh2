@@ -15,7 +15,7 @@ public class RegisterPage extends GeneralPage {
     private final TextBox txtConfirmPassword = new TextBox(By.cssSelector("input#confirmPassword"));
     private final TextBox txtPID = new TextBox(By.cssSelector("input#pid"));
     private final Button btnRegister = new Button(By.cssSelector("input[title='Register']"));
-    private final Label lblGeneralErrorMessage = new Label(By.xpath("//p[contains(@class, 'message')]"));
+    private final Label lblGeneralErrorMessage = new Label(By.cssSelector(".message.error"));
     private final Label lblEmailErrorMessage = new Label(By.cssSelector("[for=email].validation-error"));
     private final Label lblPasswordErrorMessage = new Label(By.cssSelector("[for=password].validation-error"));
     private final Label lblConfirmPasswordErrorMessage = new Label(By.cssSelector("[for=confirmPassword].validation-error"));
@@ -48,7 +48,7 @@ public class RegisterPage extends GeneralPage {
         return this.lblConfirmPasswordErrorMessage.getText();
     }
 
-    public String getPIDErrorMessage() {
+    public String getPidErrorMessage() {
         return this.lblPIDErrorMessage.getText();
     }
 
