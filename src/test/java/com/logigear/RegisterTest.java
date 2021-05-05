@@ -26,8 +26,7 @@ public class RegisterTest extends BaseTest {
                 password, DataHelper.getRandomValidPid());
         registerPage.register(account);
 
-        String actualMsg = Constant.REGISTER_CONFIRM_MSG;
-        String expectedMsg = registerPage.getSuccessfulMessage();
-        Assert.assertEquals(actualMsg, expectedMsg);
+        String actualMsg = registerPage.getSuccessfulMessage();
+        Assert.assertEquals(actualMsg, Constant.REGISTER_CONFIRM_MSG, "Error message fails to display!");
     }
 }
