@@ -21,6 +21,6 @@ public class ContactTest extends BaseTest {
         homePage.goToContactPage();
 
         String actualEmailHref = contactPage.getEmailHref();
-        Assert.assertEquals(actualEmailHref, contactEmail,"{} href should be appeared".format(contactEmail));
+        Assert.assertEquals(actualEmailHref, contactEmail, "{} href should be appeared".format(contactEmail));
     }
 }
