@@ -31,10 +31,10 @@ public class LoginTest extends BaseTest {
     @Test(description = "TC02 - User can't login with blank Username textbox")
     public void TC02() {
         LoggerHelper.startTestCase("TC02 - User can't login with blank Username textbox");
-
+        String blankEmail = "";
         homePage.goToLoginPage();
 
-        Account account = new Account(Constant.BLANK_EMAIL, Constant.PASSWORD);
+        Account account = new Account(blankEmail, Constant.PASSWORD);
         loginPage.login(account);
 
         String actualMsg = loginPage.getGeneralErrorMessage();

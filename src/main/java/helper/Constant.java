@@ -11,7 +11,6 @@ public class Constant {
     public static final int TIMES_WAIT_ELEMENTS = 120;
     public static final int LONG_TIME_WAIT = 30;
     public static final String DATE_FORMAT = "M/d/yyyy";
-    public static final String BLANK_EMAIL = "";
 
     //Message
     public static final String FAIL_MSG_LOGIN_BLANK_INFORMATION = "There was a problem with your login and/or errors exist in your form.";
