@@ -16,5 +16,6 @@ public class Constant {
     //Message
     public static final String CHANGE_PASSWORD_TITLE = "Change password";
     public static final String MY_TICKET_TITLE = "Manage Tickets";
+    public static final String WELCOME = "Welcome ";
 
 }

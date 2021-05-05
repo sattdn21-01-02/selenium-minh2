@@ -11,13 +11,10 @@ public class BaseTest {
 
     @BeforeMethod
     @Parameters("browser")
-    public void beforeMethod(@Optional String browser) {
-        if (browser != null) {
-            BrowserHelper.DriverType type = BrowserHelper.DriverType.valueOf(browser.toUpperCase());
-            BrowserHelper.startBrowser(type);
-        } else {
-            BrowserHelper.startBrowser(BrowserHelper.DriverType.CHROME);
-        }
+    public void beforeMethod(@Optional("chrome") String browser) {
+        BrowserHelper.DriverType type = BrowserHelper.DriverType.valueOf(browser.toUpperCase());
+        BrowserHelper.startBrowser(type);
+
         BrowserHelper.navigateToUrl(Constant.RAILWAY_URL);
         BrowserHelper.maximize();
     }

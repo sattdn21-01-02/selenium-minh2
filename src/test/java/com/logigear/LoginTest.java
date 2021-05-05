@@ -12,6 +12,7 @@ import page_objects.HomePage;
 import page_objects.LoginPage;
 import page_objects.MyTicketPage;
 
+
 public class LoginTest extends BaseTest {
 
     private final HomePage homePage = new HomePage();
@@ -39,5 +40,20 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(actualMsgChangePasswordPage, expectedMsgChangePasswordPage);
 
         homePage.logout();
+      }
+
+    @Description("TC01 - User can log into Railway with valid username and password")
+    @Test
+    public void TC01() {
+        LoggerHelper.startTestCase("TC01 - User can log into Railway with valid username and password");
+
+        homePage.goToLoginPage();
+
+        Account account = new Account(Constant.USERNAME, Constant.PASSWORD);
+        loginPage.login(account);
+
+        String actualMsg = homePage.getWelcomeMessage();
+        String expectedMsg = Constant.WELCOME + Constant.USERNAME;
+        Assert.assertEquals(actualMsg, expectedMsg);
     }
 }
