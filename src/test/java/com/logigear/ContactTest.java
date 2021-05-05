@@ -17,11 +17,11 @@ public class ContactTest extends BaseTest {
     @Test(description = "TC04 - Contact Email contains correct href value which can help to quickly open Outlook Compose Message dialog")
     public void TC04() {
         LoggerHelper.startTestCase("TC04 - Contact Email contains correct href value which can help to quickly open Outlook Compose Message dialog");
-
+        String contactEmail = "mailto:thanh.viet.le@logigear.com";
         homePage.goToContactPage();
 
         String actualMsg = contactPage.getEmail();
-        String expectedMsg = Constant.CONTACT_EMAIL;
+        String expectedMsg = contactEmail;
         Assert.assertEquals(actualMsg, expectedMsg);
     }
 }

@@ -11,7 +11,6 @@ public class Constant {
     public static final int TIMES_WAIT_ELEMENTS = 120;
     public static final int LONG_TIME_WAIT = 30;
     public static final String DATE_FORMAT = "M/d/yyyy";
-    public static final String CONTACT_EMAIL = "mailto:thanh.viet.le@logigear.com";
 
     //Message
     public static final String WELCOME = "Welcome ";
