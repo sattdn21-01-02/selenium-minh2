@@ -40,7 +40,7 @@ public class LoginTest extends BaseTest {
 
         String actualMsg = loginPage.getGeneralErrorMessage();
         String expectedMsg = Constant.INVALID_BLANK_ACCOUNT_MSG;
-        Assert.assertEquals(actualMsg, expectedMsg);
+        Assert.assertEquals(actualMsg, expectedMsg, "Error message fails to display!");
     }
 
     @Test(description = "TC03 - User cannot log into Railway with invalid password ")
@@ -54,6 +54,6 @@ public class LoginTest extends BaseTest {
 
         String actualMsg = loginPage.getGeneralErrorMessage();
         String expectedMsg = Constant.INVALID_ACCOUNT_MSG;
-        Assert.assertEquals(actualMsg, expectedMsg);
+        Assert.assertEquals(actualMsg, expectedMsg, "Error message fails to display!");
     }
 }
