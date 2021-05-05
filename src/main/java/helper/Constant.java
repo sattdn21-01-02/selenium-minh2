@@ -12,8 +12,8 @@ public class Constant {
     public static final int LONG_TIME_WAIT = 30;
     public static final String DATE_FORMAT = "M/d/yyyy";
 
-
     //Message
     public static final String FAIL_MSG_LOGIN_INVALID_ACCOUNT = "There was a problem with your login and/or errors exist in your form.";
+    public static final String FAIL_MSG_LOGIN_BLANK_INFORMATION = "There was a problem with your login and/or errors exist in your form.";
     public static final String WELCOME = "Welcome ";
 }
