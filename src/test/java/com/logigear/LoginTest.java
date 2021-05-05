@@ -39,7 +39,7 @@ public class LoginTest extends BaseTest {
         loginPage.login(account);
 
         String actualMsg = loginPage.getGeneralErrorMessage();
-        String expectedMsg = Constant.FAIL_MSG_LOGIN_BLANK_INFORMATION;
+        String expectedMsg = Constant.INVALID_BLANK_ACCOUNT_MSG;
         Assert.assertEquals(actualMsg, expectedMsg);
     }
 
@@ -53,7 +53,7 @@ public class LoginTest extends BaseTest {
         loginPage.login(account);
 
         String actualMsg = loginPage.getGeneralErrorMessage();
-        String expectedMsg = Constant.FAIL_MSG_LOGIN_INVALID_ACCOUNT;
+        String expectedMsg = Constant.INVALID_ACCOUNT_MSG;
         Assert.assertEquals(actualMsg, expectedMsg);
     }
 }
