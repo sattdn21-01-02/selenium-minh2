@@ -20,7 +20,7 @@ public class ContactTest extends BaseTest {
         String contactEmail = "mailto:thanh.viet.le@logigear.com";
         homePage.goToContactPage();
 
-        String actualMsg = contactPage.getEmailHref();
-        Assert.assertEquals(actualMsg, contactEmail,"Error message fails to display!");
+        String actualEmailHref = contactPage.getEmailHref();
+        Assert.assertEquals(actualEmailHref, contactEmail,"{} href should be appeared".format(contactEmail));
     }
 }
