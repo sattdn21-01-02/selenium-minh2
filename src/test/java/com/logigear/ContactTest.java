@@ -14,8 +14,7 @@ public class ContactTest extends BaseTest {
     private final HomePage homePage = new HomePage();
     private final ContactPage contactPage = new ContactPage();
 
-    @Description("TC04 - Contact Email contains correct href value which can help to quickly open Outlook Compose Message dialog")
-    @Test
+    @Test(description = "TC04 - Contact Email contains correct href value which can help to quickly open Outlook Compose Message dialog")
     public void TC04() {
         LoggerHelper.startTestCase("TC04 - Contact Email contains correct href value which can help to quickly open Outlook Compose Message dialog");
 
