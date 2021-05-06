@@ -1,5 +1,7 @@
 package models;
 
+import helper.DataHelper;
+
 public class Account {
 
     private String email;
@@ -7,6 +9,9 @@ public class Account {
     private String pid;
 
     public Account() {
+        email = DataHelper.getRandomValidEmail();
+        password = DataHelper.getRandomValidPassword();
+        pid = DataHelper.getRandomValidPid();
     }
 
     public Account(String email, String password) {
