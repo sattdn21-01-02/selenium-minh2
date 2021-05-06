@@ -25,6 +25,12 @@ public class LoginPage extends GeneralPage {
         this.btnLogin.click();
     }
 
+    public void loginNTimes(Account account, int n) {
+        for (int i = 0; i < n; i++) {
+            login(account);
+        }
+    }
+
     public String getGeneralErrorMessage() {
         return this.lblGeneralErrorMessage.getText();
     }
