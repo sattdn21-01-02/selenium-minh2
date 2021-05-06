@@ -7,6 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class BaseElement {
 
@@ -36,5 +37,13 @@ public class BaseElement {
 
     public void waitForElementExist() {
         js.executeScript("arguments[0].scrollIntoView(true);", findElement());
+    }
+
+    public boolean isDisplayed() {
+        try {
+            return findElement().isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }

@@ -28,6 +28,10 @@ public class LoginTest extends BaseTest {
         Account account = new Account(Constant.USERNAME, Constant.PASSWORD);
         loginPage.login(account);
 
+        Assert.assertTrue(homePage.isMyTicketTabDisplayed(), "My ticket Tab does not display");
+        Assert.assertTrue(homePage.isLogOutTabDisplayed(), "Log out Tab does not display");
+        Assert.assertTrue(homePage.isChangePasswordTabDisplayed(), "Change Password does not display");
+
         homePage.goToMyTicketPage();
         String actualMsgMyTicketPage = myTicketPage.getMyTicketTitle();
         Assert.assertEquals(actualMsgMyTicketPage, Constant.MY_TICKET_TITLE, "My Ticket page doesn't display");
@@ -35,9 +39,7 @@ public class LoginTest extends BaseTest {
         homePage.goToChangePasswordPage();
         String actualMsgChangePasswordPage = changePasswordPage.getChangePasswordTitle();
         Assert.assertEquals(actualMsgChangePasswordPage, Constant.CHANGE_PASSWORD_TITLE, "Change Password page doesn't display");
-
-        homePage.logout();
-      }
+    }
 
     @Test(description = "TC01 - User can log into Railway with valid username and password")
     public void TC01() {
