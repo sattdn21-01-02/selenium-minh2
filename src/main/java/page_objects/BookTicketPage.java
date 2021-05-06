@@ -19,7 +19,6 @@ public class BookTicketPage extends GeneralPage {
     private final Dropdown btnBookTicket = new Dropdown(By.cssSelector("input[value='Book ticket']"));
     private final Label lblErrorMessage = new Label(By.cssSelector(".message.error"));
     private final Label lblAmountErrorMessage = new Label(By.cssSelector(".validation-error"));
-    private final String dynamicTableCell = "//table/tbody/tr/td[count(//table/tbody/tr/th[.='%s']/preceding-sibling::th)+1]";
 
     //Method
     public void bookTicket(Ticket ticket) {
@@ -38,11 +37,7 @@ public class BookTicketPage extends GeneralPage {
         return this.lblErrorMessage.getText();
     }
 
-    public String getErrorAmountTicketMessage() {
+    public String getAmountTicketErrorMessage() {
         return this.lblAmountErrorMessage.getText();
-    }
-
-    public String getTableCellValue(String header) {
-        return BrowserHelper.getDriver().findElement(By.xpath(String.format(dynamicTableCell, header))).getText();
     }
 }

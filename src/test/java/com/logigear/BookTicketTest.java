@@ -39,7 +39,7 @@ public class BookTicketTest extends BaseTest {
         bookTicketPage.bookTicket(ticket);
 
         String actualErrorMsg = bookTicketPage.getErrorMessage();
-        String actualTicketAmountErrorMsg = bookTicketPage.getErrorAmountTicketMessage();
+        String actualTicketAmountErrorMsg = bookTicketPage.getAmountTicketErrorMessage();
         Assert.assertEquals(actualErrorMsg, expectedErrorMsg, "Error message fails to display! ");
         Assert.assertEquals(actualTicketAmountErrorMsg, expectedTicketAmountErrorMsg, "Ticket amount error fails to display!");
     }
