@@ -10,19 +10,21 @@ public class MyTicketPage extends GeneralPage {
 
     //Elements
     private final Label lblMyTicket = new Label(By.cssSelector("#content h1"));
-    Button btnCancel = new Button(By.cssSelector("[value=Cancel]"));
-    String xPath = "//td[count(//th[text()='No.']) and text() = %d]//following-sibling::td//input";
+    Button btnCancel = new Button(By.cssSelector(".MyTable input"));
 
     //Methods
     public String getMyTicketTitle() {
         return this.lblMyTicket.getText();
     }
 
-    public void cancelSpecifiedTicket(int id) {
-        String xPaths = String.format(xPath, id);
-        Button btnCancel = new Button(By.xpath(xPaths));
+    public void deleteTicket() {
         ElementHelper.scrollToView(btnCancel.findElement());
         this.btnCancel.click();
         BrowserHelper.acceptAlert();
+        this.btnCancel.waitForElementInVisible();
+    }
+
+    public boolean isTicketDisplayed() {
+        return this.btnCancel.isDisplayed();
     }
 }
