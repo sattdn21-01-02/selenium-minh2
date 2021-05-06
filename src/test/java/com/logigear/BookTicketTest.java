@@ -8,10 +8,7 @@ import models.Account;
 import models.Ticket;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import page_objects.BookTicketPage;
-import page_objects.HomePage;
-import page_objects.LoginPage;
-import page_objects.TicketPricePage;
+import page_objects.*;
 
 public class BookTicketTest extends BaseTest {
 
@@ -19,6 +16,7 @@ public class BookTicketTest extends BaseTest {
     private final LoginPage loginPage = new LoginPage();
     private final TicketPricePage ticketPricePage = new TicketPricePage();
     private final BookTicketPage bookTicketPage = new BookTicketPage();
+    private final RegisterPage registerPage = new RegisterPage();
 
 
     @Test(description = "TC14 - User can't book more than 10 tickets")
@@ -52,13 +50,14 @@ public class BookTicketTest extends BaseTest {
     public void TC15() {
         LoggerHelper.startTestCase("TC15 - User can open Book ticket page by click on Book ticket link in Ticket price");
 
-        homePage.goToLoginPage();
         String departFrom = "Sài Gòn";
         String arriveAt = "Nha Trang";
         String seatType = "Hard seat";
+        Account account = new Account(DataHelper.getRandomValidEmail(), DataHelper.getRandomValidPassword(),DataHelper.getRandomValidPid());
 
-        Account account = new Account(Constant.USERNAME, Constant.PASSWORD);
-
+        homePage.goToRegisterPage();
+        registerPage.register(account);
+        homePage.goToLoginPage();
         loginPage.login(account);
         homePage.goToTicketPricePage();
         ticketPricePage.checkPrice(departFrom, arriveAt);
