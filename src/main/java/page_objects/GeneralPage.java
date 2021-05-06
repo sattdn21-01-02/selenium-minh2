@@ -1,5 +1,6 @@
 package page_objects;
 
+import helper.ElementHelper;
 import helper.element_helper.Tab;
 import org.openqa.selenium.By;
 
@@ -61,5 +62,17 @@ public class GeneralPage {
 
     public void logout() {
         this.tabLogout.click();
+    }
+
+    public boolean isMyTicketTabDisplayed() {
+        return tabLogout.isDisplayed();
+    }
+
+    public boolean isLogOutTabDisplayed() {
+        return tabMyTicket.isDisplayed();
+    }
+
+    public boolean isChangePasswordTabDisplayed() {
+        return tabChangePassword.isDisplayed();
     }
 }

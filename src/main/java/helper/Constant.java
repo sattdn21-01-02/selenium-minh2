@@ -11,8 +11,11 @@ public class Constant {
     public static final int TIMES_WAIT_ELEMENTS = 120;
     public static final int LONG_TIME_WAIT = 30;
     public static final String DATE_FORMAT = "M/d/yyyy";
+    public static final String MAXIMUM_LOGIN_ATTEMPTS_WARNING_MSG = "You have used 4 out of 5 login attempts. After all 5 have been used, you will be unable to login for 15 minutes.";
 
     //Message
+    public static final String CHANGE_PASSWORD_TITLE = "Change password";
+    public static final String MY_TICKET_TITLE = "Manage Tickets";
     public static final String INVALID_ACCOUNT_MSG = "There was a problem with your login and/or errors exist in your form.";
     public static final String INVALID_BLANK_ACCOUNT_MSG = "There was a problem with your login and/or errors exist in your form.";
     public static final String WELCOME = "Welcome ";
