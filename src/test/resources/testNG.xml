@@ -6,6 +6,7 @@
             <class name="com.logigear.LoginTest"></class>
             <class name="com.logigear.ContactTest"></class>
             <class name="com.logigear.RegisterTest"></class>
+            <class name="com.logigear.BookTicketTest"></class>
             <class name="com.logigear.MyTicketTest"></class>
         </classes>
     </test>
@@ -15,6 +16,7 @@
             <class name="com.logigear.LoginTest"></class>
             <class name="com.logigear.ContactTest"></class>
             <class name="com.logigear.RegisterTest"></class>
+            <class name="com.logigear.BookTicketTest"></class>
             <class name="com.logigear.MyTicketTest"></class>
         </classes>
     </test>
