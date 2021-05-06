@@ -38,12 +38,12 @@ public class BookTicketTest extends BaseTest {
 
         BrowserHelper.scrollPage();
 
-        String actualDepartFrom = bookTicketPage.getDepartFromValue();
-        String actualArriveAt = bookTicketPage.getArriveAtValue();
-        String actualSeatType = bookTicketPage.getSeatTypeValue();
+        String actualDepartFromMsg = bookTicketPage.getDepartFromValue();
+        String actualArriveAtMsg = bookTicketPage.getArriveAtValue();
+        String actualSeatTypeMsg = bookTicketPage.getSeatTypeValue();
 
-        Assert.assertEquals(actualDepartFrom, departFrom, "Error depart from message fails to display!");
-        Assert.assertEquals(actualArriveAt, arriveAt, "Error arrive at message fails to display!");
-        Assert.assertEquals(actualSeatType, seatType, "Error seat type message fails to display!");
+        Assert.assertEquals(actualDepartFromMsg, departFrom, "Depart from error message fails to display!");
+        Assert.assertEquals(actualArriveAtMsg, arriveAt, "Arrive at error message fails to display!");
+        Assert.assertEquals(actualSeatTypeMsg, seatType, "Seat type error message fails to display!");
     }
 }
