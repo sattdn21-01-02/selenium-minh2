@@ -17,8 +17,8 @@ public class RegisterTest extends BaseTest {
     @Test(description = "TC07 - User can create new account")
     public void TC07() {
         LoggerHelper.startTestCase("TC07 - User can create new account");
-        homePage.goToRegisterPage();
 
+        homePage.goToRegisterPage();
         Account account = new Account();
         registerPage.register(account);
 
@@ -31,14 +31,12 @@ public class RegisterTest extends BaseTest {
     public void TC11() {
         LoggerHelper.startTestCase("TC11 - User can't create account while password and PID fields are empty");
 
-        String blankPassword = "";
-        String blankPid = "";
         String expectedErrorMsg = "There're errors in the form. Please correct the errors and try again.";
         String expectedErrorPasswordMsg = "Invalid password length";
         String expectedErrorPidMsg = "Invalid ID length";
 
         homePage.goToRegisterPage();
-        Account account = new Account(Constant.USERNAME, blankPassword, blankPid);
+        Account account = new Account(Constant.USERNAME, "", "");
         registerPage.register(account);
 
         String actualErrorMsg = registerPage.getGeneralErrorMessage();
