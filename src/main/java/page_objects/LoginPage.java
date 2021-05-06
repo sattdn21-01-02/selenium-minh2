@@ -25,6 +25,15 @@ public class LoginPage extends GeneralPage {
         this.btnLogin.click();
     }
 
+    public void loginNTimes(Account account, int n) {
+        for(int i=0;i<n;i++){
+            this.txtEmail.enterText(account.getEmail());
+            this.txtPassword.enterText(account.getPassword());
+            ElementHelper.scrollToView(btnLogin.findElement());
+            this.btnLogin.click();
+        }
+    }
+
     public String getGeneralErrorMessage() {
         return this.lblGeneralErrorMessage.getText();
     }

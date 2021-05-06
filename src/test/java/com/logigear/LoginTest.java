@@ -72,24 +72,17 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(actualMsg, expectedMsg, "Error message fails to display!");
     }
 
-    @Test(description = "TC05 - System shows message when user enters wrong password several times ", dataProvider = "loginInvalidAccount")
-    public void TC05(Account account) {
+    @Test(description = "TC05 - System shows message when user enters wrong password several times ")
+    public void TC05() {
         LoggerHelper.startTestCase("TC05 - System shows message when user enters wrong password several times ");
 
+        Account account = new Account(Constant.USERNAME, DataHelper.getRandomErrorPassword());
+        int nTimes = 5;
         homePage.goToLoginPage();
-        account.setPassword(DataHelper.getRandomErrorPassword());
-        loginPage.login(account);
+        loginPage.loginNTimes(account, nTimes);
 
         String actualMsg = loginPage.getGeneralErrorMessage();
         Assert.assertEquals(actualMsg, Constant.MAXIMUM_LOGIN_ATTEMPTS_WARNING_MSG, "Error message fails to display!");
     }
 
-    @DataProvider(name = "loginInvalidAccount")
-    public Object[] readJsonObjectMapperLoginError() throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        FileReader reader = new FileReader(Constant.TEST_RESOURCES_PATH + "test-data/login-data.json");
-        JsonNode jsonNode = objectMapper.readTree(reader);
-        List<Account> accounts = Arrays.asList(objectMapper.treeToValue(jsonNode.get("account_invalid"), Account[].class));
-        return accounts.toArray();
-    }
 }
