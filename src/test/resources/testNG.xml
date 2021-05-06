@@ -3,16 +3,18 @@
     <test name="Chrome" enabled="true">
         <parameter name="browser" value="CHROME"/>
         <classes>
-            <class name="com.logigear.ContactTest"></class>
             <class name="com.logigear.LoginTest"></class>
+            <class name="com.logigear.ContactTest"></class>
+            <class name="com.logigear.RegisterTest"></class>
             <class name="com.logigear.BookTicketTest"></class>
         </classes>
     </test>
     <test name="Firefox" enabled="true">
         <parameter name="browser" value="FIREFOX"/>
         <classes>
-            <class name="com.logigear.ContactTest"></class>
             <class name="com.logigear.LoginTest"></class>
+            <class name="com.logigear.ContactTest"></class>
+            <class name="com.logigear.RegisterTest"></class>
             <class name="com.logigear.BookTicketTest"></class>
         </classes>
     </test>
