@@ -77,7 +77,6 @@ public class LoginTest extends BaseTest {
         LoggerHelper.startTestCase("TC05 - System shows message when user enters wrong password several times ");
 
         homePage.goToLoginPage();
-
         account.setPassword(DataHelper.getRandomErrorPassword());
         loginPage.login(account);
 
