@@ -76,7 +76,7 @@ public class LoginTest extends BaseTest {
 
     @Test(description = "TC06 - Additional pages display once user logged in")
     public void TC06() {
-        LoggerHelper.startTestCase("TC03 - Additional pages display once user logged in");
+        LoggerHelper.startTestCase("TC06 - Additional pages display once user logged in");
 
         homePage.goToLoginPage();
         Account account = new Account(Constant.USERNAME, Constant.PASSWORD);
