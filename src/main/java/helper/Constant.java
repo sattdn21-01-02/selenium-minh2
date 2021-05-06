@@ -14,6 +14,5 @@ public class Constant {
 
 
     //Message
-    public static final String REGISTER_CONFIRM_MSG = "You're here";
     public static final String WELCOME = "Welcome ";
 }

@@ -1,7 +1,5 @@
 package com.logigear;
 
-import com.sun.org.glassfish.gmbal.Description;
-import helper.Constant;
 import helper.DataHelper;
 import helper.LoggerHelper;
 import models.Account;
@@ -27,6 +25,7 @@ public class RegisterTest extends BaseTest {
         registerPage.register(account);
 
         String actualMsg = registerPage.getSuccessfulMessage();
-        Assert.assertEquals(actualMsg, Constant.REGISTER_CONFIRM_MSG, "Error message fails to display!");
+        String expectedMsg = "You're here";
+        Assert.assertEquals(actualMsg, expectedMsg, "Error message fails to display!");
     }
 }
