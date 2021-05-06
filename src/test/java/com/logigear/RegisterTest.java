@@ -19,9 +19,7 @@ public class RegisterTest extends BaseTest {
         LoggerHelper.startTestCase("TC07 - User can create new account");
         homePage.goToRegisterPage();
 
-        String password = DataHelper.getRandomValidPassword();
-        Account account = new Account(DataHelper.getRandomValidEmail(),
-                password, DataHelper.getRandomValidPid());
+        Account account = new Account();
         registerPage.register(account);
 
         String actualMsg = registerPage.getSuccessfulMessage();
