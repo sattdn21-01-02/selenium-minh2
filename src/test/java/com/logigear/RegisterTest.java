@@ -33,7 +33,7 @@ public class RegisterTest extends BaseTest {
 
         String expectedErrorMsg = "There're errors in the form. Please correct the errors and try again.";
         String expectedPasswordErrorMsg = "Invalid password length";
-        String expectedErrorPidMsg = "Invalid ID length";
+        String expectedPidErrorMsg = "Invalid ID length";
 
         homePage.goToRegisterPage();
         Account account = new Account(Constant.USERNAME, "", "");
@@ -44,7 +44,7 @@ public class RegisterTest extends BaseTest {
         String actualPidErrorMsg = registerPage.getPidErrorMessage();
 
         Assert.assertEquals(actualErrorMsg, expectedErrorMsg, "Error message fails to display! ");
-        Assert.assertEquals(actualPasswordErrorMsg, expectedPasswordErrorMsg, "Error password message fails to display!");
-        Assert.assertEquals(actualPidErrorMsg, expectedErrorPidMsg, "Error pid message fails to display!");
+        Assert.assertEquals(actualPasswordErrorMsg, expectedPasswordErrorMsg, "Password error message fails to display!");
+        Assert.assertEquals(actualPidErrorMsg, expectedPidErrorMsg, "Pid error message fails to display!");
     }
 }
