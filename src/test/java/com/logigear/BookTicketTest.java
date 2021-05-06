@@ -43,5 +43,4 @@ public class BookTicketTest extends BaseTest {
         Assert.assertEquals(actualErrorMsg, expectedErrorMsg, "Error message fails to display! ");
         Assert.assertEquals(actualTicketAmountErrorMsg, expectedTicketAmountErrorMsg, "Ticket amount error fails to display!");
     }
-
 }

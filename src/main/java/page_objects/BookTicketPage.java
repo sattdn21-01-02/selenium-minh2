@@ -16,9 +16,9 @@ public class BookTicketPage extends GeneralPage {
     private final Dropdown ddlArriveAt = new Dropdown(By.cssSelector("[name=ArriveStation]"));
     private final Dropdown ddlSeatType = new Dropdown(By.cssSelector("[name=SeatType]"));
     private final Dropdown ddlTicketAmount = new Dropdown(By.cssSelector("[name=TicketAmount]"));
-    private final Dropdown btnSubmitBookTicket = new Dropdown(By.cssSelector("input[value='Book ticket']"));
+    private final Dropdown btnBookTicket = new Dropdown(By.cssSelector("input[value='Book ticket']"));
     private final Label lblErrorMessage = new Label(By.cssSelector(".message.error"));
-    private final Label lblErrorMessageAmount = new Label(By.cssSelector(".validation-error"));
+    private final Label lblAmountErrorMessage = new Label(By.cssSelector(".validation-error"));
     private final String dynamicTableCell = "//table/tbody/tr/td[count(//table/tbody/tr/th[.='%s']/preceding-sibling::th)+1]";
 
     //Method
@@ -31,7 +31,7 @@ public class BookTicketPage extends GeneralPage {
         ElementHelper.waitForElementDisplay(ddlArriveAt.findElement(), Constant.LONG_TIME_WAIT).click();
         this.ddlArriveAt.selectDropDownText(ticket.getArriveAt());
         BrowserHelper.scrollPage();
-        this.btnSubmitBookTicket.click();
+        this.btnBookTicket.click();
     }
 
     public String getErrorMessage() {
@@ -39,7 +39,7 @@ public class BookTicketPage extends GeneralPage {
     }
 
     public String getErrorAmountTicketMessage() {
-        return this.lblErrorMessageAmount.getText();
+        return this.lblAmountErrorMessage.getText();
     }
 
     public String getTableCellValue(String header) {
