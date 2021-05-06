@@ -26,11 +26,8 @@ public class LoginPage extends GeneralPage {
     }
 
     public void loginNTimes(Account account, int n) {
-        for(int i=0;i<n;i++){
-            this.txtEmail.enterText(account.getEmail());
-            this.txtPassword.enterText(account.getPassword());
-            ElementHelper.scrollToView(btnLogin.findElement());
-            this.btnLogin.click();
+        for (int i = 0; i < n; i++) {
+            login(account);
         }
     }
 
