@@ -28,7 +28,7 @@ public class BookTicketTest extends BaseTest {
         String seatType = "Hard seat";
         String ticketAmount = "10";
         String expectedErrorMsg = "There're errors in the form. Please correct the errors and try again.";
-        String expectedErrorTicketAmountMsg = "You have booked 10 tickets. You can book no more.";
+        String expectedTicketAmountErrorMsg = "You have booked 10 tickets. You can book no more.";
         Account account = new Account(Constant.USERNAME, Constant.PASSWORD);
         Ticket ticket = new Ticket(departDate, departFrom, arriveAt, seatType, ticketAmount);
 
@@ -39,9 +39,9 @@ public class BookTicketTest extends BaseTest {
         bookTicketPage.bookTicket(ticket);
 
         String actualErrorMsg = bookTicketPage.getErrorMessage();
-        String actualErrorTicketAmountMsg = bookTicketPage.getErrorAmountTicketMessage();
+        String actualTicketAmountErrorMsg = bookTicketPage.getErrorAmountTicketMessage();
         Assert.assertEquals(actualErrorMsg, expectedErrorMsg, "Error message fails to display! ");
-        Assert.assertEquals(actualErrorTicketAmountMsg, expectedErrorTicketAmountMsg, "Error ticket amount fails to display!");
+        Assert.assertEquals(actualTicketAmountErrorMsg, expectedTicketAmountErrorMsg, "Ticket amount error fails to display!");
     }
 
 }
