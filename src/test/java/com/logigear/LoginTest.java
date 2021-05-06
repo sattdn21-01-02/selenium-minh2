@@ -1,15 +1,5 @@
 package com.logigear;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.sun.org.glassfish.gmbal.Description;
-import helper.Constant;
-import helper.DataHelper;
-import helper.LoggerHelper;
-import models.Account;
-import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import com.sun.org.glassfish.gmbal.Description;
 import helper.Constant;
 import helper.DataHelper;
 import helper.LoggerHelper;
@@ -19,10 +9,6 @@ import org.testng.annotations.Test;
 import page_objects.HomePage;
 import page_objects.LoginPage;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 
 public class LoginTest extends BaseTest {
 
