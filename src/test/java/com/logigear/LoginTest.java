@@ -1,12 +1,14 @@
 package com.logigear;
 
 import helper.Constant;
+import helper.DataHelper;
 import helper.LoggerHelper;
 import models.Account;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page_objects.HomePage;
 import page_objects.LoginPage;
+
 
 public class LoginTest extends BaseTest {
 
@@ -27,4 +29,46 @@ public class LoginTest extends BaseTest {
         String expectedMsg = Constant.WELCOME + Constant.USERNAME;
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message fails to display!");
     }
+
+    @Test(description = "TC02 - User can't login with blank Username textbox")
+    public void TC02() {
+        LoggerHelper.startTestCase("TC02 - User can't login with blank Username textbox");
+        String blankEmail = "";
+        homePage.goToLoginPage();
+
+        Account account = new Account(blankEmail, Constant.PASSWORD);
+        loginPage.login(account);
+
+        String actualMsg = loginPage.getGeneralErrorMessage();
+        String expectedMsg = Constant.INVALID_BLANK_ACCOUNT_MSG;
+        Assert.assertEquals(actualMsg, expectedMsg, "Error message fails to display!");
+    }
+
+    @Test(description = "TC03 - User cannot log into Railway with invalid password ")
+    public void TC03() {
+        LoggerHelper.startTestCase("TC03 - User cannot log into Railway with invalid password ");
+
+        homePage.goToLoginPage();
+
+        Account account = new Account(Constant.USERNAME, DataHelper.getRandomErrorPassword());
+        loginPage.login(account);
+
+        String actualMsg = loginPage.getGeneralErrorMessage();
+        String expectedMsg = Constant.INVALID_ACCOUNT_MSG;
+        Assert.assertEquals(actualMsg, expectedMsg, "Error message fails to display!");
+    }
+
+    @Test(description = "TC05 - System shows message when user enters wrong password several times ")
+    public void TC05() {
+        LoggerHelper.startTestCase("TC05 - System shows message when user enters wrong password several times ");
+
+        Account account = new Account(Constant.USERNAME, DataHelper.getRandomErrorPassword());
+        int nTimes = 5;
+        homePage.goToLoginPage();
+        loginPage.loginNTimes(account, nTimes);
+
+        String actualMsg = loginPage.getGeneralErrorMessage();
+        Assert.assertEquals(actualMsg, Constant.MAXIMUM_LOGIN_ATTEMPTS_WARNING_MSG, "Error message fails to display!");
+    }
+
 }
