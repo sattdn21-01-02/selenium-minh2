@@ -24,7 +24,7 @@ public class MyTicketPage extends GeneralPage {
         this.btnCancel.waitForElementInVisible();
     }
 
-    public boolean isTicketDisplayed() {
-        return this.btnCancel.isDisplayed();
+    public int getTotalTicket() {
+        return this.btnCancel.getElementCount();
     }
 }

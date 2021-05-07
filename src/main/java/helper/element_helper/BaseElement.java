@@ -53,4 +53,8 @@ public class BaseElement {
         WebDriverWait wait = new WebDriverWait(BrowserHelper.getDriver(), Constant.EXPLICIT_ELEMENT_WAIT_TIME);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
+
+    public int getElementCount() {
+        return findElements().size();
+    }
 }

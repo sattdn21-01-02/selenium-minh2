@@ -36,8 +36,11 @@ public class MyTicketTest extends BaseTest {
         homePage.goToBookTicketPage();
         bookTicketPage.bookTicket(bookTicket);
         homePage.goToMyTicketPage();
+        int getTicketCount = myTicketPage.getTotalTicket();
         myTicketPage.deleteTicket();
+        int actualTicketAmount = myTicketPage.getTotalTicket();
+        int expectedTicketAmount = getTicketCount - 1;
 
-        Assert.assertFalse(myTicketPage.isTicketDisplayed(), "Ticket is deleted unsuccessfully!");
+        Assert.assertEquals(actualTicketAmount, expectedTicketAmount, "Ticket deleted unsuccessfully!");
     }
 }
