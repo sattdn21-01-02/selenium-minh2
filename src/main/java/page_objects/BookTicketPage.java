@@ -42,17 +42,14 @@ public class BookTicketPage extends GeneralPage {
     }
 
     public String getSeatTypeValue() {
-        ElementHelper.scrollToView(ddlSeatType.findElement());
         return this.ddlSeatType.getSelectedValue();
     }
 
     public String getDepartFromValue() {
-        ElementHelper.scrollToView(ddlDepartFrom.findElement());
         return this.ddlDepartFrom.getSelectedValue();
     }
 
     public String getArriveAtValue() {
-        ElementHelper.scrollToView(ddlArriveAt.findElement());
         return this.ddlArriveAt.getSelectedValue();
     }
 }
