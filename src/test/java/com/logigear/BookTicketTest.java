@@ -53,15 +53,15 @@ public class BookTicketTest extends BaseTest {
         String departFrom = "Sài Gòn";
         String arriveAt = "Nha Trang";
         String seatType = "Hard seat";
-        Account account = new Account(DataHelper.getRandomValidEmail(), DataHelper.getRandomValidPassword(),DataHelper.getRandomValidPid());
+        Account account = new Account(DataHelper.getRandomValidEmail(), DataHelper.getRandomValidPassword(), DataHelper.getRandomValidPid());
 
         homePage.goToRegisterPage();
         registerPage.register(account);
         homePage.goToLoginPage();
         loginPage.login(account);
         homePage.goToTicketPricePage();
-        ticketPricePage.checkPrice(departFrom, arriveAt);
-        ticketPricePage.bookTicket(seatType);
+        ticketPricePage.clickOnCheckPrice(departFrom, arriveAt);
+        ticketPricePage.clickOnBookTicket(seatType);
 
         BrowserHelper.scrollPage();
 
