@@ -39,6 +39,7 @@ public class BookTicketPage extends GeneralPage {
 
     public String getAmountTicketErrorMessage() {
         return this.lblAmountErrorMessage.getText();
+
     }
 
     public String getSeatTypeValue() {

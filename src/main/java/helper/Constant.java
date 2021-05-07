@@ -12,6 +12,7 @@ public class Constant {
     public static final int LONG_TIME_WAIT = 30;
     public static final String DATE_FORMAT = "M/d/yyyy";
     public static final String MAXIMUM_LOGIN_ATTEMPTS_WARNING_MSG = "You have used 4 out of 5 login attempts. After all 5 have been used, you will be unable to login for 15 minutes.";
+    public static final int EXPLICIT_ELEMENT_WAIT_TIME = 10;
 
     //Message
     public static final String CHANGE_PASSWORD_TITLE = "Change password";
