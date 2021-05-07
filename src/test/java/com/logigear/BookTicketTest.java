@@ -67,8 +67,8 @@ public class BookTicketTest extends BaseTest {
         String actualArriveAt = bookTicketPage.getArriveAtValue();
         String actualSeatType = bookTicketPage.getSeatTypeValue();
 
-        Assert.assertEquals(actualDepartFrom, departFrom, "Depart from error to display incorrect!");
-        Assert.assertEquals(actualArriveAt, arriveAt, "Arrive at error to display incorrect!");
-        Assert.assertEquals(actualSeatType, seatType, "Seat type error to display incorrect!");
+        Assert.assertEquals(actualDepartFrom, departFrom, "Depart from displays incorrectly!");
+        Assert.assertEquals(actualArriveAt, arriveAt, "Arrive at displays incorrectly!");
+        Assert.assertEquals(actualSeatType, seatType, "Seat type displays incorrectly!");
     }
 }
