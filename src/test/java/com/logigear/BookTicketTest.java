@@ -23,7 +23,6 @@ public class BookTicketTest extends BaseTest {
     public void TC14() {
         LoggerHelper.startTestCase("TC14 - User can't book more than 10 tickets");
 
-        homePage.goToLoginPage();
         String departDate = DataHelper.getRandomValidDepartDate();
         String departFrom = "Sài Gòn";
         String arriveAt = "Phan Thiết";
@@ -31,9 +30,12 @@ public class BookTicketTest extends BaseTest {
         String ticketAmount = "10";
         String expectedErrorMsg = "There're errors in the form. Please correct the errors and try again.";
         String expectedTicketAmountErrorMsg = "You have booked 10 tickets. You can book no more.";
-        Account account = new Account(Constant.USERNAME, Constant.PASSWORD);
         Ticket ticket = new Ticket(departDate, departFrom, arriveAt, seatType, ticketAmount);
+        Account account = new Account(DataHelper.getRandomValidEmail(), DataHelper.getRandomValidPassword(), DataHelper.getRandomValidPid());
 
+        homePage.goToRegisterPage();
+        registerPage.register(account);
+        homePage.goToLoginPage();
         loginPage.login(account);
         homePage.goToBookTicketPage();
         bookTicketPage.bookTicket(ticket);
