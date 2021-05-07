@@ -1,9 +1,9 @@
 package page_objects;
 
+import helper.element_helper.Dropdown;
 import helper.BrowserHelper;
 import helper.Constant;
 import helper.ElementHelper;
-import helper.element_helper.Dropdown;
 import helper.element_helper.Label;
 import models.Ticket;
 import org.openqa.selenium.By;
@@ -39,5 +39,17 @@ public class BookTicketPage extends GeneralPage {
 
     public String getAmountTicketErrorMessage() {
         return this.lblAmountErrorMessage.getText();
+    }
+
+    public String getSeatTypeValue() {
+        return this.ddlSeatType.getSelectedValue();
+    }
+
+    public String getDepartFromValue() {
+        return this.ddlDepartFrom.getSelectedValue();
+    }
+
+    public String getArriveAtValue() {
+        return this.ddlArriveAt.getSelectedValue();
     }
 }
